@@ -1,9 +1,9 @@
-import Admin from "features/Admin/Admin";
+import AdminPage from "features/Admin/AdminPage/AdminPage";
 import Auth from "features/Auth/Auth";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
-import Student from "features/Student/Student";
-import Teacher from "features/Teacher/Teacher";
+import StudentPage from "features/Student/StudentPage/StudentPage";
+import TeacherPage from "features/Teacher/TeacherPage/TeacherPage";
 
 export const MAIN_ROUTE = [
   {
@@ -44,21 +44,21 @@ export const MAIN_ROUTE = [
   {
     // name: "Dành cho học viên",
     path: "/student",
-    component: <Student />,
+    component: <StudentPage />,
     exact: true,
     index: true,
   },
   {
     // name: "Dành cho giảng viên",
     path: "/teacher",
-    component: <Teacher />,
+    component: <TeacherPage />,
     exact: true,
     index: true,
   },
   {
     // name: "Admin",
     path: "/admin",
-    component: <Admin />,
+    component: <AdminPage />,
     exact: true,
     index: true,
   },

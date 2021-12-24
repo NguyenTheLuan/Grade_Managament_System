@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import { selectRole } from "reducers/authSlice";
 
-function PrivateRoute() {
-  const isRole = useSelector(selectRole);
+function AdminRoute() {
+  const isAdmin = useSelector(selectRole);
 
-  return isRole ? <Outlet /> : <Navigate to="/login" />;
+  return <>{isAdmin === "admin" ? <Outlet /> : <Navigate to="/login" />}</>;
 }
 
-export default PrivateRoute;
+export default AdminRoute;
