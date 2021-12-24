@@ -21,6 +21,10 @@ const authApi = {
     const url = ACCOUNT_API + "/verify";
     return axiosClient.post(url, email);
   },
+  postRefreshToken: (refresh_token) => {
+    const url = LOGIN_API + "/refresh_token";
+    return axiosClient.post(url, refresh_token);
+  },
 };
 
 export default authApi;

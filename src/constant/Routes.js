@@ -1,175 +1,90 @@
 import AdminPage from "features/Admin/AdminPage/AdminPage";
-import Auth from "features/Auth/Auth";
+import ForgotPassword from "features/Auth/BasicLogin/ForgotPassword";
+import Login from "features/Auth/BasicLogin/Login";
+import Register from "features/Auth/BasicLogin/Register";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
+import StudentCourse from "features/Student/StudentCourse/StudentCourse";
 import StudentPage from "features/Student/StudentPage/StudentPage";
+import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import TeacherPage from "features/Teacher/TeacherPage/TeacherPage";
 
+//Main route
 export const MAIN_ROUTE = [
   {
     // name: "Trang chủ",
     path: "/",
     component: <HomePage />,
     exact: true,
-    index: true,
   },
   {
-    // name: "Trang chủ",
+    // name: "Không tìm thấy",
     path: "*",
     component: <NotFound />,
     exact: true,
-    index: true,
-  },
-  {
-    // name: "Đăng nhập",
-    path: "/login",
-    component: <Auth />,
-    exact: true,
-    index: true,
-  },
-  {
-    // name: "Đăng nhập",
-    path: "/register",
-    component: <Auth />,
-    exact: true,
-    index: true,
-  },
-  {
-    // name: "Đăng nhập",
-    path: "/forgot_password",
-    component: <Auth />,
-    exact: true,
-    index: true,
-  },
-  {
-    // name: "Dành cho học viên",
-    path: "/student",
-    component: <StudentPage />,
-    exact: true,
-    index: true,
-  },
-  {
-    // name: "Dành cho giảng viên",
-    path: "/teacher",
-    component: <TeacherPage />,
-    exact: true,
-    index: true,
-  },
-  {
-    // name: "Admin",
-    path: "/admin",
-    component: <AdminPage />,
-    exact: true,
-    index: true,
   },
 ];
 
-//Student Page
-export const STUDENT_PAGE = {
-  //Trang home
-  HOME: {
+//Auth route
+export const AUTH_ROUTE = [
+  {
+    // name: "Đăng nhập",
+    path: "/login",
+    component: <Login />,
+    exact: true,
+  },
+  {
+    // name: "Đăng ký ",
+    path: "/register",
+    component: <Register />,
+    exact: true,
+  },
+  {
+    // name: "Quên Mật khẩu",
+    path: "/forgot_password",
+    component: <ForgotPassword />,
+    exact: true,
+  },
+];
+
+//Student route
+export const STUDENT_ROUTE = [
+  {
+    // name: "Trang chủ học viên",
     path: "/student",
-    component: () => "student",
+    component: <StudentPage />,
     exact: false,
-    index: true,
   },
-  //Trang quản lý thông tin
-  INFO: {
+  {
+    // name: "Trang profile học viên",
     path: "/student/my_info",
-    component: () => "student info",
+    component: <StudentProfile />,
     exact: false,
-    index: false,
   },
-  SCORED_RECORD: {
-    path: "/student/scored_record",
-    component: () => "student info",
-    exact: false,
-    index: false,
-  },
-  //Trang quản lý lớp học đã tham gia
-  COURSE: {
+  {
+    // name: "Trang lớp học của học viên",
     path: "/student/courses",
-    component: () => "student courses",
+    component: <StudentCourse />,
     exact: false,
-    index: false,
   },
-  COURSE_ENTER: {
-    path: "/student/courses/invitation_enter",
-    component: () => "student nhập mã course",
-    exact: false,
-    index: false,
-  },
-  COURSE_DETAIL: {
-    path: "/student/courses/:id",
-    component: () => "danh sách course chi tiết",
-    exact: false,
-    index: false,
-  },
-};
+];
 
-export const TEACHER_PAGE = {
-  //Trang home
-  HOME: {
+//Teacher route
+export const TEACHER_ROUTE = [
+  {
+    // name: "Trang chủ giảng viên",
     path: "/teacher",
-    component: () => "teacher",
-    exact: false,
-    index: true,
+    component: <TeacherPage />,
+    exact: true,
   },
-  //Trang quản lý thông tin
-  INFO: {
-    path: "/teacher/my_info",
-    component: () => "teacher info",
-    exact: false,
-    index: false,
-  },
-  //Trang quản lý lớp học đã tham gia
-  COURSE: {
-    path: "/teacher/courses",
-    component: () => "teacher course",
-    exact: false,
-    index: false,
-  },
-  COURSE_CREATE: {
-    path: "/teacher/courses/invatitation_create",
-    component: () => "tạo lớp mới",
-    exact: false,
-    index: false,
-  },
-  COURSE_DETAIL: {
-    path: "/student/courses/:id",
-    component: () => "xem chi tiết lớp",
-    exact: false,
-    index: false,
-  },
-};
+];
 
-//Trang admin
-export const ADMIN_PAGE = {
-  //Trang home
-  HOME: {
+//Admin route
+export const ADMIN_ROUTE = [
+  {
+    // name: "Trang chủ admin",
     path: "/admin",
-    component: () => "admin",
-    exact: false,
-    index: true,
+    component: <AdminPage />,
+    exact: true,
   },
-  //Trang quản lý thông tin
-  INFO: {
-    path: "/admin/my_info",
-    component: () => "admin info",
-    exact: false,
-    index: false,
-  },
-  //Quản lý lớp học
-  COURSES: {
-    path: "/admin/courses",
-    component: () => "admin course",
-    exact: false,
-    index: false,
-  },
-  ACCOUNTS: {
-    path: "/student/accounts",
-    component: () => "quản lý tài khoản",
-    exact: false,
-    index: false,
-  },
-};
+];

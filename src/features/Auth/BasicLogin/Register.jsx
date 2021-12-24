@@ -2,39 +2,31 @@ import authApi from "apis/authApi";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { isPending, isSuccess } from "reducers/authSlice";
 import "./Form.scss";
 
 function Register() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   //account
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConFirm, setPasswordConFirm] = useState("");
-  const [verifyCode, setVerifyCode] = useState("");
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [passwordConFirm, setPasswordConFirm] = useState(null);
+  const [verifyCode, setVerifyCode] = useState(null);
   //info user
-  const [fullName, setFullName] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [fullName, setFullName] = useState(null);
+  const [birthday, setBirthday] = useState(null);
   //true is boy, false is girl
   const [gender, setGender] = useState(true);
-  const [phone, setPhone] = useState(true);
+  const [phone, setPhone] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(
-    //   "thông tin sẽ đăng ký",
-    //   email,
-    //   password,
-    //   passwordConFirm,
-    //   verifyCode,
-    //   birthday,
-    //   gender,
-    //   phone
-    // );
     await handleRegister();
+    //Redirect to home
+    navigate("/");
   };
 
   const handleRegister = async () => {
@@ -48,8 +40,11 @@ function Register() {
     const params = {
       email: email,
       password: password,
-      verifyCode: verifyCode,
+      verifyCode: verifyCode.trim(),
       fullName: fullName,
+      birthday: birthday,
+      gender: gender,
+      phone: phone,
     };
     dispatch(isPending());
     try {

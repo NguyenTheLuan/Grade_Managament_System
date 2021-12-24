@@ -2,16 +2,16 @@ import authApi from "apis/authApi";
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { isLogin, isPending } from "reducers/authSlice";
+import { isLogin, isPending, isSuccess } from "reducers/authSlice";
 import SocialFacebookLogin from "../SocialFacebookLogin/SocialFacebookLogin ";
 import SocialGoogleLogin from "../SocialGoogleLogin/SocialGoogleLogin";
 import "./Form.scss";
 
 function Login() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   //Handle Btn Login
   const handleSubmit = async (e) => {
     //Get attribute
@@ -28,9 +28,6 @@ function Login() {
     }
 
     await handleLogin(gmail.value, password.value);
-    toast.success("Đăng nhập thành công", {
-      position: "bottom-right",
-    });
   };
 
   const handleLogin = async (email, password) => {
@@ -49,9 +46,14 @@ function Login() {
 
       // //Redirect to role page
       // redirectRoute(role);
-
-      // toast.success("Đăng nhập thành công", { position: "bottom-right" });
+      toast.success("Đăng nhập thành công", {
+        position: "bottom-right",
+      });
     } catch (error) {
+      dispatch(isSuccess());
+      toast.warn(`${error.response.data.message}`, {
+        position: "bottom-right",
+      });
       console.log("Đăng nhập bị lỗi", { error });
     }
   };

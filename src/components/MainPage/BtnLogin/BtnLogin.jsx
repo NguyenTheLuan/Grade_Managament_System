@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -30,9 +30,31 @@ function BtnLogin() {
           Đăng nhập
         </Button>
       ) : (
-        <Button variant="danger" onClick={handleLogout}>
-          Đăng xuất
-        </Button>
+        <>
+          <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              Tên người dùng
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="/student/my_info">
+                Thông tin cá nhân
+              </Dropdown.Item>
+              <Dropdown.Item href="/student/courses">
+                Khóa học của tôi
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item href="#/action-3">
+                <Button
+                  className="btnLogout"
+                  variant="danger"
+                  onClick={handleLogout}
+                >
+                  Đăng xuất
+                </Button>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </>
       )}
     </>
   );

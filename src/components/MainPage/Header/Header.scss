@@ -52,5 +52,9 @@
   &_btn {
     flex: 2;
     text-align: center;
+
+    .btnLogout {
+      width: 100%;
+    }
   }
 }

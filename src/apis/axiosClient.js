@@ -15,9 +15,11 @@ axiosClient.interceptors.request.use(async (config) => {
   // Handle token here ...
   config.params = config.params || {};
 
-  config.headers["Authorization"] = `Bearer ${
-    JSON.parse(localStorage.getItem("access"))?.token
-  }`;
+  config.headers["Authorization"] = `Bearer ${JSON.parse(
+    localStorage.getItem("access_token")
+      ? localStorage.getItem("access_token")
+      : null
+  )}`;
   return config;
 });
 
