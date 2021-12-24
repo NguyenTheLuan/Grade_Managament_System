@@ -31,7 +31,7 @@ function App() {
   // };
 
   return (
-    <BrowserRouter basename="">
+    <BrowserRouter>
       <Header />
       <div className="content">
         {isLoading && (

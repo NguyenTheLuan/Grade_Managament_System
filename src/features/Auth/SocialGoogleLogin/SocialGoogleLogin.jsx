@@ -19,7 +19,7 @@ function SocialGoogleLogin() {
 
   const loginWithGoogle = async (accessToken) => {
     //Loading pending
-    dispatch(isPending());
+    accessToken && dispatch(isPending());
     const params = { access_token: accessToken };
     try {
       const response = await accountAPi.loginGoogle(params);
