@@ -1,0 +1,107 @@
+.form {
+  width: 1200px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+  padding: 20px;
+  border-radius: 8px;
+  &_title {
+    font-weight: 600;
+    border-bottom: 1px solid rgb(196, 196, 196);
+    margin-bottom: 30px;
+  }
+
+  .infoAccount,
+  .infoUser,
+  .infoHandle {
+    width: 550px;
+    .formGroup {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 5px;
+
+      margin-bottom: 30px;
+
+      &_label {
+        flex: 1;
+        line-height: 30px;
+        font-weight: 350;
+      }
+      &_control {
+        flex: 3;
+      }
+
+      &_button {
+        width: 100%;
+        padding: 10px 0;
+        font-weight: 700;
+      }
+      button:not(:first-child) {
+        font-size: 14px;
+        line-height: 8px;
+        text-transform: capitalize;
+        flex: 1;
+      }
+
+      &.social-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        // button {
+        //   &:first-child {
+        //     width: 50%;
+        //   }
+        // }
+        //Social Button
+        .googleBtn {
+          background: #ce4231 !important;
+          width: 50%;
+          div {
+            margin-left: 10px;
+          }
+          span {
+            font-weight: 700 !important;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  //Extra links
+  .infoHandle {
+    text-align: center;
+
+    //Link redirect to for_got password
+    .forgot_password {
+      padding-top: 5px;
+      text-decoration: none;
+      width: 100%;
+      text-align: end;
+    }
+    .new_account,
+    .btnRegister {
+      width: 100%;
+      // margin-left: 30px;
+    }
+  }
+}
+
+.loginForm,
+.forgot_passwordFrom {
+  width: 500px;
+  .infoAccount,
+  .infoUser,
+  .infoHandle {
+    width: 450px;
+  }
+}

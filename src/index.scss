@@ -1,0 +1,40 @@
+//Custom all here
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  button,
+  select,
+  input {
+    border-radius: 4px !important;
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+  //Custom scroll-bar
+  ::-webkit-scrollbar {
+    width: 4px;
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+  }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

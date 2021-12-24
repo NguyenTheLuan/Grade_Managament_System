@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Grade Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Source code: [Frontend](https://github.com/facebook/create-react-app) - [Backend]()
 
-## Available Scripts
+## Miêu tả hệ thống
 
-In the project directory, you can run:
+### `1.Chức năng chính:`
 
-### `npm start`
+**1. Yêu cầu**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Phân quyền routes (người dùng, học viên, giảng viên, admin).
+- Social Login (google, facebook).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**2. Chức năng chính:**
+| Vai trò | Trang chính | Học viên | Giảng viên | Admin |
+| --------- | ---------------------------- | ---------------------------------------- | -------------------------------------- | ------------------------------------------ |
+| Chức năng | 1. Hệ thống trang chính<br>2. Đăng nhập | 1. Quản lý trang cá nhân<br> 2. Lớp học tham gia | 1. Quản lý trang cá nhân<br>2. Quản lý lớp học | 1. Quản lý tài khoản<br>2. Quản lý lớp học |
 
-### `npm test`
+### `2.Routes:`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**1. Trang chính:**
+/home
+/login
+**2. Trang học viên:**
 
-### `npm run build`
+/student
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Xem thông tin cá nhân**
+  /student/my_info
+  /student/my_info/update
+  /student/scored_record
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Xem lớp học đã tham gia**
+  /student/courses
+  /student/courses/invitation_enter
+  /student/courses/id
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**3. Trang giảng viên:**
 
-### `npm run eject`
+/teacher
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Xem thông tin cá nhân**
+  /teacher/my_info
+  /teacher/my_info/update
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Xem lớp học đang quản lý**
+  /teacher/courses
+  /teacher/courses/invatitation_create
+  /teacher/courses/id
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**4. Trang admin:**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+/admin
 
-## Learn More
+- **Xem thông tin cá nhân**
+  /admin/my_info
+  /admin/my_info/update
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Quản lý tài khoản**
+  /admin/accounts
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Quản lý lớp học**A
+  /admin/courses
