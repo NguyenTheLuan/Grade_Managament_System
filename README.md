@@ -1,6 +1,6 @@
 # Grade Management System
 
-Source code: [Frontend](https://github.com/facebook/create-react-app) - [Backend]()
+Xem demo tại: [Giao diện demo](https://demo-grade-management-system.herokuapp.com) - [link API](https://gradems.herokuapp.com/apis-doc/#/)
 
 ## Miêu tả hệ thống
 
