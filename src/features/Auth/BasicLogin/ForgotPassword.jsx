@@ -39,7 +39,7 @@ function ForgotPassword() {
         <Form.Group className="formGroup">
           <Form.Control
             className="formGroup_control"
-            type="text"
+            type="email"
             placeholder="Nhập địa chỉ email"
             required={true}
           />

@@ -8,6 +8,7 @@ import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
 import StudentCourseJoin from "features/Student/StudentCourse/StudentCourseJoin";
 import StudentCourses from "features/Student/StudentCourse/StudentCourses";
+import StudentMapCode from "features/Student/StudentProfile/StudentMapCode";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import StudentScoredRecord from "features/Student/StudentProfile/StudentScoredRecord";
 import TeacherCourseCreate from "features/Teacher/TeacherCourse/TeacherCourseCreate";
@@ -69,6 +70,12 @@ export const STUDENT_ROUTE = [
     // name: "Trang profile",
     path: "my_info",
     component: <StudentProfile />,
+    index: false,
+  },
+  {
+    // name: "Trang profile",
+    path: "map_student_id",
+    component: <StudentMapCode />,
     index: false,
   },
   {

@@ -1,30 +1,31 @@
 import userApi from "apis/userApi";
 import React from "react";
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function StudentCourseJoin() {
+function StudentMapCode() {
   const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const code = e.target.name.value;
+    const studentId = e.target.name.value;
 
-    joinNewClass(code);
+    updateStudentId(studentId);
   };
 
-  const joinNewClass = async (code) => {
+  const updateStudentId = async (studentId) => {
     const params = {
-      code: code,
+      studentId: studentId,
     };
     try {
-      const response = await userApi.join_newClass(params);
-      console.log(response);
-      toast.success("Tham gia lớp học thành công", {
+      await userApi.mapStudentId(params);
+
+      toast.success("Cập nhật student ID thành công", {
         position: "bottom-right",
       });
-      navigate("/student/courses");
+      //Redirect to home student
+      navigate("/student/my_info");
     } catch (error) {
       console.log("lỗi rồi", { error });
       toast.warn("Cập nhật student ID bị lỗi", {
@@ -38,15 +39,15 @@ function StudentCourseJoin() {
         <Form.Control
           name="name"
           type="text"
-          placeholder="Nhập mã lớp"
+          placeholder="Nhập mã học viên"
           required={true}
         />
       </Form.Group>
       <Form.Group>
-        <Button type="submit">Tham gia lớp mới</Button>
+        <Button type="submit">Cập nhật mã học viên</Button>
       </Form.Group>
     </Form>
   );
 }
 
-export default StudentCourseJoin;
+export default StudentMapCode;

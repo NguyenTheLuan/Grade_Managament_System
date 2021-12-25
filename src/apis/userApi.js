@@ -9,6 +9,7 @@ const userApi = {
     const url = USER_API + "/my";
     return axiosClient.get(url);
   },
+  //For student
   updateInfo: (info_update) => {
     const url = USER_API + "/my";
     return axiosClient.post(url, info_update);
@@ -16,6 +17,17 @@ const userApi = {
   mapStudentId: (student_id) => {
     const url = USER_API + "/student-id";
     return axiosClient.post(url, student_id);
+  },
+
+  join_newClass: (code) => {
+    const url = USER_API + "/join";
+    return axiosClient.post(url, code);
+  },
+  get_myCourses: (class_info) => {
+    const url = USER_API + STUDENT_API + "/my-courses";
+    return axiosClient.get(url, {
+      params: class_info,
+    });
   },
 
   //for teacher
