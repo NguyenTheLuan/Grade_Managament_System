@@ -5,8 +5,9 @@ import iconUser from "assets/icons/user.png";
 import { checkGender, checkInfo } from "components/common";
 import ModalUpdateInfo from "components/common/Modals/ModalUpdateInfo";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { getUserInfo, selectUserInfo } from "reducers/userSlice";
 import "./UserProfile.scss";
 
@@ -51,6 +52,10 @@ function StudentProfile() {
     }
   };
 
+  const handleReport = () => {
+    toast.warn("Chưa làm chức năng này", { position: "bottom-right" });
+  };
+
   //Render user info
   const renderInfo = () => {
     if (!userInfo) return;
@@ -90,7 +95,9 @@ function StudentProfile() {
       <div className="infoUser">{renderInfo()}</div>
       <div className="infoHandle">
         <Button onClick={() => handleShow()}>Cập nhật thông tin</Button>
-        <Button variant="danger">Gửi phản ánh</Button>
+        <Button variant="danger" onClick={handleReport}>
+          Gửi phản ánh
+        </Button>
       </div>
       <ModalUpdateInfo show={show} onShow={onShow} />
     </div>

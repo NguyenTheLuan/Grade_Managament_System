@@ -12,13 +12,20 @@ const authApi = {
     const url = LOGIN_API;
     return axiosClient.post(url, info_account);
   },
-  //Register
   postRegister: (info_account) => {
     const url = ACCOUNT_API + "/signup";
     return axiosClient.post(url, info_account);
   },
+  postChangePassword: (info_account) => {
+    const url = ACCOUNT_API + "/change-pw";
+    return axiosClient.post(url, info_account);
+  },
   postVerifyEmail: (email) => {
     const url = ACCOUNT_API + "/verify";
+    return axiosClient.post(url, email);
+  },
+  postVerifyEmailForgotPassword: (email) => {
+    const url = ACCOUNT_API + "/verify/forgot";
     return axiosClient.post(url, email);
   },
   postRefreshToken: (refresh_token) => {

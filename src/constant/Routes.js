@@ -1,5 +1,6 @@
-import AdminPage from "features/Admin/AdminPage/AdminPage";
+import AdminPage from "features/Admin/AdminPage/AdminRoutes";
 import AdminLogin from "features/Auth/BasicLogin/AdminLogin";
+import ChangePassword from "features/Auth/BasicLogin/ChangePassword";
 import ForgotPassword from "features/Auth/BasicLogin/ForgotPassword";
 import Login from "features/Auth/BasicLogin/Login";
 import Register from "features/Auth/BasicLogin/Register";
@@ -9,7 +10,8 @@ import StudentCourseJoin from "features/Student/StudentCourse/StudentCourseJoin"
 import StudentCourses from "features/Student/StudentCourse/StudentCourses";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import StudentScoredRecord from "features/Student/StudentProfile/StudentScoredRecord";
-import TeacherPage from "features/Teacher/TeacherPage/TeacherPage";
+import TeacherCourseCreate from "features/Teacher/TeacherCourse/TeacherCourseCreate";
+import TeacherCourses from "features/Teacher/TeacherCourse/TeacherCourses";
 
 //Main route
 export const MAIN_ROUTE = [
@@ -64,27 +66,33 @@ export const STUDENT_ROUTE = [
   //   index: true,
   // },
   {
-    // name: "Trang profile học viên",
+    // name: "Trang profile",
     path: "my_info",
     component: <StudentProfile />,
     index: false,
   },
   {
-    // name: "Trang lớp học của học viên",
+    // name: "Trang lớp học",
     path: "courses",
     component: <StudentCourses />,
     index: false,
   },
   {
-    // name: "Trang xem điểm của học viên",
+    // name: "Trang xem điểm",
     path: "scored_records",
     component: <StudentScoredRecord />,
     index: false,
   },
   {
-    // name: "Trang tham gia lớp của học viên",
+    // name: "Trang tham gia lớp",
     path: "course_join",
     component: <StudentCourseJoin />,
+    index: false,
+  },
+  {
+    // name: "Trang thay đổi mật khẩu",
+    path: "change_password",
+    component: <ChangePassword />,
     index: false,
   },
 ];
@@ -92,19 +100,49 @@ export const STUDENT_ROUTE = [
 //Teacher route
 export const TEACHER_ROUTE = [
   {
-    // name: "Trang chủ giảng viên",
-    path: "/teacher",
-    component: <TeacherPage />,
-    index: true,
+    // name: "Trang profile",
+    path: "my_info",
+    component: <StudentProfile />,
+    index: false,
+  },
+  {
+    // name: "Trang thay đổi mật khẩu",
+    path: "change_password",
+    component: <ChangePassword />,
+    index: false,
+  },
+  {
+    // name: "Trang thay đổi mật khẩu",
+    path: "courses",
+    component: <TeacherCourses />,
+    index: false,
+  },
+  {
+    // name: "Trang thay đổi mật khẩu",
+    path: "course_create",
+    component: <TeacherCourseCreate />,
+    index: false,
   },
 ];
 
 //Admin route
 export const ADMIN_ROUTE = [
+  // {
+  //   // name: "Trang chủ admin",
+  //   path: "/admin",
+  //   component: <AdminPageD />,
+  //   index: true,
+  // },
   {
-    // name: "Trang chủ admin",
-    path: "/admin",
-    component: <AdminPage />,
-    index: true,
+    // name: "Trang profile",
+    path: "my_info",
+    component: <StudentProfile />,
+    index: false,
+  },
+  {
+    // name: "Trang thay đổi mật khẩu",
+    path: "change_password",
+    component: <ChangePassword />,
+    index: false,
   },
 ];

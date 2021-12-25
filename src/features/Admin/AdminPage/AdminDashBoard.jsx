@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import { Accordion } from "react-bootstrap";
-import { NavLink, Outlet } from "react-router-dom";
 import { AiOutlineUser } from "react-icons/ai";
-import "./DashBoard.scss";
+import { NavLink, Outlet } from "react-router-dom";
 
-function StudentDashBoard() {
+function AdminDashBoard() {
   useEffect(() => {
     handleShow();
   }, []);
-
   //Get item'st show
   const handleShow = () => {
     return localStorage.getItem("showItem")
@@ -25,7 +23,7 @@ function StudentDashBoard() {
         >
           <Accordion.Item className="userDashBoardTitle">
             <AiOutlineUser className="iconDashBoard" />
-            STUDENT HOME
+            ADMIN HOME
           </Accordion.Item>
           <Accordion.Item eventKey="0">
             <Accordion.Header>Quản lý trang cá nhân</Accordion.Header>
@@ -35,9 +33,6 @@ function StudentDashBoard() {
             <Accordion.Body>
               <NavLink to="change_password">Đổi mật khẩu</NavLink>
             </Accordion.Body>
-            <Accordion.Body>
-              <NavLink to="scored_records">Xem điểm</NavLink>
-            </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
             <Accordion.Header>Lớp học đã tham gia</Accordion.Header>
@@ -45,7 +40,7 @@ function StudentDashBoard() {
               <NavLink to="courses">Lớp học của tôi</NavLink>
             </Accordion.Body>
             <Accordion.Body>
-              <NavLink to="course_join">Tham gia lớp học</NavLink>
+              <NavLink to="course_create">Tạo lớp học mới</NavLink>
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
@@ -57,4 +52,4 @@ function StudentDashBoard() {
   );
 }
 
-export default StudentDashBoard;
+export default AdminDashBoard;

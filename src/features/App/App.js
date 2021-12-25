@@ -1,14 +1,15 @@
 import { renderRoute } from "components/common/CustomComponents";
 import Header from "components/MainPage/Header/Header";
-import { ADMIN_ROUTE, AUTH_ROUTE, TEACHER_ROUTE } from "constant";
-//Route private
-import AdminRoute from "features/Admin/AdminRoute";
+import { ADMIN_ROUTE, AUTH_ROUTE } from "constant";
+import AdminAuth from "features/Admin/AdminAuth";
+import AdminRoutes from "features/Admin/AdminPage/AdminRoutes";
 import Auth from "features/Auth/Auth";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
 import StudentAuth from "features/Student/StudentAuth";
 import StudentRoutes from "features/Student/StudentPage/StudentRoutes";
-import TeacherRoute from "features/Teacher/TeacherRoute";
+import TeacherAuth from "features/Teacher/TeacherAuth";
+import TeacherRoutes from "features/Teacher/TeacherPage/TeacherRoutes";
 import React, { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
 import { useSelector } from "react-redux";
@@ -39,13 +40,9 @@ function App() {
           />
         )}
         <Routes>
-          {/* Main routes */}
-          {/* <Route path="/" element={<HomePage />} /> */}
-
           <Route element={<Auth />}>
             {/* Main routes */}
             <Route path="/" element={<HomePage />} />
-
             {/* auth */}
             {renderRoute(AUTH_ROUTE)}
           </Route>
@@ -57,10 +54,14 @@ function App() {
           </Route>
 
           {/* teacher routes */}
-          <Route element={<TeacherRoute />}>{renderRoute(TEACHER_ROUTE)}</Route>
+          <Route element={<TeacherAuth />}>
+            <Route path="/teacher/*" element={<TeacherRoutes />} />
+          </Route>
 
           {/* teacher routes */}
-          <Route element={<AdminRoute />}>{renderRoute(ADMIN_ROUTE)}</Route>
+          <Route element={<AdminAuth />}>
+            <Route path="/admin/*" element={<AdminRoutes />} />
+          </Route>
 
           {/* NotFound */}
           <Route path="*" element={<NotFound />} />
