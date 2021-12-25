@@ -1,20 +1,15 @@
 import { renderRoute } from "components/common/CustomComponents";
 import Header from "components/MainPage/Header/Header";
-import {
-  ADMIN_ROUTE,
-  AUTH_ROUTE,
-  STUDENT_ROUTE,
-  TEACHER_ROUTE,
-} from "constant";
-
+import { ADMIN_ROUTE, AUTH_ROUTE, TEACHER_ROUTE } from "constant";
 //Route private
 import AdminRoute from "features/Admin/AdminRoute";
 import Auth from "features/Auth/Auth";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
-import StudentRoute from "features/Student/StudentRoute";
+import StudentAuth from "features/Student/StudentAuth";
+import StudentRoutes from "features/Student/StudentPage/StudentRoutes";
 import TeacherRoute from "features/Teacher/TeacherRoute";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -45,36 +40,27 @@ function App() {
         )}
         <Routes>
           {/* Main routes */}
-          <Route path="/" element={<HomePage />} />
-          {/* <Route element={<PrivateRoute />}> */}
-          {/* {renderRoutes()} */}
-          {/* </Route> */}
+          {/* <Route path="/" element={<HomePage />} /> */}
 
-          {/* auth */}
           <Route element={<Auth />}>
-            {/* <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/forgot_password" element={<ForgotPassword />} /> */}
+            {/* Main routes */}
+            <Route path="/" element={<HomePage />} />
+
+            {/* auth */}
             {renderRoute(AUTH_ROUTE)}
           </Route>
 
           {/* student routes */}
-          <Route element={<StudentRoute />}>
-            {renderRoute(STUDENT_ROUTE)}
-            {/* <Route path="/student" element={<StudentPage />} /> */}
+          <Route element={<StudentAuth />}>
+            {/* {renderRoute(STUDENT_ROUTE)} */}
+            <Route path="/student/*" element={<StudentRoutes />} />
           </Route>
 
           {/* teacher routes */}
-          <Route element={<TeacherRoute />}>
-            {renderRoute(TEACHER_ROUTE)}
-            {/* <Route path="/teacher" element={<TeacherPage />} /> */}
-          </Route>
+          <Route element={<TeacherRoute />}>{renderRoute(TEACHER_ROUTE)}</Route>
 
           {/* teacher routes */}
-          <Route element={<AdminRoute />}>
-            {renderRoute(ADMIN_ROUTE)}
-            {/* <Route path="/admin" element={<AdminPage />} /> */}
-          </Route>
+          <Route element={<AdminRoute />}>{renderRoute(ADMIN_ROUTE)}</Route>
 
           {/* NotFound */}
           <Route path="*" element={<NotFound />} />

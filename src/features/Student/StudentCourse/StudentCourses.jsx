@@ -1,7 +1,7 @@
 import React from "react";
 
-function StudentCourse() {
+function StudentCourses() {
   return <div>Các lớp học của học viên</div>;
 }
 
-export default StudentCourse;
+export default StudentCourses;

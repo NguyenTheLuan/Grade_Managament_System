@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import { selectRole } from "reducers/authSlice";
 
-function StudentRoute() {
+function StudentAuth() {
   const StudentRoute = useSelector(selectRole);
 
   return (
@@ -11,4 +11,4 @@ function StudentRoute() {
   );
 }
 
-export default StudentRoute;
+export default StudentAuth;

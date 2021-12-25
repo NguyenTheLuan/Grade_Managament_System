@@ -1,0 +1,52 @@
+.contentInfo {
+  width: 80%;
+  height: 90%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  gap: 10px;
+  //IMG for user
+  .imgUser {
+    flex: 1;
+    .img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  //Info for user
+  .infoUser {
+    flex: 2;
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    ul {
+      width: 60%;
+
+      display: flex;
+      flex-direction: row;
+
+      li {
+        flex: 1;
+      }
+      .valueInfo {
+        font-weight: 700;
+      }
+    }
+  }
+  //Info handle
+  .infoHandle {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    button {
+      height: 50px;
+    }
+  }
+}

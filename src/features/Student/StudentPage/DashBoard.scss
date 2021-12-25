@@ -1,0 +1,89 @@
+.dashBoard {
+  width: 98%;
+  height: 95%;
+  //   border-radius: 10px;
+
+  background: rgb(255, 255, 255);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  //For link dash board
+  .linkPage {
+    flex: 2;
+    height: 100%;
+    // background: #5c5669;
+    background: #403558;
+
+    //Title
+    .userDashBoardTitle {
+      text-transform: uppercase;
+      text-align: center;
+      padding: 20px 0;
+      color: white;
+
+      font-size: 20px;
+      font-weight: 600;
+    }
+    //Icon dash-board
+    .iconDashBoard {
+      font-size: 30px;
+    }
+  }
+
+  //For content
+  .contentPage {
+    flex: 9;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+//Edit accordion
+.accordion {
+  .accordion-item {
+    border: 1px solid rgb(216, 13, 182);
+    background: #403558;
+    .accordion-header {
+      button {
+        background: #403558;
+        color: #ffffff;
+        &:hover {
+          background: #35383f;
+          //   transition: 0.3s ease-in-out;
+          color: white;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+        .iconItem {
+          font-size: 35px;
+          padding-right: 5px;
+        }
+      }
+    }
+    .accordion-body {
+      a {
+        text-transform: capitalize;
+        color: white;
+        &.active {
+          border-bottom: 1px solid rgb(255, 255, 255);
+        }
+      }
+      &:hover {
+        background: #35383f;
+        transition: 1s ease-in-out;
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}

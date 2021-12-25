@@ -10,7 +10,8 @@ export const renderRoute = (routes) => {
         <Route
           key={index}
           path={route.path}
-          exact={route.exact}
+          // exact={route.exact}
+          index={route.index}
           element={route.component}
         />
       );
@@ -30,7 +31,7 @@ export const eclipsePagination = (c, totalPages) => {
     l;
 
   for (let i = 1; i <= last; i++) {
-    if (i == 1 || i == last || (i >= left && i < right)) {
+    if (i === 1 || i === last || (i >= left && i < right)) {
       range.push(i);
     }
   }
@@ -48,4 +49,13 @@ export const eclipsePagination = (c, totalPages) => {
   }
 
   return rangeWithDots;
+};
+
+//Show check null info
+export const checkInfo = (info) => {
+  return info ? info : "Trống";
+};
+//Check gender
+export const checkGender = (isMale) => {
+  return isMale ? "Nam" : "Nữ";
 };

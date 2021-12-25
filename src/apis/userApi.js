@@ -3,7 +3,7 @@ const { default: axiosClient } = require("./axiosClient");
 const USER_API = "/users";
 
 const userApi = {
-  getInfo: () => {
+  getInfoUser: () => {
     const url = USER_API + "/my";
     return axiosClient.get(url);
   },
