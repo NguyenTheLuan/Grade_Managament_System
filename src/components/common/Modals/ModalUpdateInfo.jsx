@@ -46,7 +46,8 @@ function ModalUpdateInfo({ show, onShow }) {
       gender: gender,
     };
     try {
-      await userApi.updateInfo(params);
+      const response = await userApi.updateInfo(params);
+      console.log(response);
       toast.success("Cập nhật thông tin thành công", {
         position: "bottom-right",
       });

@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { selectRole } from "reducers/authSlice";
 import { getUserInfo, selectUserInfo } from "reducers/userSlice";
 import "./UserProfile.scss";
 
@@ -15,6 +16,7 @@ function StudentProfile() {
   const dispatch = useDispatch();
 
   const selectUser = useSelector(selectUserInfo);
+  const isRole = useSelector(selectRole);
 
   const [userInfo, setUserInfo] = useState(null);
 
@@ -43,6 +45,7 @@ function StudentProfile() {
   const getMyInfo = async () => {
     try {
       const response = await userApi.getInfoUser();
+
       const { user } = response;
       setUserInfo(user);
       //Set to redux
@@ -62,10 +65,12 @@ function StudentProfile() {
     else {
       return (
         <>
-          <ul className="infoUser_item">
-            <li>Mã học viên:</li>
-            <li className="valueInfo">{checkInfo(userInfo.studentId)}</li>
-          </ul>
+          {isRole === "student" ? (
+            <ul className="infoUser_item">
+              <li>Mã học viên:</li>
+              <li className="valueInfo">{checkInfo(userInfo.studentId)}</li>
+            </ul>
+          ) : null}
           <ul className="infoUser_item">
             <li>Họ và tên:</li>
             <li className="valueInfo">{checkInfo(userInfo.fullName)}</li>

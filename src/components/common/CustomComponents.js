@@ -59,3 +59,7 @@ export const checkInfo = (info) => {
 export const checkGender = (isMale) => {
   return isMale ? "Nam" : "Nữ";
 };
+//CheckActive
+export const checkActive = (status) => {
+  return status ? "Đang mở" : "Đã khóa";
+};
