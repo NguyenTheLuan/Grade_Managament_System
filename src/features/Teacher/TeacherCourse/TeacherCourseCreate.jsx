@@ -1,11 +1,10 @@
 import userApi from "apis/userApi";
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import "style/FormInput.scss";
 
 function TeacherCourseCreate({ show, onShow }) {
-  const [code, setCode] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
     const nameClass = e.target.name.value;
@@ -16,9 +15,8 @@ function TeacherCourseCreate({ show, onShow }) {
     const params = { name: name };
     try {
       const response = await userApi.create_newClass(params);
-      setCode(response.code);
 
-      toast.success(`Tạo lớp mới thành công, mã tham gia là ${code}`, {
+      toast.success(`Tạo lớp mới thành công, mã tham gia là ${response.code}`, {
         position: "bottom-right",
       });
       onShow(!show);

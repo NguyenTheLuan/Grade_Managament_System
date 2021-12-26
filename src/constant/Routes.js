@@ -6,12 +6,14 @@ import Login from "features/Auth/BasicLogin/Login";
 import Register from "features/Auth/BasicLogin/Register";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
+import StudentCourseDetail from "features/Student/StudentCourse/StudentCourseDetails/StudentCourseDetail";
 import StudentCourseJoin from "features/Student/StudentCourse/StudentCourseJoin";
 import StudentCourses from "features/Student/StudentCourse/StudentCourses";
 import StudentMapCode from "features/Student/StudentProfile/StudentMapCode";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import StudentScoredRecord from "features/Student/StudentProfile/StudentScoredRecord";
 import TeacherCourseCreate from "features/Teacher/TeacherCourse/TeacherCourseCreate";
+import TeacherCourseDetails from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseDetails";
 import TeacherCourses from "features/Teacher/TeacherCourse/TeacherCourses";
 
 //Main route
@@ -85,6 +87,12 @@ export const STUDENT_ROUTE = [
     index: false,
   },
   {
+    // name: "Trang lớp học",
+    path: "courses/:id",
+    component: <StudentCourseDetail />,
+    index: false,
+  },
+  {
     // name: "Trang xem điểm",
     path: "scored_records",
     component: <StudentScoredRecord />,
@@ -122,6 +130,12 @@ export const TEACHER_ROUTE = [
     // name: "Trang thay đổi mật khẩu",
     path: "courses",
     component: <TeacherCourses />,
+    index: false,
+  },
+  {
+    // name: "Trang thay đổi mật khẩu",
+    path: "courses/:id",
+    component: <TeacherCourseDetails />,
     index: false,
   },
   // {

@@ -1,10 +1,13 @@
 import userApi from "apis/userApi";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "style/Courses.scss";
 import StudentCourseJoin from "./StudentCourseJoin";
 
 function StudentCourses() {
+  const navigate = useNavigate();
+
   const [classes, setClasses] = useState([]);
   const [student_id, setStudent_id] = useState(null);
   //Call api to get classes
@@ -30,10 +33,11 @@ function StudentCourses() {
   };
 
   const getMyCourses = async () => {
-    const params = { page: 1, limit: 5, active: true };
+    const params = { page: 1, limit: 12 };
     try {
       const response = await userApi.get_myCourses(params);
       const { classRecord, studentId } = response.myCourses;
+      console.log(response);
       setStudent_id(studentId);
       setClasses(classRecord);
     } catch (error) {
@@ -45,13 +49,21 @@ function StudentCourses() {
     else {
       return classes.map((classInfo, index) => {
         return (
-          <div key={index} className="course">
+          <div
+            key={index}
+            className="course"
+            onClick={() => goToCourseDetail(classInfo.classCode)}
+          >
             <div>Lớp {classInfo.className}</div>
             <div>Mã lớp {classInfo.classCode}</div>
           </div>
         );
       });
     }
+  };
+
+  const goToCourseDetail = (code_course) => {
+    navigate(`/student/courses/${code_course}`);
   };
   return (
     <div className="mainForm">

@@ -29,6 +29,10 @@ const userApi = {
       params: class_info,
     });
   },
+  get_myCoursesDetail: (code_course) => {
+    const url = USER_API + STUDENT_API + `/course/${code_course}`;
+    return axiosClient.get(url);
+  },
 
   //for teacher
   create_newClass: (className) => {
@@ -40,6 +44,10 @@ const userApi = {
     return axiosClient.get(url, {
       params: info_Class,
     });
+  },
+  get_myClassDetail: (code_class) => {
+    const url = USER_API + TEACHER_API + `/class/${code_class}`;
+    return axiosClient.get(url);
   },
 };
 

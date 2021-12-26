@@ -43,22 +43,28 @@ function ChangePassword() {
       });
       return;
     }
-    updatePassword();
   };
 
   const updatePassword = async () => {
-    const params = { email: email, password: password, verifyCode: verifyCode };
+    const params = {
+      email: email,
+      password: password,
+      verifyCode: verifyCode.trim(),
+    };
+    dispatch(isPending());
     try {
-      const response = await authApi.updatePassword(params);
-      console.log("thành công", response);
+      await authApi.postChangePassword(params);
+      dispatch(isSuccess());
+      // console.log("thành công", response);
       toast.success("Cập nhật mật khẩu thành công", {
         position: "bottom-right",
       });
     } catch (error) {
+      dispatch(isSuccess());
       toast.warn(`${error.response.data.message}`, {
         position: "bottom-right",
       });
-      console.log("lỗi rồi", { error });
+      // console.log("lỗi rồi", { error });
     }
   };
   return (
@@ -108,7 +114,12 @@ function ChangePassword() {
       </div>
       <div className="infoHandle">
         <Form.Group className="formGroup">
-          <Button className="formGroup_button" variant="primary" type="submit">
+          <Button
+            className="formGroup_button"
+            variant="primary"
+            type="submit"
+            onClick={updatePassword}
+          >
             Thay đổi mật khẩu
           </Button>
         </Form.Group>
