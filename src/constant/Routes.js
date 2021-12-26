@@ -90,12 +90,12 @@ export const STUDENT_ROUTE = [
     component: <StudentScoredRecord />,
     index: false,
   },
-  {
-    // name: "Trang tham gia lớp",
-    path: "course_join",
-    component: <StudentCourseJoin />,
-    index: false,
-  },
+  // {
+  //   // name: "Trang tham gia lớp",
+  //   path: "course_join",
+  //   component: <StudentCourseJoin />,
+  //   index: false,
+  // },
   {
     // name: "Trang thay đổi mật khẩu",
     path: "change_password",
@@ -124,12 +124,12 @@ export const TEACHER_ROUTE = [
     component: <TeacherCourses />,
     index: false,
   },
-  {
-    // name: "Trang thay đổi mật khẩu",
-    path: "course_create",
-    component: <TeacherCourseCreate />,
-    index: false,
-  },
+  // {
+  //   // name: "Trang thay đổi mật khẩu",
+  //   path: "course_create",
+  //   component: <TeacherCourseCreate />,
+  //   index: false,
+  // },
 ];
 
 //Admin route

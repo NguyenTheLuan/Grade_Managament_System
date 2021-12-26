@@ -1,0 +1,11 @@
+.formInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &_group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+}

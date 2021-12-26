@@ -3,6 +3,9 @@ import { checkActive } from "components/common";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
+import "style/Courses.scss";
+import TeacherCourseCreate from "./TeacherCourseCreate";
 
 function TeacherCourses() {
   const [classes, setClasses] = useState([]);
@@ -17,8 +20,19 @@ function TeacherCourses() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [classes]);
 
+  //handle modal
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    setShow(true);
+  };
+  const onShow = (isShow) => {
+    getMyClasses();
+    setShow(isShow);
+  };
+
   const getMyClasses = async () => {
-    const params = { page: 1, limit: 5, active: true };
+    const params = { page: 1, limit: 12, active: true };
     try {
       const response = await userApi.get_myClass(params);
       const { numOfClass, result } = response;
@@ -34,9 +48,9 @@ function TeacherCourses() {
     else {
       return classes.map((classInfo, index) => {
         return (
-          <div key={index}>
+          <div key={index} className="course">
+            <div>Lớp {classInfo.name}</div>
             <div>Mã lớp {classInfo.code}</div>
-            <div>Tên lớp {classInfo.name}</div>
             <div>Trạng thái {checkActive(classInfo.active)}</div>
           </div>
         );
@@ -44,7 +58,15 @@ function TeacherCourses() {
     }
   };
 
-  return <div>{renderClasses()}</div>;
+  return (
+    <div className="mainForm">
+      <div className="menuCourses">{renderClasses()}</div>
+      <div className="menuHandle">
+        <Button onClick={handleShow}>Tham gia lớp mới?</Button>
+      </div>
+      <TeacherCourseCreate show={show} onShow={onShow} />
+    </div>
+  );
 }
 
 export default TeacherCourses;

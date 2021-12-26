@@ -1,8 +1,10 @@
 import userApi from "apis/userApi";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
+import "style/FormInput.scss";
 
-function TeacherCourseCreate() {
+function TeacherCourseCreate({ show, onShow }) {
   const [code, setCode] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,26 +17,45 @@ function TeacherCourseCreate() {
     try {
       const response = await userApi.create_newClass(params);
       setCode(response.code);
+
+      toast.success(`Tạo lớp mới thành công, mã tham gia là ${code}`, {
+        position: "bottom-right",
+      });
+      onShow(!show);
     } catch (error) {
       console.log("lỗi rồi", error);
     }
   };
+  const handleClose = () => {
+    onShow(!show);
+  };
   return (
-    <Form onSubmit={handleSubmit}>
-      {code && <span>Tạo lớp thành công, mã tham gia là {code}</span>}
-      <Form.Group>
-        <Form.Label>Nhập tên lớp muốn tạo </Form.Label>
-        <Form.Control
-          name="name"
-          type="text"
-          placeholder="Nhập tên lớp"
-          required={true}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Button type="submit">Tạo lớp mới</Button>
-      </Form.Group>
-    </Form>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Tạo lớp mới</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form onSubmit={handleSubmit} className="formInput">
+          <Form.Group className="formInput_group">
+            <Form.Control
+              className="formInput_group_control"
+              name="name"
+              type="text"
+              placeholder="Nhập tên lớp"
+              required={true}
+            />
+          </Form.Group>
+          <Form.Group className="formInput_group">
+            <Button className="formInput_group_button" type="submit">
+              Tạo lớp mới
+            </Button>
+            <Button variant="secondary" onClick={handleClose}>
+              Đóng lại
+            </Button>
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+    </Modal>
   );
 }
 

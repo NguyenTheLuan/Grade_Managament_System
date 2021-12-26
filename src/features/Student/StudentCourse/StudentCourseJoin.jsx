@@ -1,16 +1,13 @@
 import userApi from "apis/userApi";
 import React from "react";
-import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
+import "style/FormInput.scss";
 
-function StudentCourseJoin() {
-  const navigate = useNavigate();
-
+function StudentCourseJoin({ show, onShow }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const code = e.target.name.value;
-
     joinNewClass(code);
   };
 
@@ -19,12 +16,12 @@ function StudentCourseJoin() {
       code: code,
     };
     try {
-      const response = await userApi.join_newClass(params);
-      console.log(response);
+      await userApi.join_newClass(params);
+
       toast.success("Tham gia lớp học thành công", {
         position: "bottom-right",
       });
-      navigate("/student/courses");
+      onShow(!show);
     } catch (error) {
       console.log("lỗi rồi", { error });
       toast.warn("Cập nhật student ID bị lỗi", {
@@ -32,20 +29,37 @@ function StudentCourseJoin() {
       });
     }
   };
+
+  const handleClose = () => {
+    onShow(!show);
+  };
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Control
-          name="name"
-          type="text"
-          placeholder="Nhập mã lớp"
-          required={true}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Button type="submit">Tham gia lớp mới</Button>
-      </Form.Group>
-    </Form>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Tham gia lớp mới</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form onSubmit={handleSubmit} className="formInput">
+          <Form.Group className="formInput_group">
+            <Form.Control
+              className="formInput_group_control"
+              name="name"
+              type="text"
+              placeholder="Nhập mã lớp"
+              required={true}
+            />
+          </Form.Group>
+          <Form.Group className="formInput_group">
+            <Button className="formInput_group_button" type="submit">
+              Tham gia lớp mới
+            </Button>
+            <Button variant="secondary" onClick={handleClose}>
+              Đóng lại
+            </Button>
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+    </Modal>
   );
 }
 

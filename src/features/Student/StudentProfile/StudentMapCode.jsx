@@ -1,6 +1,5 @@
 import userApi from "apis/userApi";
 import React from "react";
-import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -34,7 +33,7 @@ function StudentMapCode() {
     }
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="mapId">
       <Form.Group>
         <Form.Control
           name="name"

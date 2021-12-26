@@ -40,9 +40,9 @@ function TeacherDashBoard() {
             <Accordion.Body>
               <NavLink to="courses">Lớp học của tôi</NavLink>
             </Accordion.Body>
-            <Accordion.Body>
+            {/* <Accordion.Body>
               <NavLink to="course_create">Tạo lớp học mới</NavLink>
-            </Accordion.Body>
+            </Accordion.Body> */}
           </Accordion.Item>
         </Accordion>
       </div>
