@@ -1,3 +1,7 @@
+import Accounts from "features/Admin/AdminManageAccounts/Accounts/Accounts";
+import Students from "features/Admin/AdminManageAccounts/Students/Students";
+import Teachers from "features/Admin/AdminManageAccounts/Teachers/Teachers";
+import AdminManageClasses from "features/Admin/AdminManageClasses/AdminManageClasses";
 import AdminPage from "features/Admin/AdminPage/AdminRoutes";
 import AdminLogin from "features/Auth/BasicLogin/AdminLogin";
 import ChangePassword from "features/Auth/BasicLogin/ChangePassword";
@@ -156,14 +160,26 @@ export const ADMIN_ROUTE = [
   // },
   {
     // name: "Trang profile",
-    path: "my_info",
-    component: <StudentProfile />,
+    path: "students",
+    component: <Students />,
     index: false,
   },
   {
     // name: "Trang thay đổi mật khẩu",
-    path: "change_password",
-    component: <ChangePassword />,
+    path: "teachers",
+    component: <Teachers />,
+    index: false,
+  },
+  {
+    // name: "Trang thay đổi mật khẩu",
+    path: "accounts",
+    component: <Accounts />,
+    index: false,
+  },
+  {
+    // name: "Trang thay đổi mật khẩu",
+    path: "classes",
+    component: <AdminManageClasses />,
     index: false,
   },
 ];

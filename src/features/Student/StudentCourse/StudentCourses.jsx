@@ -9,7 +9,7 @@ function StudentCourses() {
   const navigate = useNavigate();
 
   const [classes, setClasses] = useState([]);
-  const [student_id, setStudent_id] = useState(null);
+
   //Call api to get classes
   useEffect(() => {
     getMyCourses();
@@ -33,13 +33,12 @@ function StudentCourses() {
   };
 
   const getMyCourses = async () => {
-    const params = { page: 1, limit: 12 };
+    const params = { page: 1, limit: 12, active: true, name: "" };
     try {
       const response = await userApi.get_myCourses(params);
-      const { classRecord, studentId } = response.myCourses;
+      const { myCourses } = response;
       console.log(response);
-      setStudent_id(studentId);
-      setClasses(classRecord);
+      setClasses(myCourses);
     } catch (error) {
       console.log("lỗi rồi", { error });
     }

@@ -26,21 +26,21 @@ function AdminDashBoard() {
             ADMIN HOME
           </Accordion.Item>
           <Accordion.Item eventKey="0">
-            <Accordion.Header>Quản lý trang cá nhân</Accordion.Header>
+            <Accordion.Header>Quản lý tài khoản</Accordion.Header>
             <Accordion.Body>
-              <NavLink to="my_info">Thông tin cá nhân</NavLink>
+              <NavLink to="teachers">Tài khoản giáo viên</NavLink>
             </Accordion.Body>
             <Accordion.Body>
-              <NavLink to="change_password">Đổi mật khẩu</NavLink>
+              <NavLink to="students">Tài khoản học viên</NavLink>
+            </Accordion.Body>
+            <Accordion.Body>
+              <NavLink to="accounts">Mở - khóa tài khoản</NavLink>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
-            <Accordion.Header>Lớp học đã tham gia</Accordion.Header>
+            <Accordion.Header>Quản lý lớp học</Accordion.Header>
             <Accordion.Body>
-              <NavLink to="courses">Lớp học của tôi</NavLink>
-            </Accordion.Body>
-            <Accordion.Body>
-              <NavLink to="course_create">Tạo lớp học mới</NavLink>
+              <NavLink to="classes">Danh sách các lớp học</NavLink>
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
