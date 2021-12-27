@@ -20,6 +20,10 @@ const authApi = {
     const url = ACCOUNT_API + "/change-pw";
     return axiosClient.post(url, info_account);
   },
+  postResetPassword: (info_account) => {
+    const url = ACCOUNT_API + "/forgot-pw";
+    return axiosClient.post(url, info_account);
+  },
   postVerifyEmail: (email) => {
     const url = ACCOUNT_API + "/verify";
     return axiosClient.post(url, email);
