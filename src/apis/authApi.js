@@ -8,10 +8,15 @@ const authApi = {
     const url = LOGIN_API + "/google";
     return axiosClient.post(url, access_token);
   },
+  postLogout: (access_token) => {
+    const url = LOGIN_API + "/logout";
+    return axiosClient.post(url, access_token);
+  },
   postLogin: (info_account) => {
     const url = LOGIN_API;
     return axiosClient.post(url, info_account);
   },
+
   postRegister: (info_account) => {
     const url = ACCOUNT_API + "/signup";
     return axiosClient.post(url, info_account);

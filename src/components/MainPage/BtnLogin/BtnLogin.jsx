@@ -1,9 +1,10 @@
+import authApi from "apis/authApi";
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { isLogin, selectRole } from "reducers/authSlice";
+import { isLogin, isSuccess, selectRole } from "reducers/authSlice";
 import { selectUserInfo } from "reducers/userSlice";
 
 function BtnLogin() {
@@ -16,12 +17,23 @@ function BtnLogin() {
     navigate("/login");
   };
 
-  const handleLogout = () => {
-    // console.log("tiến thành logout");
-    localStorage.clear();
-    dispatch(isLogin(null));
-    navigate("/login");
-    toast.success("Đăng xuất thành công", { position: "bottom-right" });
+  const handleLogout = async () => {
+    const params = {
+      access_token: JSON.parse(localStorage.getItem("access_token")),
+    };
+    try {
+      await authApi.postLogout(params);
+      localStorage.clear();
+      dispatch(isLogin(null));
+      navigate("/login");
+      toast.success("Đăng xuất thành công", { position: "bottom-right" });
+    } catch (error) {
+      dispatch(isSuccess());
+      console.log("đăng xuất lỗi rồi", { error });
+      toast.warn(`${error.response.data.message}`, {
+        position: "bottom-right",
+      });
+    }
   };
 
   return (
