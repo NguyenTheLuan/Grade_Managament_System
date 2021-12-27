@@ -10,8 +10,8 @@ export const renderRoute = (routes) => {
         <Route
           key={index}
           path={route.path}
-          // exact={route.exact}
-          index={route.index}
+          exact={route.index}
+          // index={route.index}
           element={route.component}
         />
       );
@@ -62,4 +62,19 @@ export const checkGender = (isMale) => {
 //CheckActive
 export const checkActive = (status) => {
   return status ? "Đang mở" : "Đã khóa";
+};
+//render Date
+export const renderDate = (time) => {
+  const date = new Date(time);
+  var dd = String(date.getDate()).padStart(2, "0");
+  var mm = String(date.getMonth() + 1).padStart(2, "0");
+  //January is 0!
+  var yyyy = date.getFullYear();
+
+  // //time
+  // var minutes = ("0" + date.getMinutes()).slice(-2);
+  // var hours = ("0" + date.getHours()).slice(-2);
+
+  // return dd + "/" + mm + "/" + yyyy + " lúc " + hours + ":" + minutes;
+  return dd + "-" + mm + "-" + yyyy;
 };

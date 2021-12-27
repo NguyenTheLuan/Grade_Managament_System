@@ -2,10 +2,10 @@
 import userApi from "apis/userApi";
 import iconUser from "assets/icons/user.png";
 // import { iconUser } from "assets";
-import { checkGender, checkInfo } from "components/common";
+import { checkGender, checkInfo, renderDate } from "components/common";
 import ModalUpdateInfo from "components/common/Modals/ModalUpdateInfo";
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { selectRole } from "reducers/authSlice";
@@ -77,7 +77,9 @@ function StudentProfile() {
           </ul>
           <ul className="infoUser_item">
             <li>Ngày sinh nhật:</li>
-            <li className="valueInfo">{checkInfo(userInfo.birthday)}</li>
+            <li className="valueInfo">
+              {renderDate(checkInfo(userInfo.birthday))}
+            </li>
           </ul>
           <ul className="infoUser_item">
             <li>Giới tính:</li>

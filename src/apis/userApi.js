@@ -49,6 +49,14 @@ const userApi = {
     const url = USER_API + TEACHER_API + `/class/${code_class}`;
     return axiosClient.get(url);
   },
+  get_TeacherAssignments: (code_class) => {
+    const url = USER_API + TEACHER_API + `/assignments`;
+    return axiosClient.get(url, code_class);
+  },
+  get_TeacherGrades: (code_class) => {
+    const url = USER_API + TEACHER_API + `/grades`;
+    return axiosClient.get(url, code_class);
+  },
 };
 
 export default userApi;

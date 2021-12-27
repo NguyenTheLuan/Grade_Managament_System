@@ -1,0 +1,25 @@
+.contentDetails {
+  width: 95%;
+  height: 95%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+
+  &_link {
+    width: 60%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    a {
+      color: black;
+      font-size: 18px;
+    }
+    .active {
+      border-bottom: 1px solid #000;
+    }
+  }
+}

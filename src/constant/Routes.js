@@ -2,7 +2,6 @@ import Accounts from "features/Admin/AdminManageAccounts/Accounts/Accounts";
 import Students from "features/Admin/AdminManageAccounts/Students/Students";
 import Teachers from "features/Admin/AdminManageAccounts/Teachers/Teachers";
 import AdminManageClasses from "features/Admin/AdminManageClasses/AdminManageClasses";
-import AdminPage from "features/Admin/AdminPage/AdminRoutes";
 import AdminLogin from "features/Auth/BasicLogin/AdminLogin";
 import ChangePassword from "features/Auth/BasicLogin/ChangePassword";
 import ForgotPassword from "features/Auth/BasicLogin/ForgotPassword";
@@ -11,14 +10,16 @@ import Register from "features/Auth/BasicLogin/Register";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
 import StudentCourseDetail from "features/Student/StudentCourse/StudentCourseDetails/StudentCourseDetail";
-import StudentCourseJoin from "features/Student/StudentCourse/StudentCourseJoin";
 import StudentCourses from "features/Student/StudentCourse/StudentCourses";
 import StudentMapCode from "features/Student/StudentProfile/StudentMapCode";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import StudentScoredRecord from "features/Student/StudentProfile/StudentScoredRecord";
-import TeacherCourseCreate from "features/Teacher/TeacherCourse/TeacherCourseCreate";
-import TeacherCourseDetails from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseDetails";
+import TeacherCourseDetailsRoutes from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseDetailsRoutes";
 import TeacherCourses from "features/Teacher/TeacherCourse/TeacherCourses";
+import TeacherAssignment from "features/Teacher/TeacherCourse/TeacherManage/TeacherAssignment";
+import TeacherDetailsClass from "features/Teacher/TeacherCourse/TeacherManage/TeacherDetailsClass";
+import TeacherGradeStruct from "features/Teacher/TeacherCourse/TeacherManage/TeacherGradeStruct";
+import TeacherScored from "features/Teacher/TeacherCourse/TeacherManage/TeacherScored";
 
 //Main route
 export const MAIN_ROUTE = [
@@ -102,12 +103,6 @@ export const STUDENT_ROUTE = [
     component: <StudentScoredRecord />,
     index: false,
   },
-  // {
-  //   // name: "Trang tham gia lớp",
-  //   path: "course_join",
-  //   component: <StudentCourseJoin />,
-  //   index: false,
-  // },
   {
     // name: "Trang thay đổi mật khẩu",
     path: "change_password",
@@ -138,26 +133,44 @@ export const TEACHER_ROUTE = [
   },
   {
     // name: "Trang thay đổi mật khẩu",
-    path: "courses/:id",
-    component: <TeacherCourseDetails />,
+    path: "courses/:id/*",
+    component: <TeacherCourseDetailsRoutes />,
     index: false,
   },
-  // {
-  //   // name: "Trang thay đổi mật khẩu",
-  //   path: "course_create",
-  //   component: <TeacherCourseCreate />,
-  //   index: false,
-  // },
 ];
+
+//Details course
+export const DETAIL_COURSE = {
+  ADMIN: [
+    {
+      // name: "Trang thay đổi mật khẩu",
+      path: "",
+      component: <TeacherDetailsClass />,
+      index: true,
+    },
+    {
+      // name: "Trang thay đổi mật khẩu",
+      path: "grade_structures",
+      component: <TeacherGradeStruct />,
+      index: false,
+    },
+    {
+      // name: "Trang thay đổi mật khẩu",
+      path: "assignments",
+      component: <TeacherAssignment />,
+      index: false,
+    },
+    {
+      // name: "Trang thay đổi mật khẩu",
+      path: "scored_records",
+      component: <TeacherScored />,
+      index: false,
+    },
+  ],
+};
 
 //Admin route
 export const ADMIN_ROUTE = [
-  // {
-  //   // name: "Trang chủ admin",
-  //   path: "/admin",
-  //   component: <AdminPageD />,
-  //   index: true,
-  // },
   {
     // name: "Trang profile",
     path: "students",
