@@ -1,3 +1,4 @@
+//Main links
 .contentDetails {
   width: 95%;
   height: 95%;
@@ -9,6 +10,7 @@
 
   &_link {
     width: 60%;
+    height: 8%;
 
     display: flex;
     flex-direction: row;
@@ -20,6 +22,51 @@
     }
     .active {
       border-bottom: 1px solid #000;
+    }
+  }
+
+  &_content {
+    width: 95%;
+    height: 80%;
+  }
+}
+
+//For detail page
+.details {
+  width: 100%;
+  height: 90%;
+
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  &_tilte {
+    width: 90%;
+    border-bottom: 1px solid rgb(228, 225, 225);
+  }
+
+  &_class {
+    width: 95%;
+  }
+  &_table {
+    width: 90% !important;
+
+    text-align: center;
+
+    button {
+      background: transparent;
+      border: transparent;
+      &:hover,
+      &:focus {
+        background: transparent;
+        border: transparent;
+      }
+      .icons {
+        font-size: 25px;
+        color: green;
+      }
     }
   }
 }

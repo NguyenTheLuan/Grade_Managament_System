@@ -143,25 +143,21 @@ export const TEACHER_ROUTE = [
 export const DETAIL_COURSE = {
   ADMIN: [
     {
-      // name: "Trang thay đổi mật khẩu",
-      path: "",
+      path: "details",
       component: <TeacherDetailsClass />,
       index: true,
     },
     {
-      // name: "Trang thay đổi mật khẩu",
       path: "grade_structures",
       component: <TeacherGradeStruct />,
       index: false,
     },
     {
-      // name: "Trang thay đổi mật khẩu",
       path: "assignments",
       component: <TeacherAssignment />,
       index: false,
     },
     {
-      // name: "Trang thay đổi mật khẩu",
       path: "scored_records",
       component: <TeacherScored />,
       index: false,

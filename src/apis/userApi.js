@@ -51,12 +51,20 @@ const userApi = {
   },
   get_TeacherAssignments: (code_class) => {
     const url = USER_API + TEACHER_API + `/assignments`;
-    return axiosClient.get(url, code_class);
+    return axiosClient.get(url, {
+      params: code_class,
+    });
   },
   get_TeacherGrades: (code_class) => {
     const url = USER_API + TEACHER_API + `/grades`;
-    return axiosClient.get(url, code_class);
+    return axiosClient.get(url, {
+      params: code_class,
+    });
   },
+  // get_TeacherGradeStruct: (code_class) => {
+  //   const url = USER_API + TEACHER_API + `/grade-struct`;
+  //   return axiosClient.get(url, code_class);
+  // },
 };
 
 export default userApi;
