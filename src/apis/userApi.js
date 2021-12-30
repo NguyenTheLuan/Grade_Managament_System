@@ -61,10 +61,18 @@ const userApi = {
       params: code_class,
     });
   },
-  // get_TeacherGradeStruct: (code_class) => {
-  //   const url = USER_API + TEACHER_API + `/grade-struct`;
-  //   return axiosClient.get(url, code_class);
-  // },
+  get_TeacherGradeStruct: (code_class) => {
+    const url = USER_API + TEACHER_API + `/grade-struct`;
+    return axiosClient.get(url, code_class);
+  },
+  post_TeacherGradeStructAdd: (struct_info) => {
+    const url = USER_API + TEACHER_API + `/grade-struct`;
+    return axiosClient.post(url, struct_info);
+  },
+  post_TeacherGradeStructEdit: (struct_info) => {
+    const url = USER_API + TEACHER_API + `/grade-struct/update`;
+    return axiosClient.post(url, struct_info);
+  },
 };
 
 export default userApi;

@@ -33,7 +33,6 @@ function ModalUpdateInfo({ show, onShow }) {
   };
 
   const handleUpdate = async () => {
-    // console.log("upđate thông tin với", gender, birthday, fullName, phone);
     await updateInfo();
     onShow(!show);
   };
@@ -104,10 +103,10 @@ function ModalUpdateInfo({ show, onShow }) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="submit" onClick={handleUpdate}>
+        <Button variant="primary" type="submit" onClick={() => handleUpdate()}>
           Cập nhật thông tin
         </Button>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant="secondary" onClick={() => handleClose()}>
           Đóng
         </Button>
       </Modal.Footer>

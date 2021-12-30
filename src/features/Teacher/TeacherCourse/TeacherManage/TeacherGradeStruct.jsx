@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 
 import { FiEdit } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
+import ModalAddGradeStruct from "components/common/Modals/AdminManage/GradeStruct/ModalAddGradeStruct";
+import ModalEditGradeStruct from "components/common/Modals/AdminManage/GradeStruct/ModalEditGradeStruct";
 
 function TeacherGradeStruct() {
   const { id } = useParams();
@@ -16,6 +18,35 @@ function TeacherGradeStruct() {
     getClassDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  //handle modal
+  //Add
+  const [showAdd, setShowAdd] = useState(false);
+
+  const handleShow = () => {
+    setShowAdd(true);
+  };
+  const onShowAdd = (isShow) => {
+    getClassDetail();
+    setShowAdd(isShow);
+  };
+
+  //Edit
+  const [showEdit, setShowEdit] = useState(false);
+  const [showInfoEdit, setShowInfoEdit] = useState(false);
+  const handleUpdate = (grade) => {
+    setShowInfoEdit(grade);
+    setShowEdit(true);
+  };
+  const onShowUpdate = (isShow) => {
+    getClassDetail();
+    setShowEdit(isShow);
+  };
+
+  //Delete
+  const handleDelete = (code) => {
+    console.log("Tiến thành xóa", code);
+  };
 
   const getClassDetail = async () => {
     try {
@@ -39,7 +70,7 @@ function TeacherGradeStruct() {
         <td>{grade.percent}</td>
         <td>{grade.total}</td>
         <td>
-          <Button onClick={() => handleUpdate(grade.code)}>
+          <Button onClick={() => handleUpdate(grade)}>
             <FiEdit className="icons" />
           </Button>
         </td>
@@ -52,13 +83,6 @@ function TeacherGradeStruct() {
     );
   });
 
-  const handleUpdate = (code) => {
-    console.log("Tiến thành cập nhật", code);
-  };
-  const handleDelete = (code) => {
-    console.log("Tiến thành xóa", code);
-  };
-
   return (
     <div className="details">
       <legend className="details_tilte">Quản lý cấu trúc điểm</legend>
@@ -67,7 +91,7 @@ function TeacherGradeStruct() {
           <tr>
             <th>STT</th>
             <th>Mã</th>
-            <th>Tên</th>
+            <th>Tên cột điểm</th>
             <th>Hệ số (%)</th>
             <th>Điểm tối đa</th>
             <th>Chỉnh sửa</th>
@@ -76,7 +100,13 @@ function TeacherGradeStruct() {
         </thead>
         <tbody>{renderGradeStruct}</tbody>
       </Table>
-      <Button>Thêm cột mới</Button>
+      <Button onClick={() => handleShow()}>Thêm cột điểm mới</Button>
+      <ModalAddGradeStruct show={showAdd} onShow={onShowAdd} />
+      <ModalEditGradeStruct
+        show={showEdit}
+        onShow={onShowUpdate}
+        gradeStruct={showInfoEdit}
+      />
     </div>
   );
 }
