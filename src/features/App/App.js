@@ -1,6 +1,6 @@
 import { renderRoute } from "components/common/CustomComponents";
 import Header from "components/MainPage/Header/Header";
-import { ADMIN_ROUTE, AUTH_ROUTE } from "constant";
+import { AUTH_ROUTE } from "constant";
 import AdminAuth from "features/Admin/AdminAuth";
 import AdminRoutes from "features/Admin/AdminPage/AdminRoutes";
 import Auth from "features/Auth/Auth";
@@ -28,44 +28,46 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
-      <div className="content">
-        {isLoading && (
-          <ReactLoading
-            className="loading"
-            type="spinningBubbles"
-            color="violet"
-            height={200}
-            width={200}
-          />
-        )}
-        <Routes>
-          <Route element={<Auth />}>
-            {/* Main routes */}
-            <Route path="/" element={<HomePage />} />
-            {/* auth */}
-            {renderRoute(AUTH_ROUTE)}
-          </Route>
+      <div className="app">
+        <Header />
+        <div className="content">
+          {isLoading && (
+            <ReactLoading
+              className="loading"
+              type="spinningBubbles"
+              color="violet"
+              height={200}
+              width={200}
+            />
+          )}
+          <Routes>
+            <Route element={<Auth />}>
+              {/* Main routes */}
+              <Route path="/" element={<HomePage />} />
+              {/* auth */}
+              {renderRoute(AUTH_ROUTE)}
+            </Route>
 
-          {/* student routes */}
-          <Route element={<StudentAuth />}>
-            {/* {renderRoute(STUDENT_ROUTE)} */}
-            <Route path="/student/*" element={<StudentRoutes />} />
-          </Route>
+            {/* student routes */}
+            <Route element={<StudentAuth />}>
+              {/* {renderRoute(STUDENT_ROUTE)} */}
+              <Route path="/student/*" element={<StudentRoutes />} />
+            </Route>
 
-          {/* teacher routes */}
-          <Route element={<TeacherAuth />}>
-            <Route path="/teacher/*" element={<TeacherRoutes />} />
-          </Route>
+            {/* teacher routes */}
+            <Route element={<TeacherAuth />}>
+              <Route path="/teacher/*" element={<TeacherRoutes />} />
+            </Route>
 
-          {/* teacher routes */}
-          <Route element={<AdminAuth />}>
-            <Route path="/admin/*" element={<AdminRoutes />} />
-          </Route>
+            {/* teacher routes */}
+            <Route element={<AdminAuth />}>
+              <Route path="/admin/*" element={<AdminRoutes />} />
+            </Route>
 
-          {/* NotFound */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* NotFound */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );

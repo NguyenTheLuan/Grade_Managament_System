@@ -9,17 +9,20 @@ import Login from "features/Auth/BasicLogin/Login";
 import Register from "features/Auth/BasicLogin/Register";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
-import StudentCourseDetail from "features/Student/StudentCourse/StudentCourseDetails/StudentCourseDetail";
+import StudentCourseDetail from "features/Student/StudentCourse/StudentManage/StudentCourseDetail";
 import StudentCourses from "features/Student/StudentCourse/StudentCourses";
 import StudentMapCode from "features/Student/StudentProfile/StudentMapCode";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import StudentScoredRecord from "features/Student/StudentProfile/StudentScoredRecord";
 import TeacherCourseDetailsRoutes from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseDetailsRoutes";
+import TeacherCourseId from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseId";
 import TeacherCourses from "features/Teacher/TeacherCourse/TeacherCourses";
 import TeacherAssignment from "features/Teacher/TeacherCourse/TeacherManage/TeacherAssignment";
 import TeacherDetailsClass from "features/Teacher/TeacherCourse/TeacherManage/TeacherDetailsClass";
 import TeacherGradeStruct from "features/Teacher/TeacherCourse/TeacherManage/TeacherGradeStruct";
 import TeacherScored from "features/Teacher/TeacherCourse/TeacherManage/TeacherScored";
+import StudentCourseDetailsRoutes from "features/Student/StudentCourse/StudentCourseDetails/StudentCourseDetailsRoutes";
+import StudentInfo from "features/Student/StudentPage/StudentInfo";
 
 //Main route
 export const MAIN_ROUTE = [
@@ -67,12 +70,12 @@ export const AUTH_ROUTE = [
 
 //Student route
 export const STUDENT_ROUTE = [
-  // {
-  //   // name: "Trang chủ học viên",
-  //   path: "",
-  //   component: <StudentHeaderLink />,
-  //   index: true,
-  // },
+  {
+    // name: "Trang chủ học viên",
+    path: "",
+    component: <StudentInfo />,
+    index: true,
+  },
   {
     // name: "Trang profile",
     path: "my_info",
@@ -93,8 +96,8 @@ export const STUDENT_ROUTE = [
   },
   {
     // name: "Trang lớp học",
-    path: "courses/:id",
-    component: <StudentCourseDetail />,
+    path: "courses/:id/*",
+    component: <StudentCourseDetailsRoutes />,
     index: false,
   },
   {
@@ -113,6 +116,12 @@ export const STUDENT_ROUTE = [
 
 //Teacher route
 export const TEACHER_ROUTE = [
+  {
+    // name: "Trang chủ học viên",
+    path: "",
+    component: <StudentInfo />,
+    index: true,
+  },
   {
     // name: "Trang profile",
     path: "my_info",
@@ -143,6 +152,11 @@ export const TEACHER_ROUTE = [
 export const DETAIL_COURSE = {
   ADMIN: [
     {
+      path: "",
+      component: <TeacherCourseId />,
+      index: true,
+    },
+    {
       path: "details",
       component: <TeacherDetailsClass />,
       index: true,
@@ -161,6 +175,23 @@ export const DETAIL_COURSE = {
       path: "scored_records",
       component: <TeacherScored />,
       index: false,
+    },
+  ],
+  STUDENT: [
+    {
+      path: "",
+      component: <TeacherCourseId />,
+      index: true,
+    },
+    {
+      path: "details",
+      component: <StudentCourseDetail />,
+      index: true,
+    },
+    {
+      path: "scored",
+      component: <TeacherDetailsClass />,
+      index: true,
     },
   ],
 };

@@ -1,6 +1,8 @@
 .dashBoard {
   width: 98%;
-  height: 95%;
+  height: 100%;
+  // height: 80vh;
+  // height: 95%;
   //   border-radius: 10px;
 
   background: rgb(255, 255, 255);
@@ -10,14 +12,16 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
 
   //For link dash board
   .linkPage {
     flex: 2;
     height: 100%;
-    // background: #5c5669;
+
     background: #403558;
+
+    // position: fixed;
+    // left: 10px;
 
     //Title
     .userDashBoardTitle {
@@ -38,7 +42,7 @@
   //For content
   .contentPage {
     flex: 9;
-    height: 100%;
+    // height: fit-content !important;
 
     display: flex;
     justify-content: center;
