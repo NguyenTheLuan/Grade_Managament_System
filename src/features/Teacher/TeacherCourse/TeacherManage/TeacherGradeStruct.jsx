@@ -9,6 +9,7 @@ import { FiEdit } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
 import ModalAddGradeStruct from "components/common/Modals/AdminManage/GradeStruct/ModalAddGradeStruct";
 import ModalEditGradeStruct from "components/common/Modals/AdminManage/GradeStruct/ModalEditGradeStruct";
+import ModalDeleteGradeStruct from "components/common/Modals/AdminManage/GradeStruct/ModalDeleteGradeStruct";
 
 function TeacherGradeStruct() {
   const { id } = useParams();
@@ -44,8 +45,15 @@ function TeacherGradeStruct() {
   };
 
   //Delete
-  const handleDelete = (code) => {
-    console.log("Tiến thành xóa", code);
+  const [showDelete, setShowDelete] = useState(false);
+  const [showInfoDelete, setShowInfoDelete] = useState(false);
+  const handleDelete = (grade) => {
+    setShowInfoDelete(grade);
+    setShowDelete(true);
+  };
+  const onShowDelete = (isShow) => {
+    getClassDetail();
+    setShowDelete(isShow);
   };
 
   const getClassDetail = async () => {
@@ -75,7 +83,7 @@ function TeacherGradeStruct() {
           </Button>
         </td>
         <td>
-          <Button onClick={() => handleDelete(grade.code)}>
+          <Button onClick={() => handleDelete(grade)}>
             <MdDeleteForever className="icons" />
           </Button>
         </td>
@@ -106,6 +114,11 @@ function TeacherGradeStruct() {
         show={showEdit}
         onShow={onShowUpdate}
         gradeStruct={showInfoEdit}
+      />
+      <ModalDeleteGradeStruct
+        show={showDelete}
+        onShow={onShowDelete}
+        gradeStruct={showInfoDelete}
       />
     </div>
   );

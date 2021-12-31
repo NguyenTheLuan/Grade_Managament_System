@@ -1,4 +1,5 @@
 import userApi from "apis/userApi";
+import ModalAddAssignment from "components/common/Modals/AdminManage/Assignments/ModalAddAssignment";
 import { saveAs } from "file-saver";
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
@@ -31,10 +32,21 @@ function TeacherAssignment() {
     }
   };
 
+  //Modal Add New Assignment
+  const [showAdd, setShowAdd] = useState(false);
+
+  const onShowAdd = (isShow) => {
+    getAssignments();
+    setShowAdd(isShow);
+  };
+  const handleAddNew = () => {
+    setShowAdd(true);
+  };
+
+  // Download file
   const downloadImage = (linkHref, assignment_name) => {
     let fileName = linkHref.split(".");
     fileName = fileName[fileName.length - 1];
-
     saveAs(`${linkHref}`, `${assignment_name}.${fileName}`);
   };
 
@@ -75,9 +87,6 @@ function TeacherAssignment() {
   const handleViewDetail = (id) => {
     console.log("tieens thanh xem thong tin chi tiet", id);
   };
-  const handleAddNew = () => {
-    console.log("tieens thanh them bt");
-  };
 
   return (
     <div className="details">
@@ -97,6 +106,7 @@ function TeacherAssignment() {
         <tbody>{renderAssignments}</tbody>
       </Table>
       <Button onClick={() => handleAddNew()}>Thêm bài tập mới</Button>
+      <ModalAddAssignment show={showAdd} onShow={onShowAdd} />
     </div>
   );
 }
