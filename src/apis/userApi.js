@@ -33,6 +33,10 @@ const userApi = {
     const url = USER_API + STUDENT_API + `/course/${code_course}`;
     return axiosClient.get(url);
   },
+  get_MyScoredRecord: (info_update) => {
+    const url = USER_API + STUDENT_API + "/grade";
+    return axiosClient.get(url, info_update);
+  },
 
   //for teacher
   create_newClass: (className) => {
@@ -80,11 +84,11 @@ const userApi = {
     });
   },
   post_TeacherAssignmentsAdd: (assignment_info) => {
-    const url = USER_API + TEACHER_API + `/assignments`;
+    const url = USER_API + TEACHER_API + `/assignment`;
     return axiosClient.post(url, assignment_info);
   },
   post_TeacherAssignmentsEdit: (assignment_info) => {
-    const url = USER_API + TEACHER_API + `/assignments/update`;
+    const url = USER_API + TEACHER_API + `/assignment/update`;
     return axiosClient.post(url, assignment_info);
   },
 };

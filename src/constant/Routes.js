@@ -9,8 +9,11 @@ import Login from "features/Auth/BasicLogin/Login";
 import Register from "features/Auth/BasicLogin/Register";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
-import StudentCourseDetail from "features/Student/StudentCourse/StudentManage/StudentCourseDetail";
+import StudentCourseDetailsRoutes from "features/Student/StudentCourse/StudentCourseDetails/StudentCourseDetailsRoutes";
 import StudentCourses from "features/Student/StudentCourse/StudentCourses";
+import StudentCourseDetail from "features/Student/StudentCourse/StudentManage/StudentCourseDetail";
+import StudentCourseScored from "features/Student/StudentCourse/StudentManage/StudentCourseScored";
+import StudentInfo from "features/Student/StudentPage/StudentInfo";
 import StudentMapCode from "features/Student/StudentProfile/StudentMapCode";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import StudentScoredRecord from "features/Student/StudentProfile/StudentScoredRecord";
@@ -21,8 +24,6 @@ import TeacherAssignment from "features/Teacher/TeacherCourse/TeacherManage/Teac
 import TeacherDetailsClass from "features/Teacher/TeacherCourse/TeacherManage/TeacherDetailsClass";
 import TeacherGradeStruct from "features/Teacher/TeacherCourse/TeacherManage/TeacherGradeStruct";
 import TeacherScored from "features/Teacher/TeacherCourse/TeacherManage/TeacherScored";
-import StudentCourseDetailsRoutes from "features/Student/StudentCourse/StudentCourseDetails/StudentCourseDetailsRoutes";
-import StudentInfo from "features/Student/StudentPage/StudentInfo";
 
 //Main route
 export const MAIN_ROUTE = [
@@ -190,7 +191,7 @@ export const DETAIL_COURSE = {
     },
     {
       path: "scored",
-      component: <TeacherDetailsClass />,
+      component: <StudentCourseScored />,
       index: true,
     },
   ],
