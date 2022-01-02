@@ -66,28 +66,28 @@ export const checkActive = (status) => {
 //render Date
 export const renderDate = (time) => {
   const date = new Date(time);
-  var dd = String(date.getDate()).padStart(2, "0");
-  var mm = String(date.getMonth() + 1).padStart(2, "0");
+  var dd = String(date.getUTCDate()).padStart(2, "0");
+  var mm = String(date.getUTCMonth() + 1).padStart(2, "0");
   //January is 0!
-  var yyyy = date.getFullYear();
+  var yyyy = date.getUTCFullYear();
 
-  // //time
-  // var minutes = ("0" + date.getMinutes()).slice(-2);
-  // var hours = ("0" + date.getHours()).slice(-2);
+  //time
+  var minutes = ("0" + date.getUTCMinutes()).slice(-2);
+  var hours = ("0" + date.getUTCHours()).slice(-2);
 
-  // return dd + "/" + mm + "/" + yyyy + " lúc " + hours + ":" + minutes;
-  return dd + "-" + mm + "-" + yyyy;
+  return dd + "/" + mm + "/" + yyyy + " lúc " + hours + ":" + minutes;
+  // return dd + "-" + mm + "-" + yyyy;
 };
 
 export const toDatetimeLocal = (time) => {
   const date = new Date(time),
     ten = (i) => (i < 10 ? "0" : "") + i,
-    YYYY = date.getFullYear(),
-    MTH = ten(date.getMonth() + 1),
-    DAY = ten(date.getDate()),
-    HH = ten(date.getHours()),
-    MM = ten(date.getMinutes()),
-    SS = ten(date.getSeconds());
+    YYYY = date.getUTCFullYear(),
+    MTH = ten(date.getUTCMonth() + 1),
+    DAY = ten(date.getUTCDate()),
+    HH = ten(date.getUTCHours()),
+    MM = ten(date.getUTCMinutes()),
+    SS = ten(date.getUTCSeconds());
   // MS = ten(date.getMilliseconds())
 
   return `${YYYY}-${MTH}-${DAY}T${HH}:${MM}:${SS}`;

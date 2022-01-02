@@ -41,9 +41,9 @@ function ModalDetailAssignment({ show, onShow, assignment_info }) {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        {/* <Button variant="secondary" onClick={handleClose}>
           Đóng
-        </Button>
+        </Button> */}
       </Modal.Footer>
     </Modal>
   );

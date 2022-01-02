@@ -13,6 +13,7 @@ import { TiUploadOutline } from "react-icons/ti";
 import { FiEdit } from "react-icons/fi";
 import { GrDownload } from "react-icons/gr";
 import { useParams } from "react-router-dom";
+import ModalScoredAssignment from "components/common/Modals/AdminManage/Assignments/ModalScoredAssignment";
 
 function TeacherAssignment() {
   const { id } = useParams();
@@ -30,7 +31,7 @@ function TeacherAssignment() {
     try {
       const response = await userApi.get_TeacherAssignments(params);
       const { result } = response;
-      // console.log(result);
+      console.log(result);
       setAssignments(result);
     } catch (error) {
       console.log("lỗi rồi", { error });
@@ -69,6 +70,18 @@ function TeacherAssignment() {
     setInfoDetails(assignment_info);
     setShowDetail(true);
   };
+
+  //Modal submit scored
+  const [showSubmitScored, setShowSubmitScored] = useState(false);
+  const onShowSubmitScored = (isShow) => {
+    getAssignments();
+    setShowSubmitScored(isShow);
+  };
+  const handleSubmitScored = (assignment_info) => {
+    setInfoDetails(assignment_info);
+    setShowSubmitScored(true);
+  };
+
   // Download file
   const downloadImage = (linkHref, assignment_name) => {
     let fileName = linkHref.split(".");
@@ -76,10 +89,16 @@ function TeacherAssignment() {
 
     if (fileName === "jpg" || fileName === "png") {
       saveAs(`${linkHref}`, `${assignment_name}.${fileName}`);
-    }
-    if (fileName === "pdf" || fileName === "xls" || fileName === "xlsx") {
+    } else if (
+      fileName === "pdf" ||
+      fileName === "xls" ||
+      fileName === "xlsx"
+    ) {
       console.log("đây là", linkHref);
       window.location = linkHref;
+    } else {
+      console.log("chưa có file đuôi", fileName);
+      return;
     }
   };
 
@@ -93,11 +112,6 @@ function TeacherAssignment() {
         <td>{renderDate(assignment.pending)}</td>
         <td>{renderDate(assignment.expired)}</td>
         <td>
-          <Button onClick={() => handleUpdate(assignment)}>
-            <FiEdit className="icons" />
-          </Button>
-        </td>
-        <td>
           <Button
             onClick={() =>
               downloadImage(assignment.attachFile, assignment.name)
@@ -107,8 +121,8 @@ function TeacherAssignment() {
           </Button>
         </td>
         <td>
-          <Button onClick={() => handleViewDetail(assignment)}>
-            <BsInfoLg className="icons" />
+          <Button onClick={() => handleUpdate(assignment)}>
+            <FiEdit className="icons" />
           </Button>
         </td>
         <td>
@@ -116,13 +130,15 @@ function TeacherAssignment() {
             <TiUploadOutline className="icons" />
           </Button>
         </td>
+        <td>
+          <Button onClick={() => handleViewDetail(assignment)}>
+            <BsInfoLg className="icons" />
+          </Button>
+        </td>
       </tr>
     );
   });
 
-  const handleSubmitScored = (assignment_info) => {
-    console.log("nhập điểm cho bài tập", assignment_info);
-  };
   return (
     <div className="details">
       <Table className="details_table" bordered hover striped>
@@ -134,11 +150,11 @@ function TeacherAssignment() {
             <th>Tên bài tập</th>
             <th>Ngày bắt đầu</th>
             <th>Ngày kết thúc</th>
-            {/* <th>Hệ số</th> */}
-            <th>Sửa </th>
             <th>Tải bài tập</th>
-            <th>Chi tiết</th>
+            <th>Sửa </th>
+            {/* <th>Hệ số</th> */}
             <th>Nhập điểm</th>
+            <th>Chi tiết</th>
           </tr>
         </thead>
         <tbody>{renderAssignments}</tbody>
@@ -153,6 +169,11 @@ function TeacherAssignment() {
       <ModalDetailAssignment
         show={showDetail}
         onShow={onShowDetail}
+        assignment_info={infoDetails}
+      />
+      <ModalScoredAssignment
+        show={showSubmitScored}
+        onShow={onShowSubmitScored}
         assignment_info={infoDetails}
       />
     </div>

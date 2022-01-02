@@ -2,7 +2,7 @@ import userApi from "apis/userApi";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 function TeacherDetailsClass() {
@@ -79,6 +79,7 @@ function TeacherDetailsClass() {
         </thead>
         <tbody>{renderStudents}</tbody>
       </Table>
+      <Button>Cập nhật thông tin lớp học</Button>
     </div>
   );
 }

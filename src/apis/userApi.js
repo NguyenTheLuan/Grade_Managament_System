@@ -91,6 +91,10 @@ const userApi = {
     const url = USER_API + TEACHER_API + `/assignment/update`;
     return axiosClient.post(url, assignment_info);
   },
+  post_TeacherAssignmentsGradeScored: (assignment_info) => {
+    const url = USER_API + TEACHER_API + `/assignment/grade`;
+    return axiosClient.post(url, assignment_info);
+  },
 };
 
 export default userApi;
