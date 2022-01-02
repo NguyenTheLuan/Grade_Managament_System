@@ -9,6 +9,7 @@ import { Button, Table } from "react-bootstrap";
 
 //icons
 import { BsInfoLg } from "react-icons/bs";
+import { TiUploadOutline } from "react-icons/ti";
 import { FiEdit } from "react-icons/fi";
 import { GrDownload } from "react-icons/gr";
 import { useParams } from "react-router-dom";
@@ -55,7 +56,7 @@ function TeacherAssignment() {
   };
   const handleUpdate = (assignment_info) => {
     setInfoDetails(assignment_info);
-    setShowDetail(true);
+    setShowEdit(true);
   };
 
   //Modal View Details Assignment
@@ -110,10 +111,18 @@ function TeacherAssignment() {
             <BsInfoLg className="icons" />
           </Button>
         </td>
+        <td>
+          <Button onClick={() => handleSubmitScored(assignment)}>
+            <TiUploadOutline className="icons" />
+          </Button>
+        </td>
       </tr>
     );
   });
 
+  const handleSubmitScored = (assignment_info) => {
+    console.log("nhập điểm cho bài tập", assignment_info);
+  };
   return (
     <div className="details">
       <Table className="details_table" bordered hover striped>
@@ -129,6 +138,7 @@ function TeacherAssignment() {
             <th>Sửa </th>
             <th>Tải bài tập</th>
             <th>Chi tiết</th>
+            <th>Nhập điểm</th>
           </tr>
         </thead>
         <tbody>{renderAssignments}</tbody>
