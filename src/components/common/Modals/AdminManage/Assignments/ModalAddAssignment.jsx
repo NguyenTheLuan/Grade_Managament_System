@@ -23,14 +23,16 @@ function ModalAddAssignment({ show, onShow }) {
   useEffect(() => {
     getGradeStruct();
   }, []);
-  useEffect(() => {
-    console.log(structGrade);
-  }, [structGrade]);
+
+  // useEffect(() => {
+  //   console.log(structGrade);
+  // }, [structGrade]);
+
   const getGradeStruct = async () => {
     try {
       const response = await userApi.get_myClassDetail(id);
       const { gradeStruct } = response;
-      console.log(gradeStruct);
+      // console.log(gradeStruct);
       setGrades(gradeStruct);
     } catch (error) {
       console.log("lỗi rồi", { error });

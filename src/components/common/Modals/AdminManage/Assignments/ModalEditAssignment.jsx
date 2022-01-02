@@ -12,6 +12,7 @@ function ModalEditAssignment({ show, onShow, assignment_info }) {
   //List Grade Struct
   const { id } = useParams();
   const [grades, setGrades] = useState();
+
   //Info to edit assignment
   const [code, setCode] = useState();
   const [structGrade, setStructGrade] = useState();
@@ -20,10 +21,10 @@ function ModalEditAssignment({ show, onShow, assignment_info }) {
   const [pending, setPending] = useState();
   const [expired, setExpired] = useState();
   const [file, setFile] = useState(null);
-  //to render info viewS
+
+  //to render info view
   useEffect(() => {
     if (!assignment_info) return;
-    console.log(assignment_info);
     const { code, name, pending, expired, structCode, status } =
       assignment_info;
     setStatus(status);
