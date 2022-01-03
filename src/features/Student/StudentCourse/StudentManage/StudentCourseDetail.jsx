@@ -1,8 +1,9 @@
 import userApi from "apis/userApi";
-import { checkActive } from "components/common";
+import { checkActive, checkInfo } from "components/common";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 function StudentCourseDetail() {
@@ -21,6 +22,7 @@ function StudentCourseDetail() {
       const response = await userApi.get_myCoursesDetail(id);
       const { result } = response;
       const { students } = result;
+
       setStudents(students);
       setCourseInfo(result);
     } catch (error) {
@@ -31,13 +33,21 @@ function StudentCourseDetail() {
     if (!courseInfo) return;
     else {
       return (
-        <div>
-          <div>Trạng thái {checkActive(courseInfo.active)}</div>
-          <div>Mã lớp {courseInfo.code}</div>
-          <div>Tên lớp {courseInfo.name}</div>
-          <div>Số điện thoại {courseInfo.phone}</div>
-          <div>Tên giảng viên {courseInfo.teacher}</div>
-        </div>
+        <ul>
+          {/* <li>Trạng thái {checkActive(courseInfo.active)}</li> */}
+          <li>
+            Mã lớp <strong>{courseInfo.code}</strong>
+          </li>
+          <li>
+            Tên lớp <strong>{courseInfo.name}</strong>
+          </li>
+          <li>
+            Tên giảng viên <strong>{courseInfo.teacher}</strong>
+          </li>
+          <li>
+            Số điện thoại <strong>{checkInfo(courseInfo.phone)}</strong>
+          </li>
+        </ul>
       );
     }
   };
@@ -46,19 +56,29 @@ function StudentCourseDetail() {
     else {
       return students.map((student, index) => {
         return (
-          <div key={index}>
-            <div>Mã học viên {student.studentId}</div>
-            <div>Tên học viên {student.fullName}</div>
-          </div>
+          <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{student.studentId}</td>
+            <td>{student.fullName}</td>
+          </tr>
         );
       });
     }
   };
 
   return (
-    <div>
-      <div className="courseInfo">{renderCourseInfo()}</div>
-      <div className="student">{renderStudents()}</div>
+    <div className="details">
+      <div className="details_class">{renderCourseInfo()}</div>
+      <Table className="details_table" bordered hover striped>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mã học viên</th>
+            <th>Tên học viên</th>
+          </tr>
+        </thead>
+        <tbody>{renderStudents()}</tbody>
+      </Table>
     </div>
   );
 }

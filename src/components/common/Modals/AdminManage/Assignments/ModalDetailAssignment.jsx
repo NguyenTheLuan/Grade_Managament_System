@@ -1,8 +1,6 @@
 import { renderDate } from "components/common";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { Button, Modal } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Modal } from "react-bootstrap";
 
 function ModalDetailAssignment({ show, onShow, assignment_info }) {
   const [detail, setDetail] = useState();

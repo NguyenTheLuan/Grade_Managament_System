@@ -47,7 +47,7 @@ function ModalDeleteGradeStruct({ show, onShow, gradeStruct }) {
         Bạn có chắc chắn xóa <strong>điểm {structName}</strong> không?
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="submit" onClick={() => handleDelete()}>
+        <Button variant="danger" type="submit" onClick={() => handleDelete()}>
           Xoá cột điểm
         </Button>
         <Button variant="secondary" onClick={handleClose}>

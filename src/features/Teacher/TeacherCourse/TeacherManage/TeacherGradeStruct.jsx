@@ -93,7 +93,7 @@ function TeacherGradeStruct() {
 
   return (
     <div className="details">
-      <legend className="details_tilte">Quản lý cấu trúc điểm</legend>
+      {/* <legend className="details_tilte">Quản lý cấu trúc điểm</legend> */}
       <Table className="details_table" bordered hover striped>
         <thead>
           <tr>

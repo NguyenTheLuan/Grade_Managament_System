@@ -31,7 +31,7 @@ function TeacherAssignment() {
     try {
       const response = await userApi.get_TeacherAssignments(params);
       const { result } = response;
-      console.log(result);
+      // console.log(result);
       setAssignments(result);
     } catch (error) {
       console.log("lỗi rồi", { error });
@@ -86,7 +86,6 @@ function TeacherAssignment() {
   const downloadImage = (linkHref, assignment_name) => {
     let fileName = linkHref.split(".");
     fileName = fileName[fileName.length - 1];
-
     if (fileName === "jpg" || fileName === "png") {
       saveAs(`${linkHref}`, `${assignment_name}.${fileName}`);
     } else if (

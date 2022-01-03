@@ -84,7 +84,7 @@ function ModalEditGradeStruct({ show, onShow, gradeStruct }) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="submit" onClick={() => handleEdit()}>
+        <Button variant="success" type="submit" onClick={() => handleEdit()}>
           Chỉnh sửa
         </Button>
         <Button variant="secondary" onClick={handleClose}>

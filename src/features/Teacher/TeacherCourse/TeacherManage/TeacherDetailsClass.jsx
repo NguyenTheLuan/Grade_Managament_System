@@ -1,4 +1,5 @@
 import userApi from "apis/userApi";
+import { checkActive, checkInfo } from "components/common";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -22,9 +23,7 @@ function TeacherDetailsClass() {
       const response = await userApi.get_myClassDetail(id);
       const { result } = response;
       const { students } = result;
-      // console.log(result);
-      // console.log(gradeStruct);
-      console.log(students);
+      console.log(response);
       setStudents(students);
       // setGradeStruct(gradeStruct);
       setResult(result);
@@ -48,16 +47,16 @@ function TeacherDetailsClass() {
     return (
       <ul>
         <li>
-          Tên giảng viên: <strong>{result?.teacher}</strong>
-        </li>
-        <li>
           Mã lớp: <strong>{result?.code}</strong>
         </li>
         <li>
-          Số điện thoại: <strong>{result?.phone}</strong>{" "}
+          Lớp học: <strong>{result?.name}</strong>
         </li>
         <li>
-          Lớp học: <strong>{result?.name}</strong>
+          Tên giảng viên: <strong>{result?.teacher}</strong>
+        </li>
+        <li>
+          Số điện thoại: <strong>{checkInfo(result?.phone)}</strong>
         </li>
       </ul>
     );
@@ -65,9 +64,9 @@ function TeacherDetailsClass() {
 
   return (
     <div className="details">
-      <legend className="details_tilte">Thông tin lớp</legend>
+      {/* <legend className="details_tilte">Thông tin lớp</legend> */}
       <div className="details_class">{renderInfoClass()}</div>
-      <legend className="details_tilte">Thông tin học viên</legend>
+      {/* <legend className="details_tilte">Thông tin học viên</legend> */}
       <Table className="details_table" bordered hover striped>
         <thead>
           <tr>

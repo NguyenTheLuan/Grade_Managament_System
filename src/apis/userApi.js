@@ -23,22 +23,26 @@ const userApi = {
     const url = USER_API + "/join";
     return axiosClient.post(url, code);
   },
+  //get all courses joined
   get_myCourses: (class_info) => {
     const url = USER_API + STUDENT_API + "/my-courses";
     return axiosClient.get(url, {
       params: class_info,
     });
   },
+  //get course details
   get_myCoursesDetail: (code_course) => {
     const url = USER_API + STUDENT_API + `/course/${code_course}`;
     return axiosClient.get(url);
   },
+  //get scored in courses detail
   get_MyScoredRecord: (info_update) => {
     const url = USER_API + STUDENT_API + "/grade";
     return axiosClient.get(url, info_update);
   },
 
   //for teacher
+  //creacte,view class
   create_newClass: (className) => {
     const url = USER_API + TEACHER_API + "/create-class";
     return axiosClient.post(url, className);
@@ -53,7 +57,7 @@ const userApi = {
     const url = USER_API + TEACHER_API + `/class/${code_class}`;
     return axiosClient.get(url);
   },
-  //Grade struc for admin
+  //grade struct
   get_TeacherGrades: (code_class) => {
     const url = USER_API + TEACHER_API + `/grades`;
     return axiosClient.get(url, {
@@ -76,7 +80,7 @@ const userApi = {
     const url = USER_API + TEACHER_API + `/grade-struct/update`;
     return axiosClient.post(url, struct_info);
   },
-  //Assignment for admin
+  //assignments
   get_TeacherAssignments: (code_class) => {
     const url = USER_API + TEACHER_API + `/assignments`;
     return axiosClient.get(url, {

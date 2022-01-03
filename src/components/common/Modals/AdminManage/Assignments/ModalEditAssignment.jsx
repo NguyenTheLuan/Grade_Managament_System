@@ -157,7 +157,7 @@ function ModalEditAssignment({ show, onShow, assignment_info }) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="submit" onClick={() => handleUpdate()}>
+        <Button variant="success" type="submit" onClick={() => handleUpdate()}>
           Sửa bài tập
         </Button>
         <Button variant="secondary" onClick={handleClose}>
