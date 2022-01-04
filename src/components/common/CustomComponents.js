@@ -59,9 +59,17 @@ export const checkInfo = (info) => {
 export const checkGender = (isMale) => {
   return isMale ? "Nam" : "Nữ";
 };
+//Check join
+export const checkJoin = (isJoin) => {
+  return isJoin ? "Đã tham gia" : "Chưa tham gia";
+};
 //CheckActive
 export const checkActive = (status) => {
   return status ? "Đang mở" : "Đã khóa";
+};
+//CheckActive
+export const checkRole = (role) => {
+  return role === "teacher" ? "Giảng viên" : "Học viên";
 };
 //render Date
 export const renderDate = (time) => {

@@ -75,7 +75,7 @@ function ModalUpdateInfo({ show, onShow }) {
             <Form.Label>Ngày sinh</Form.Label>
             <Form.Control
               value={birthday}
-              type="date"
+              type="datetime-local"
               name="birthday"
               onChange={(e) => setBirthday(e.target.value)}
             />

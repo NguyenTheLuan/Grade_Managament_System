@@ -6,10 +6,10 @@ import { toast } from "react-toastify";
 
 function StudentMapCode() {
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const studentId = e.target.name.value;
-
     updateStudentId(studentId);
   };
 

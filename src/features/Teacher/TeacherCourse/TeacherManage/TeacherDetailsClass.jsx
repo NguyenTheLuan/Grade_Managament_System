@@ -1,5 +1,5 @@
 import userApi from "apis/userApi";
-import { checkActive, checkInfo } from "components/common";
+import { checkActive, checkInfo, checkJoin } from "components/common";
 import ModalUploadClass from "components/common/Modals/AdminManage/GradeStruct/ModalUploadClass/ModalUploadClass";
 import React from "react";
 import { useState } from "react";
@@ -50,7 +50,7 @@ function TeacherDetailsClass() {
         <td>{index + 1}</td>
         <td>{student.studentId}</td>
         <td>{student.fullName}</td>
-        <td></td>
+        <td>{checkJoin(student.join)}</td>
       </tr>
     );
   });

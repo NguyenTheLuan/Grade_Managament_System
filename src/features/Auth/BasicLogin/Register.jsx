@@ -162,7 +162,7 @@ function Register() {
           <Form.Control
             name="birthday"
             className="formGroup_control"
-            type="date"
+            type="datetime-local"
             onChange={(e) => setBirthday(e.target.value)}
           />
         </Form.Group>
