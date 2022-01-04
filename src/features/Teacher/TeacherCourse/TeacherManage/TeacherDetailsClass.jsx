@@ -1,5 +1,6 @@
 import userApi from "apis/userApi";
 import { checkActive, checkInfo } from "components/common";
+import ModalUploadClass from "components/common/Modals/AdminManage/GradeStruct/ModalUploadClass/ModalUploadClass";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -8,6 +9,17 @@ import { useParams } from "react-router-dom";
 
 function TeacherDetailsClass() {
   const { id } = useParams();
+
+  //for upload
+  const [showUpload, setShowUpload] = useState(false);
+
+  const handleShow = () => {
+    setShowUpload(true);
+  };
+  const onShowUpload = (isShow) => {
+    getClassDetail();
+    setShowUpload(isShow);
+  };
 
   const [students, setStudents] = useState(null);
   // const [gradeStruct, setGradeStruct] = useState(null);
@@ -65,7 +77,13 @@ function TeacherDetailsClass() {
   return (
     <div className="details">
       {/* <legend className="details_tilte">Thông tin lớp</legend> */}
-      <div className="details_class">{renderInfoClass()}</div>
+      <div className="details_class">
+        {renderInfoClass()}
+        <Button onClick={() => handleShow()}>
+          Cập nhật danh sách học viên
+        </Button>
+      </div>
+
       {/* <legend className="details_tilte">Thông tin học viên</legend> */}
       <Table className="details_table" bordered hover striped>
         <thead>
@@ -78,7 +96,11 @@ function TeacherDetailsClass() {
         </thead>
         <tbody>{renderStudents}</tbody>
       </Table>
-      <Button>Cập nhật thông tin lớp học</Button>
+      <ModalUploadClass
+        show={showUpload}
+        onShow={onShowUpload}
+        infoClass={result}
+      />
     </div>
   );
 }

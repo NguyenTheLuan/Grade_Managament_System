@@ -33,7 +33,7 @@ function StudentDashBoard() {
               <NavLink to="my_info">Thông tin cá nhân</NavLink>
             </Accordion.Body>
             <Accordion.Body>
-              <NavLink to="map_student_id">Xác thực mã học viên</NavLink>
+              <NavLink to="map_student_id">Cập nhật mã học viên</NavLink>
             </Accordion.Body>
             <Accordion.Body>
               <NavLink to="change_password">Đổi mật khẩu</NavLink>

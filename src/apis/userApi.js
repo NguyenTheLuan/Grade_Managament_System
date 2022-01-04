@@ -40,11 +40,20 @@ const userApi = {
     const url = USER_API + STUDENT_API + "/grade";
     return axiosClient.get(url, info_update);
   },
+  //get all asignments
+  get_MyAssignments: (info_update) => {
+    const url = USER_API + STUDENT_API + "/course/assignments";
+    return axiosClient.get(url, info_update);
+  },
 
   //for teacher
   //creacte,view class
   create_newClass: (className) => {
     const url = USER_API + TEACHER_API + "/create-class";
+    return axiosClient.post(url, className);
+  },
+  post_updateClass: (className) => {
+    const url = USER_API + TEACHER_API + "/class";
     return axiosClient.post(url, className);
   },
   get_myClass: (info_Class) => {

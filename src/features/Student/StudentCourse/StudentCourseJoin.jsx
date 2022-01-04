@@ -16,15 +16,14 @@ function StudentCourseJoin({ show, onShow }) {
       code: code,
     };
     try {
-      await userApi.join_newClass(params);
-
-      toast.success("Tham gia lớp học thành công", {
+      const response = await userApi.join_newClass(params);
+      toast.success(`${response.message}`, {
         position: "bottom-right",
       });
       onShow(!show);
     } catch (error) {
       console.log("lỗi rồi", { error });
-      toast.warn("Cập nhật student ID bị lỗi", {
+      toast.warn(`${error.response.data.message}`, {
         position: "bottom-right",
       });
     }

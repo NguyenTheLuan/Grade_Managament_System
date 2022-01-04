@@ -27,7 +27,7 @@ function StudentMapCode() {
       navigate("/student/my_info");
     } catch (error) {
       console.log("lỗi rồi", { error });
-      toast.warn("Cập nhật student ID bị lỗi", {
+      toast.warn(`${error.response.data.message}`, {
         position: "bottom-right",
       });
     }

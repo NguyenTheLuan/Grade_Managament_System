@@ -7,6 +7,7 @@ function StudentCourseDetailsLink() {
       <div className="contentDetails_link">
         <Link to="/student/courses">Trở lại</Link>
         <NavLink to="details">Thông tin lớp</NavLink>
+        <NavLink to="assigments">Danh sách bài tập</NavLink>
         <NavLink to="scored">Điểm của tôi</NavLink>
       </div>
       <div className="contentDetails_content">

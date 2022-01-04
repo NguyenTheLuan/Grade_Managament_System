@@ -11,6 +11,7 @@ import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
 import StudentCourseDetailsRoutes from "features/Student/StudentCourse/StudentCourseDetails/StudentCourseDetailsRoutes";
 import StudentCourses from "features/Student/StudentCourse/StudentCourses";
+import StudentCourseAssignments from "features/Student/StudentCourse/StudentManage/StudentCourseAssignments";
 import StudentCourseDetail from "features/Student/StudentCourse/StudentManage/StudentCourseDetail";
 import StudentCourseScored from "features/Student/StudentCourse/StudentManage/StudentCourseScored";
 import StudentInfo from "features/Student/StudentPage/StudentInfo";
@@ -192,6 +193,11 @@ export const DETAIL_COURSE = {
     {
       path: "scored",
       component: <StudentCourseScored />,
+      index: true,
+    },
+    {
+      path: "assigments",
+      component: <StudentCourseAssignments />,
       index: true,
     },
   ],
