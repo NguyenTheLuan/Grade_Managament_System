@@ -67,9 +67,13 @@ export const checkJoin = (isJoin) => {
 export const checkActive = (status) => {
   return status ? "Đang mở" : "Đã khóa";
 };
-//CheckActive
+//CheckRole
 export const checkRole = (role) => {
   return role === "teacher" ? "Giảng viên" : "Học viên";
+};
+//CheckComplete
+export const checkComplete = (isComplete) => {
+  return isComplete ? "Hoàn thành" : "Chưa hoàn thành";
 };
 //render Date
 export const renderDate = (time) => {
