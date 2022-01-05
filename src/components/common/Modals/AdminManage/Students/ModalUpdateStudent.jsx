@@ -1,15 +1,24 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
-function ModalTeacherCreate({ show, onShow }) {
-  //info to create
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+function ModalUpdateStudent({ show, onShow, teacherDetail }) {
+  //info to updae
   const [fullName, setFullName] = useState();
   const [birthday, setBirthday] = useState();
   const [gender, setGender] = useState();
   const [phone, setPhone] = useState();
+
+  useEffect(() => {
+    if (!teacherDetail) return;
+    const { fullName, birthday, gender, phone } = teacherDetail;
+    setFullName(fullName);
+    setBirthday(birthday);
+    setGender(gender);
+    setPhone(phone);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [teacherDetail]);
 
   const handleClose = () => {
     onShow(!show);
@@ -17,40 +26,22 @@ function ModalTeacherCreate({ show, onShow }) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header>
-        <Modal.Title>Tạo giảng viên mới</Modal.Title>
+        <Modal.Title>Cập nhật thông tin</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Nhập địa chỉ email"
-              required
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Mật khẩu</Form.Label>
-            <Form.Control
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Nhập mật khẩu"
-              required
-            />
-          </Form.Group>
-          <Form.Group>
             <Form.Label>Tên giảng viên</Form.Label>
             <Form.Control
+              value={fullName}
               type="text"
-              required
-              placeholder="Nhập tên giảng viên"
               onChange={(e) => setFullName(e.target.value)}
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>Sinh nhật</Form.Label>
             <Form.Control
+              value={birthday}
               type="datetime-local"
               onChange={(e) => setBirthday(e.target.value)}
             />
@@ -58,15 +49,17 @@ function ModalTeacherCreate({ show, onShow }) {
           <Form.Group>
             <Form.Label>Số điện thoại</Form.Label>
             <Form.Control
+              value={phone}
               type="text"
-              placeholder="Nhập số điện thoại"
               onChange={(e) => setPhone(e.target.value)}
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>Giới tính</Form.Label>
-            <Form.Select>
-              <option>Chọn giới tính</option>
+            <Form.Select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
               <option value="true">Nam</option>
               <option value="false">Nữ</option>
             </Form.Select>
@@ -75,7 +68,7 @@ function ModalTeacherCreate({ show, onShow }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="success" onClick={handleClose}>
-          Tạo tài khoản mới
+          Cập nhật
         </Button>
         <Button variant="secondary" onClick={handleClose}>
           Đóng
@@ -85,4 +78,4 @@ function ModalTeacherCreate({ show, onShow }) {
   );
 }
 
-export default ModalTeacherCreate;
+export default ModalUpdateStudent;

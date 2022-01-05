@@ -1,5 +1,7 @@
 import adminApi from "apis/adminApi";
 import { checkGender } from "components/common";
+import ModalStudentDetails from "components/common/Modals/AdminManage/Students/ModalStudentDetails";
+import ModalUpdateStudent from "components/common/Modals/AdminManage/Students/ModalUpdateStudent";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 //icons
@@ -15,6 +17,31 @@ function Students() {
 
   const [students, setStudents] = useState();
   const [total, setTotal] = useState();
+
+  //Modal view details
+  const [showDetail, setShowDetail] = useState(false);
+  const [detail, setDetail] = useState(false);
+
+  const handleDetails = (info) => {
+    setDetail(info);
+    setShowDetail(true);
+  };
+  const onShowDetail = (isShow) => {
+    getStudents();
+    setShowDetail(isShow);
+  };
+
+  //Modal update teacher
+  const [showUpdate, setShowUpdate] = useState(false);
+
+  const handleUpdate = (info) => {
+    setDetail(info);
+    setShowUpdate(true);
+  };
+  const onShowUpdate = (isShow) => {
+    getStudents();
+    setShowUpdate(isShow);
+  };
 
   useEffect(() => {
     getStudents();
@@ -63,12 +90,6 @@ function Students() {
     );
   });
 
-  const handleDetails = (id) => {
-    console.log("xem chi tiết", id);
-  };
-  const handleUpdate = (id) => {
-    console.log("cập nhật thông tin", id);
-  };
   return (
     <div className="adminDetails">
       <legend className="adminDetails_title">Quản lý học viên</legend>
@@ -109,6 +130,12 @@ function Students() {
           </tr>
         </thead>
         <tbody>{renderStudents}</tbody>
+        <ModalStudentDetails
+          show={showDetail}
+          onShow={onShowDetail}
+          studentDetail={detail}
+        />
+        <ModalUpdateStudent show={showUpdate} onShow={onShowUpdate} />
       </Table>
     </div>
   );
