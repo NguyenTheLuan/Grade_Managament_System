@@ -1,9 +1,7 @@
 import userApi from "apis/userApi";
-import { checkActive, checkInfo, checkJoin } from "components/common";
+import { checkInfo, checkJoin } from "components/common";
 import ModalUploadClass from "components/common/Modals/TeacherManage/GradeStruct/ModalUploadClass/ModalUploadClass";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 

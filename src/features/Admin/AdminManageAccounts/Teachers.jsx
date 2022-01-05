@@ -1,5 +1,8 @@
 import adminApi from "apis/adminApi";
 import { checkGender } from "components/common";
+import ModalTeacherCreate from "components/common/Modals/AdminManage/Teachers/ModalTeacherCreate";
+import ModalTeacherDetails from "components/common/Modals/AdminManage/Teachers/ModalTeacherDetails";
+import ModalUpdateTeacher from "components/common/Modals/AdminManage/Teachers/ModalUpdateTeacher";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 //icons
@@ -15,6 +18,42 @@ function Teachers() {
 
   const [teachers, setTeachers] = useState();
   const [total, setTotal] = useState();
+
+  //Modal view details
+  const [showDetail, setShowDetail] = useState(false);
+  const [detail, setDetail] = useState(false);
+
+  const handleDetails = (info) => {
+    setDetail(info);
+    setShowDetail(true);
+  };
+  const onShowDetail = (isShow) => {
+    getTeachers();
+    setShowDetail(isShow);
+  };
+
+  //Modal update teacher
+  const [showUpdate, setShowUpdate] = useState(false);
+
+  const handleUpdate = (info) => {
+    setDetail(info);
+    setShowUpdate(true);
+  };
+  const onShowUpdate = (isShow) => {
+    getTeachers();
+    setShowUpdate(isShow);
+  };
+
+  //Modal create teacher
+  const [showCreate, setShowCreate] = useState(false);
+
+  const handleCreateTeacher = () => {
+    setShowCreate(true);
+  };
+  const onShowCreate = (isShow) => {
+    getTeachers();
+    setShowCreate(isShow);
+  };
 
   useEffect(() => {
     getTeachers();
@@ -62,12 +101,6 @@ function Teachers() {
     );
   });
 
-  const handleDetails = (id) => {
-    console.log("xem chi tiết", id);
-  };
-  const handleUpdate = (id) => {
-    console.log("cập nhật thông tin", id);
-  };
   return (
     <div className="adminDetails">
       <legend className="adminDetails_title">Quản lý giảng viên</legend>
@@ -108,7 +141,18 @@ function Teachers() {
         </thead>
         <tbody>{renderTeachers}</tbody>
       </Table>
-      <Button>Tạo giảng viên mới</Button>
+      <Button onClick={() => handleCreateTeacher()}>Tạo giảng viên mới</Button>
+      <ModalTeacherDetails
+        show={showDetail}
+        onShow={onShowDetail}
+        teacherDetail={detail}
+      />
+      <ModalUpdateTeacher
+        show={showUpdate}
+        onShow={onShowUpdate}
+        teacherDetail={detail}
+      />
+      <ModalTeacherCreate show={showCreate} onShow={onShowCreate} />
     </div>
   );
 }

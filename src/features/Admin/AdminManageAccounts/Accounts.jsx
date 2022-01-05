@@ -76,6 +76,16 @@ function Accounts() {
       <Form className="adminDetails_search">
         <Form.Group className="adminDetails_search_item">
           <Form.Label className="adminDetails_search_item_label">
+            Địa chỉ email
+          </Form.Label>
+          <Form.Control
+            className="adminDetails_search_item_control"
+            placeholder="Nhập địa chỉ email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group className="adminDetails_search_item">
+          <Form.Label className="adminDetails_search_item_label">
             Chức vụ
           </Form.Label>
           <Form.Select
@@ -100,16 +110,6 @@ function Accounts() {
             <option value="false">Đã khóa</option>
           </Form.Select>
         </Form.Group>
-        <Form.Group className="adminDetails_search_item">
-          <Form.Label className="adminDetails_search_item_label">
-            Địa chỉ email
-          </Form.Label>
-          <Form.Control
-            className="adminDetails_search_item_control"
-            placeholder="Nhập địa chỉ email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
       </Form>
 
       <Table className="adminDetails_content" hover striped bordered>
@@ -121,7 +121,7 @@ function Accounts() {
             <th>Chức vụ</th>
             <th>Trạng thái</th>
             <th>Chi tiết</th>
-            <th>Mở-khóa tài khoản</th>
+            <th>Mở-khóa</th>
           </tr>
         </thead>
         <tbody>{renderAccounts}</tbody>

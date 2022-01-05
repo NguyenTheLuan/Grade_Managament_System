@@ -12,6 +12,18 @@ const adminApi = {
     const url = ADMIN_API + "/teachers";
     return axiosClient.get(url, { params: params });
   },
+  get_TeacherId: (id) => {
+    const url = ADMIN_API + `/teacher/${id}`;
+    return axiosClient.get(url);
+  },
+  post_UpdateTeacherId: (id, info_account) => {
+    const url = ADMIN_API + `/teacher/${id}`;
+    return axiosClient.post(url, info_account);
+  },
+  post_CreateTeacher: (info_account) => {
+    const url = ADMIN_API + "/teacher";
+    return axiosClient.post(url, info_account);
+  },
   //get students
   get_Students: (params) => {
     const url = ADMIN_API + "/students";

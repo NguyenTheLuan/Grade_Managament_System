@@ -16,7 +16,7 @@ function ModalDetailAssignment({ show, onShow, assignment_info }) {
 
   return (
     <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title>{detail?.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
