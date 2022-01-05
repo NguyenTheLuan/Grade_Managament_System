@@ -5,7 +5,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  // gap: 10px;
+  gap: 20px;
 
   &_title {
     border-bottom: 1px solid rgb(212, 188, 188);
@@ -13,7 +14,7 @@
   }
   &_search {
     width: 80%;
-    min-height: 150px;
+    // min-height: 150px;
 
     display: flex;
     flex-direction: column;
@@ -21,8 +22,10 @@
     &_item {
       display: flex;
       flex-direction: row;
+      gap: 10px;
 
-      &_label {
+      &_label,
+      &_sort {
         flex: 1;
       }
       &_control {

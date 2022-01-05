@@ -1,11 +1,10 @@
 import adminApi from "apis/adminApi";
-import { checkActive, checkInfo, checkRole } from "components/common";
+import { checkActive, checkRole } from "components/common";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 //icons
 import { BsInfoLg } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
-
 //style css
 import "../AdminDetails.scss";
 
@@ -13,6 +12,7 @@ function Accounts() {
   //to search
   const [role, setRole] = useState("student");
   const [email, setEmail] = useState("");
+  const [active, setActive] = useState(true);
 
   const [accounts, setAccounts] = useState();
   const [total, setTotal] = useState();
@@ -20,7 +20,7 @@ function Accounts() {
   useEffect(() => {
     getAccounts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [role, email]);
+  }, [role, email, active]);
 
   const getAccounts = async () => {
     const params = {
@@ -28,6 +28,7 @@ function Accounts() {
       limit: 5,
       role: role,
       email: email,
+      active: active,
     };
     try {
       const response = await adminApi.get_Accounts(params);
@@ -44,7 +45,7 @@ function Accounts() {
       <tr key={index}>
         <td>{index + 1}</td>
         <td>{account.email}</td>
-        <td>{checkInfo(account.googleId)}</td>
+        {/* <td>{checkInfo(account.googleId)}</td> */}
         <td>{checkRole(account.role)}</td>
         <td>{checkActive(account.active)}</td>
         <td>
@@ -88,6 +89,19 @@ function Accounts() {
         </Form.Group>
         <Form.Group className="adminDetails_search_item">
           <Form.Label className="adminDetails_search_item_label">
+            Chức vụ
+          </Form.Label>
+          <Form.Select
+            className="adminDetails_search_item_control"
+            value={active}
+            onChange={(e) => setActive(e.target.value)}
+          >
+            <option value="true">Đang mở</option>
+            <option value="false">Đã khóa</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="adminDetails_search_item">
+          <Form.Label className="adminDetails_search_item_label">
             Địa chỉ email
           </Form.Label>
           <Form.Control
@@ -103,7 +117,7 @@ function Accounts() {
           <tr>
             <th>STT</th>
             <th>Email</th>
-            <th>GoogleId</th>
+            {/* <th>GoogleId</th> */}
             <th>Chức vụ</th>
             <th>Trạng thái</th>
             <th>Chi tiết</th>
