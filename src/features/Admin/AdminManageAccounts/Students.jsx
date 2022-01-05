@@ -9,6 +9,9 @@ import { Button, Table } from "react-bootstrap";
 import { BsInfoLg } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
+//style css
+import "../AdminDetails.scss";
+
 function Students() {
   const [students, setStudents] = useState();
   const [total, setTotal] = useState();
@@ -59,12 +62,13 @@ function Students() {
     console.log("cập nhật thông tin", id);
   };
   return (
-    <div>
-      <Table hover striped bordered>
+    <div className="adminDetails">
+      <legend className="adminDetails_title">Quản lý học viên</legend>
+      <Table className="adminDetails_content" hover striped bordered>
         <thead>
           <tr>
             <th>STT</th>
-            <th>Mã sinh viên</th>
+            <th>Mã học viên</th>
             <th>Tên</th>
             <th>Sinh nhật</th>
             <th>Giới tính</th>

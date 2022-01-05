@@ -33,5 +33,20 @@
 
   &_content {
     text-align: center;
+
+    //css icons
+    button {
+      background: transparent;
+      border: transparent;
+      &:hover,
+      &:focus {
+        background: transparent;
+        border: transparent;
+      }
+      .icons {
+        font-size: 25px;
+        color: green;
+      }
+    }
   }
 }

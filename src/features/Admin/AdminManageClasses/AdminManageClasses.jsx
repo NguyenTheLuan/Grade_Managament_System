@@ -4,6 +4,11 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
+//icons
+import { BsInfoLg } from "react-icons/bs";
+import { FiEdit } from "react-icons/fi";
+//style css
+import "../AdminDetails.scss";
 
 function AdminManageClasses() {
   const [classes, setClasses] = useState();
@@ -35,18 +40,24 @@ function AdminManageClasses() {
         <td>{classItem.teacher}</td>
         <td>{checkInfo(classItem.phone)}</td>
         <td>
-          <Button>Chi tiết</Button>
+          <Button>
+            <BsInfoLg className="icons" />
+          </Button>
         </td>
         <td>
-          <Button>Cập nhật</Button>
+          <Button>
+            <FiEdit className="icons" />
+          </Button>
         </td>
       </tr>
     );
   });
 
   return (
-    <div>
-      <Table>
+    <div className="adminDetails">
+      <legend className="adminDetails_title">Quản lý lớp học</legend>
+
+      <Table className="adminDetails_content" hover striped bordered>
         <thead>
           <tr>
             <th>STT</th>

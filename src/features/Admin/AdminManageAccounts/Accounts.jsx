@@ -1,5 +1,5 @@
 import adminApi from "apis/adminApi";
-import { checkInfo, checkRole } from "components/common";
+import { checkActive, checkInfo, checkRole } from "components/common";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 //icons
@@ -46,6 +46,7 @@ function Accounts() {
         <td>{account.email}</td>
         <td>{checkInfo(account.googleId)}</td>
         <td>{checkRole(account.role)}</td>
+        <td>{checkActive(account.active)}</td>
         <td>
           <Button onClick={() => handleDetails(account)}>
             <BsInfoLg className="icons" />
