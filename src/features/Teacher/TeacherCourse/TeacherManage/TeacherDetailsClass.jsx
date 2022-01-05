@@ -1,6 +1,6 @@
 import userApi from "apis/userApi";
 import { checkActive, checkInfo, checkJoin } from "components/common";
-import ModalUploadClass from "components/common/Modals/AdminManage/GradeStruct/ModalUploadClass/ModalUploadClass";
+import ModalUploadClass from "components/common/Modals/TeacherManage/GradeStruct/ModalUploadClass/ModalUploadClass";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";

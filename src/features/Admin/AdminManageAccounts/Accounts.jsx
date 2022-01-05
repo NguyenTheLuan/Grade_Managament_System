@@ -1,20 +1,36 @@
 import adminApi from "apis/adminApi";
 import { checkInfo, checkRole } from "components/common";
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Form, Table } from "react-bootstrap";
 //icons
 import { BsInfoLg } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
+//style css
+import "../AdminDetails.scss";
+
 function Accounts() {
+  //to search
+  const [role, setRole] = useState("student");
+  const [email, setEmail] = useState("");
+
   const [accounts, setAccounts] = useState();
   const [total, setTotal] = useState();
+
   useEffect(() => {
     getAccounts();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [role, email]);
+
   const getAccounts = async () => {
+    const params = {
+      page: 1,
+      limit: 5,
+      role: role,
+      email: email,
+    };
     try {
-      const response = await adminApi.get_Accounts();
+      const response = await adminApi.get_Accounts(params);
       console.log(response);
       const { numOfAccount, result } = response;
       setTotal(numOfAccount);
@@ -52,8 +68,36 @@ function Accounts() {
   };
 
   return (
-    <div>
-      <Table hover striped bordered>
+    <div className="adminDetails">
+      <legend className="adminDetails_title">Quản lý tài khoản</legend>
+
+      <Form className="adminDetails_search">
+        <Form.Group className="adminDetails_search_item">
+          <Form.Label className="adminDetails_search_item_label">
+            Chức vụ
+          </Form.Label>
+          <Form.Select
+            className="adminDetails_search_item_control"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="student">Học viên</option>
+            <option value="teacher">Giảng viên</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="adminDetails_search_item">
+          <Form.Label className="adminDetails_search_item_label">
+            Địa chỉ email
+          </Form.Label>
+          <Form.Control
+            className="adminDetails_search_item_control"
+            placeholder="Nhập địa chỉ email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+      </Form>
+
+      <Table className="adminDetails_content" hover striped bordered>
         <thead>
           <tr>
             <th>STT</th>

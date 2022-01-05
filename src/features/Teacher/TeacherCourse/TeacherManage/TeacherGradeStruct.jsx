@@ -7,9 +7,9 @@ import { useParams } from "react-router-dom";
 
 import { FiEdit } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
-import ModalAddGradeStruct from "components/common/Modals/AdminManage/GradeStruct/ModalAddGradeStruct";
-import ModalEditGradeStruct from "components/common/Modals/AdminManage/GradeStruct/ModalEditGradeStruct";
-import ModalDeleteGradeStruct from "components/common/Modals/AdminManage/GradeStruct/ModalDeleteGradeStruct";
+import ModalAddGradeStruct from "components/common/Modals/TeacherManage/GradeStruct/ModalAddGradeStruct";
+import ModalEditGradeStruct from "components/common/Modals/TeacherManage/GradeStruct/ModalEditGradeStruct";
+import ModalDeleteGradeStruct from "components/common/Modals/TeacherManage/GradeStruct/ModalDeleteGradeStruct";
 
 function TeacherGradeStruct() {
   const { id } = useParams();

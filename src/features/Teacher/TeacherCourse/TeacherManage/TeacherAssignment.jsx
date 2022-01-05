@@ -1,8 +1,8 @@
 import userApi from "apis/userApi";
 import { renderDate } from "components/common";
-import ModalAddAssignment from "components/common/Modals/AdminManage/Assignments/ModalAddAssignment";
-import ModalDetailAssignment from "components/common/Modals/AdminManage/Assignments/ModalDetailAssignment";
-import ModalEditAssignment from "components/common/Modals/AdminManage/Assignments/ModalEditAssignment";
+import ModalAddAssignment from "components/common/Modals/TeacherManage/Assignments/ModalAddAssignment";
+import ModalDetailAssignment from "components/common/Modals/TeacherManage/Assignments/ModalDetailAssignment";
+import ModalEditAssignment from "components/common/Modals/TeacherManage/Assignments/ModalEditAssignment";
 import { saveAs } from "file-saver";
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
@@ -13,7 +13,7 @@ import { TiUploadOutline } from "react-icons/ti";
 import { FiEdit } from "react-icons/fi";
 import { GrDownload } from "react-icons/gr";
 import { useParams } from "react-router-dom";
-import ModalScoredAssignment from "components/common/Modals/AdminManage/Assignments/ModalScoredAssignment";
+import ModalScoredAssignment from "components/common/Modals/TeacherManage/Assignments/ModalScoredAssignment";
 
 function TeacherAssignment() {
   const { id } = useParams();
