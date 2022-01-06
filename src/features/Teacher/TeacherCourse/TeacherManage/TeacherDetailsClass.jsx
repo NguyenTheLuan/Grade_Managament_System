@@ -1,5 +1,6 @@
 import userApi from "apis/userApi";
 import { checkInfo, checkJoin } from "components/common";
+import ExportToExcel from "components/common/ExportExcel";
 import ModalUploadClass from "components/common/Modals/TeacherManage/GradeStruct/ModalUploadClass/ModalUploadClass";
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
@@ -48,7 +49,7 @@ function TeacherDetailsClass() {
         <td>{index + 1}</td>
         <td>{student.studentId}</td>
         <td>{student.fullName}</td>
-        <td>{checkJoin(student.join)}</td>
+        <td>{checkJoin(student.joined)}</td>
       </tr>
     );
   });
@@ -80,6 +81,14 @@ function TeacherDetailsClass() {
         <Button onClick={() => handleShow()}>
           Cập nhật danh sách học viên
         </Button>
+        {/* <Button variant="success">Xuất file excel</Button> */}
+        <ExportToExcel
+          dataSheet={students}
+          nameButton="học viên"
+          nameSheet="Danh sách học viên"
+          nameFile="Danh sách học viên"
+        />
+        <Button variant="secondary">Kết thúc khóa học</Button>
       </div>
 
       {/* <legend className="details_tilte">Thông tin học viên</legend> */}

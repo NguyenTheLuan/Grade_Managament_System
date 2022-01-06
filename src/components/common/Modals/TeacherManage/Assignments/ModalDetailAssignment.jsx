@@ -1,4 +1,4 @@
-import { renderDate } from "components/common";
+import { checkAssigment, renderDate } from "components/common";
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 
@@ -28,7 +28,7 @@ function ModalDetailAssignment({ show, onShow, assignment_info }) {
             Mã hệ điểm <strong>{detail?.structCode}</strong>
           </div>
           <div>
-            Trạng thái <strong>{detail?.status}</strong>
+            Trạng thái <strong>{checkAssigment(detail?.status)}</strong>
           </div>
           <div>
             Ngày bắt đầu <strong>{renderDate(detail?.pending)}</strong>

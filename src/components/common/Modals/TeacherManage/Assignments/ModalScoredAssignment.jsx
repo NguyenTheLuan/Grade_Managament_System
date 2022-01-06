@@ -60,7 +60,7 @@ function ModalScoredAssignment({ show, onShow, assignment_info }) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="submit" onClick={() => handleAdd()}>
+        <Button variant="success" type="submit" onClick={() => handleAdd()}>
           Tiến thành nhập điểm
         </Button>
         <Button variant="secondary" onClick={handleClose}>

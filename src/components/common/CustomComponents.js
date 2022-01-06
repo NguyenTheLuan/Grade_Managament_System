@@ -79,6 +79,11 @@ export const checkRole = (role) => {
 export const checkComplete = (isComplete) => {
   return isComplete ? "Hoàn thành" : "Chưa hoàn thành";
 };
+//CheckAssigment
+export const checkAssigment = (assignment) => {
+  return assignment === "available" ? "Chưa chấm điểm" : "Đã chấm điểm";
+};
+
 //render Date
 export const renderDate = (time) => {
   const date = new Date(time);

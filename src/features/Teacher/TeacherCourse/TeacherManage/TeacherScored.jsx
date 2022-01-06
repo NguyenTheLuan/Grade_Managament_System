@@ -33,7 +33,7 @@ function TeacherScored() {
     return (
       <tr key={index}>
         <td>{index + 1}</td>
-        <td>{student.classCode}</td>
+        {/* <td>{student.classCode}</td> */}
         <td></td>
         <td></td>
         {/* <td>{student.scoreRecord}</td> */}
@@ -49,7 +49,7 @@ function TeacherScored() {
         <thead>
           <tr>
             <th>STT</th>
-            <th>Mã số</th>
+            {/* <th>Mã số</th> */}
             <th>Tên</th>
             <th>Điểm</th>
             <th>Tổng kết</th>

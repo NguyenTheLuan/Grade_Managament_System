@@ -1,5 +1,5 @@
 import userApi from "apis/userApi";
-import { renderDate } from "components/common";
+import { checkAssigment, renderDate } from "components/common";
 import ModalAddAssignment from "components/common/Modals/TeacherManage/Assignments/ModalAddAssignment";
 import ModalDetailAssignment from "components/common/Modals/TeacherManage/Assignments/ModalDetailAssignment";
 import ModalEditAssignment from "components/common/Modals/TeacherManage/Assignments/ModalEditAssignment";
@@ -63,7 +63,6 @@ function TeacherAssignment() {
   //Modal View Details Assignment
   const [showDetail, setShowDetail] = useState(false);
   const onShowDetail = (isShow) => {
-    getAssignments();
     setShowDetail(isShow);
   };
   const handleViewDetail = (assignment_info) => {
@@ -86,17 +85,16 @@ function TeacherAssignment() {
   const downloadImage = (linkHref, assignment_name) => {
     let fileName = linkHref.split(".");
     fileName = fileName[fileName.length - 1];
-    if (fileName === "jpg" || fileName === "png") {
+    if (fileName === "jpg" || fileName === "png" || fileName === "txt") {
       saveAs(`${linkHref}`, `${assignment_name}.${fileName}`);
     } else if (
       fileName === "pdf" ||
       fileName === "xls" ||
       fileName === "xlsx"
     ) {
-      console.log("đây là", linkHref);
       window.location = linkHref;
     } else {
-      console.log("chưa có file đuôi", fileName);
+      console.log("chưa có file đuôi", fileName, linkHref);
       return;
     }
   };
@@ -105,8 +103,8 @@ function TeacherAssignment() {
     return (
       <tr key={index}>
         <td>{index + 1}</td>
-        <td>{assignment.status}</td>
-        <td>{assignment.code}</td>
+        <td>{checkAssigment(assignment.status)}</td>
+        {/* <td>{assignment.code}</td> */}
         <td>{assignment.name}</td>
         <td>{renderDate(assignment.pending)}</td>
         <td>{renderDate(assignment.expired)}</td>
@@ -145,7 +143,7 @@ function TeacherAssignment() {
           <tr>
             <th>STT</th>
             <th>Trạng thái</th>
-            <th>Mã bài tập</th>
+            {/* <th>Mã bài tập</th> */}
             <th>Tên bài tập</th>
             <th>Ngày bắt đầu</th>
             <th>Ngày kết thúc</th>
