@@ -42,8 +42,7 @@ function ModalUpdateTeacher({ show, onShow, teacherDetail }) {
       phone: phone,
     };
     try {
-      const response = await adminApi.post_UpdateTeacherId(id, params);
-      console.log(response);
+      await adminApi.post_UpdateTeacherId(id, params);
       toast.success("Cập nhật thông tin thành công", {
         position: "bottom-right",
       });

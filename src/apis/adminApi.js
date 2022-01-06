@@ -29,6 +29,10 @@ const adminApi = {
     const url = ADMIN_API + "/students";
     return axiosClient.get(url, { params: params });
   },
+  post_UpdateStudentId: (id, info_account) => {
+    const url = ADMIN_API + `/student/${id}`;
+    return axiosClient.post(url, info_account);
+  },
   //get accounts
   get_Accounts: (params) => {
     const url = ADMIN_API + "/accounts";

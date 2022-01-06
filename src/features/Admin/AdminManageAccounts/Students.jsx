@@ -135,7 +135,11 @@ function Students() {
           onShow={onShowDetail}
           studentDetail={detail}
         />
-        <ModalUpdateStudent show={showUpdate} onShow={onShowUpdate} />
+        <ModalUpdateStudent
+          show={showUpdate}
+          onShow={onShowUpdate}
+          studentDetail={detail}
+        />
       </Table>
     </div>
   );
