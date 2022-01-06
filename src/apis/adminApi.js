@@ -38,10 +38,22 @@ const adminApi = {
     const url = ADMIN_API + "/accounts";
     return axiosClient.get(url, { params: params });
   },
+  post_AccountsLock: (id) => {
+    const url = ADMIN_API + `/account/lock/${id}`;
+    return axiosClient.post(url);
+  },
+  post_AccountsUnlock: (id) => {
+    const url = ADMIN_API + `/account/unlock/${id}`;
+    return axiosClient.post(url);
+  },
   //get classes
   get_Classes: (params) => {
     const url = ADMIN_API + "/classes";
     return axiosClient.get(url, { params: params });
+  },
+  post_ClassesUpdate: (id, info_class) => {
+    const url = ADMIN_API + `/class/${id}`;
+    return axiosClient.post(url, info_class);
   },
 };
 

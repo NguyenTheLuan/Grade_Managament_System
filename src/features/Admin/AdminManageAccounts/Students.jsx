@@ -27,7 +27,6 @@ function Students() {
     setShowDetail(true);
   };
   const onShowDetail = (isShow) => {
-    getStudents();
     setShowDetail(isShow);
   };
 

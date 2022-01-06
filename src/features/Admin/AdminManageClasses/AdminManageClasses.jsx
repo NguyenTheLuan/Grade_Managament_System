@@ -1,8 +1,8 @@
 import adminApi from "apis/adminApi";
-import { checkActive, checkComplete, checkInfo } from "components/common";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { checkActive, checkComplete } from "components/common";
+import ModalClassDetail from "components/common/Modals/AdminManage/Classes/ModalClassDetail ";
+import ModalClassUpdate from "components/common/Modals/AdminManage/Classes/ModalClassUpdate";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 //icons
 import { BsInfoLg } from "react-icons/bs";
@@ -18,8 +18,33 @@ function AdminManageClasses() {
   const [classes, setClasses] = useState();
   const [total, setTotal] = useState();
 
+  //Modal view details
+  const [showDetail, setShowDetail] = useState(false);
+  const [detail, setDetail] = useState();
+
+  const handleDetails = (info) => {
+    setDetail(info);
+    setShowDetail(true);
+  };
+  const onShowDetail = (isShow) => {
+    setShowDetail(isShow);
+  };
+
+  //Modal update
+  const [showUpdate, setShowUpdate] = useState(false);
+
+  const handleUpdate = (info) => {
+    setDetail(info);
+    setShowUpdate(true);
+  };
+  const onShowUpdate = (isShow) => {
+    getClasses();
+    setShowUpdate(isShow);
+  };
+
   useEffect(() => {
     getClasses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, sort]);
 
   const getClasses = async () => {
@@ -31,7 +56,7 @@ function AdminManageClasses() {
     };
     try {
       const response = await adminApi.get_Classes(params);
-      console.log(response);
+      // console.log(response);
       const { numOfClass, result } = response;
       setTotal(numOfClass);
       setClasses(result);
@@ -48,16 +73,16 @@ function AdminManageClasses() {
         <td>{classItem.name}</td>
         <td>{checkActive(classItem.active)}</td>
         <td>{checkComplete(classItem.complete)}</td>
-        <td>{classItem.teacher}</td>
-        <td>{checkInfo(classItem.phone)}</td>
+        {/* <td>{classItem.teacher}</td>
+        <td>{checkInfo(classItem.phone)}</td> */}
         <td>
-          <Button>
-            <BsInfoLg className="icons" />
+          <Button onClick={() => handleUpdate(classItem)}>
+            <FiEdit className="icons" />
           </Button>
         </td>
         <td>
-          <Button>
-            <FiEdit className="icons" />
+          <Button onClick={() => handleDetails(classItem)}>
+            <BsInfoLg className="icons" />
           </Button>
         </td>
       </tr>
@@ -97,14 +122,16 @@ function AdminManageClasses() {
             <th>Tên lớp</th>
             <th>Trạng thái</th>
             <th>Hoàn thành</th>
-            <th>Giảng viên</th>
-            <th>Số điện thoại</th>
-            <th>Chi tiết</th>
+            {/* <th>Giảng viên</th>
+            <th>Số điện thoại</th> */}
             <th>Cập nhật</th>
+            <th>Chi tiết</th>
           </tr>
         </thead>
         <tbody>{renderClass}</tbody>
       </Table>
+      <ModalClassDetail show={showDetail} onShow={onShowDetail} info={detail} />
+      <ModalClassUpdate show={showUpdate} onShow={onShowUpdate} info={detail} />
     </div>
   );
 }

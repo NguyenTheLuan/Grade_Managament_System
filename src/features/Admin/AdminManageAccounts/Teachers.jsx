@@ -21,14 +21,13 @@ function Teachers() {
 
   //Modal view details
   const [showDetail, setShowDetail] = useState(false);
-  const [detail, setDetail] = useState(false);
+  const [detail, setDetail] = useState();
 
   const handleDetails = (info) => {
     setDetail(info);
     setShowDetail(true);
   };
   const onShowDetail = (isShow) => {
-    getTeachers();
     setShowDetail(isShow);
   };
 
