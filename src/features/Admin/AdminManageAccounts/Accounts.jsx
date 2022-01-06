@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 //icons
 import { BsInfoLg } from "react-icons/bs";
+import { RiPassportLine } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
 //style css
 import "../AdminDetails.scss";
@@ -56,6 +57,11 @@ function Accounts() {
         <td>
           <Button onClick={() => handleUpdate(account)}>
             <FiEdit className="icons" />
+          </Button>
+        </td>
+        <td>
+          <Button>
+            <RiPassportLine className="icons" />
           </Button>
         </td>
       </tr>
@@ -122,6 +128,7 @@ function Accounts() {
             <th>Trạng thái</th>
             <th>Chi tiết</th>
             <th>Mở-khóa</th>
+            <th>Đổi mật khẩu</th>
           </tr>
         </thead>
         <tbody>{renderAccounts}</tbody>

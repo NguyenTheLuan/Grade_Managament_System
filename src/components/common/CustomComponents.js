@@ -67,6 +67,10 @@ export const checkJoin = (isJoin) => {
 export const checkActive = (status) => {
   return status ? "Đang mở" : "Đã khóa";
 };
+//Check type of account
+export const checkTypeAccount = (account) => {
+  return account === "google" ? "Google" : "Tài khoản";
+};
 //CheckRole
 export const checkRole = (role) => {
   return role === "teacher" ? "Giảng viên" : "Học viên";

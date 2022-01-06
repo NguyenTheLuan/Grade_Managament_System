@@ -1,44 +1,57 @@
-import adminApi from "apis/adminApi";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Modal } from "react-bootstrap";
+import { checkInfo, checkTypeAccount, renderDate } from "components/common";
+import React, { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
-function ModalStudentDetails({ show, onShow, teacherDetail }) {
-  const [teacherInfo, setTeacherInfo] = useState();
+function ModalStudentDetails({ show, onShow, studentDetail }) {
+  const [studentInfo, setStudentInfo] = useState();
 
   useEffect(() => {
-    if (!teacherDetail) return;
-    setTeacherInfo(teacherDetail);
-    // console.log(teacherDetail);
-    // getInfoTeacher();
+    if (!studentDetail) return;
+    setStudentInfo([studentDetail]);
+    console.log(studentInfo);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [teacherDetail]);
-
-  const getInfoTeacher = async () => {
-    const id = teacherInfo?.accountId?._id;
-    try {
-      const response = await adminApi.get_TeacherId(id);
-      console.log("lấyy được thông tin rồi", response);
-    } catch (error) {
-      console.log("lỗi rồi", { error });
-    }
-  };
+  }, [studentDetail]);
 
   const handleClose = () => {
     onShow(!show);
   };
+
+  const renderStudentInfo = studentInfo?.map((info, index) => {
+    return (
+      <ul key={index}>
+        <li>
+          Địa chỉ email: <strong>{info.accountId.email}</strong>
+        </li>
+        <li>
+          Loại tài khoản:
+          <strong> {checkTypeAccount(info.accountId.authType)}</strong>
+        </li>
+        <li>
+          Họ và tên: <strong>{info.fullName}</strong>
+        </li>
+        <li>
+          Ngày sinh: <strong>{renderDate(info.birthday)}</strong>
+        </li>
+        <li>
+          Họ và tên: <strong>{info.fullName}</strong>
+        </li>
+        <li>
+          Số điện thoại: <strong>{checkInfo(info.phone)}</strong>
+        </li>
+      </ul>
+    );
+  });
 
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header>
         <Modal.Title>Thông tin chi tiết</Modal.Title>
       </Modal.Header>
-      <Modal.Body>fsadsads</Modal.Body>
+      <Modal.Body>{renderStudentInfo}</Modal.Body>
       <Modal.Footer>
-        {/* <Button variant="secondary" onClick={handleClose}>
-      Đóng
-    </Button> */}
+        <Button variant="secondary" onClick={handleClose}>
+          Đóng
+        </Button>
       </Modal.Footer>
     </Modal>
   );

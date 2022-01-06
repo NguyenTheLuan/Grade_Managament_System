@@ -1,7 +1,5 @@
-import adminApi from "apis/adminApi";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { checkInfo, checkTypeAccount, renderDate } from "components/common";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 
 function ModalTeacherDetails({ show, onShow, teacherDetail }) {
@@ -9,36 +7,50 @@ function ModalTeacherDetails({ show, onShow, teacherDetail }) {
 
   useEffect(() => {
     if (!teacherDetail) return;
-    setTeacherInfo(teacherDetail);
-    // console.log(teacherDetail);
-    // getInfoTeacher();
+    setTeacherInfo([teacherDetail]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [teacherDetail]);
-
-  const getInfoTeacher = async () => {
-    const id = teacherInfo?.accountId?._id;
-    try {
-      const response = await adminApi.get_TeacherId(id);
-      console.log("lấyy được thông tin rồi", response);
-    } catch (error) {
-      console.log("lỗi rồi", { error });
-    }
-  };
 
   const handleClose = () => {
     onShow(!show);
   };
+
+  const renderTeacherInfo = teacherInfo?.map((info, index) => {
+    return (
+      <ul key={index}>
+        <li>
+          Địa chỉ email: <strong>{info.accountId.email}</strong>
+        </li>
+        <li>
+          Loại tài khoản:
+          <strong> {checkTypeAccount(info.accountId.authType)}</strong>
+        </li>
+        <li>
+          Họ và tên: <strong>{info.fullName}</strong>
+        </li>
+        <li>
+          Ngày sinh: <strong>{renderDate(info.birthday)}</strong>
+        </li>
+        <li>
+          Họ và tên: <strong>{info.fullName}</strong>
+        </li>
+        <li>
+          Số điện thoại: <strong>{checkInfo(info.phone)}</strong>
+        </li>
+      </ul>
+    );
+  });
 
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header>
         <Modal.Title>Thông tin chi tiết</Modal.Title>
       </Modal.Header>
-      <Modal.Body>fsadsads</Modal.Body>
+      <Modal.Body>{renderTeacherInfo}</Modal.Body>
       <Modal.Footer>
         {/* <Button variant="secondary" onClick={handleClose}>
-      Đóng
-    </Button> */}
+          Đóng
+        </Button> */}
       </Modal.Footer>
     </Modal>
   );

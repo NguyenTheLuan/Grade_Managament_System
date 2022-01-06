@@ -33,9 +33,13 @@ function ModalAddAssignment({ show, onShow }) {
       const response = await userApi.get_myClassDetail(id);
       const { gradeStruct } = response;
       // console.log(gradeStruct);
+      toast.success("Thêm thành công", { position: "bottom-right" });
       setGrades(gradeStruct);
     } catch (error) {
       console.log("lỗi rồi", { error });
+      toast.warning(`${error.response.data.message}`, {
+        position: "bottom-right",
+      });
     }
   };
   //Render select grate struct
