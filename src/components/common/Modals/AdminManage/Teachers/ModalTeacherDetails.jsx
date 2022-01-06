@@ -1,4 +1,9 @@
-import { checkInfo, checkTypeAccount, renderDate } from "components/common";
+import {
+  checkInfo,
+  checkRole,
+  checkTypeAccount,
+  renderDate,
+} from "components/common";
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 
@@ -24,6 +29,10 @@ function ModalTeacherDetails({ show, onShow, teacherDetail }) {
         <li>
           Loại tài khoản:
           <strong> {checkTypeAccount(info.accountId.authType)}</strong>
+        </li>
+        <li>
+          Chức vụ:
+          <strong> {checkRole(info.accountId.role)}</strong>
         </li>
         <li>
           Họ và tên: <strong>{info.fullName}</strong>
