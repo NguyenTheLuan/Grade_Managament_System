@@ -38,6 +38,10 @@ const adminApi = {
     const url = ADMIN_API + "/accounts";
     return axiosClient.get(url, { params: params });
   },
+  post_AccountUpdate: (info_account) => {
+    const url = ADMIN_API + "/account/change-pw";
+    return axiosClient.post(url, info_account);
+  },
   post_AccountsLock: (id) => {
     const url = ADMIN_API + `/account/lock/${id}`;
     return axiosClient.post(url);
