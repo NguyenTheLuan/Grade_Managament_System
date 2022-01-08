@@ -69,10 +69,10 @@ function StudentCourseScored() {
         <td>{index + 1}</td>
         <td>{student.fullName}</td>
         <td className="scoredGrade">{checkGrade(student, structs)}</td>
-        <td></td>
+        {/* <td></td> */}
 
         <td>{student.gpa}</td>
-        <td>{student.mark}</td>
+        {/* <td>{student.mark}</td> */}
       </tr>
     );
   });
@@ -87,7 +87,7 @@ function StudentCourseScored() {
             <th>Tên</th>
             <th>Điểm</th>
             <th>Tổng kết</th>
-            <th>Đánh dấu</th>
+            {/* <th>Đánh dấu</th> */}
           </tr>
         </thead>
         <tbody>{renderStudents}</tbody>

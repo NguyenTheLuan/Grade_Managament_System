@@ -10,10 +10,14 @@ function StudentCourses() {
   const navigate = useNavigate();
 
   const [classes, setClasses] = useState([]);
+  const [active, setActive] = useState(true);
+  const [complete, setComplete] = useState(true);
+  const [name, setName] = useState("");
 
   //Call api to get classes
   useEffect(() => {
     getMyCourses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Set and render
@@ -34,7 +38,13 @@ function StudentCourses() {
   };
 
   const getMyCourses = async () => {
-    const params = { page: 1, limit: 12, active: true, name: "" };
+    const params = {
+      page: 1,
+      limit: 12,
+      active: active,
+      name: name,
+      complete: complete,
+    };
     try {
       const response = await userApi.get_myCourses(params);
       const { myCourses } = response;
@@ -57,6 +67,7 @@ function StudentCourses() {
             <div>Lớp {classInfo.className}</div>
             <div>Mã lớp {classInfo.classCode}</div>
             <div>Trạng thái{checkActive(classInfo.active)}</div>
+            <div>Thông tin: {checkComplete(classInfo.complete)}</div>
           </div>
         );
       });

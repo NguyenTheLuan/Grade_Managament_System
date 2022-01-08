@@ -6,7 +6,9 @@ import { selectRole } from "reducers/authSlice";
 function AdminAuth() {
   const isAdmin = useSelector(selectRole);
 
-  return <>{isAdmin === "admin" ? <Outlet /> : <Navigate to="/login" />}</>;
+  return (
+    <>{isAdmin === "admin" ? <Outlet /> : <Navigate to="/admin/login" />}</>
+  );
 }
 
 export default AdminAuth;

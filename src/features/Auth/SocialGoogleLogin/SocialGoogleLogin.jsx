@@ -4,7 +4,7 @@ import GoogleLogin from "react-google-login";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { isLogin, isPending } from "reducers/authSlice";
+import { isLogin, isPending, isSuccess } from "reducers/authSlice";
 
 function SocialGoogleLogin() {
   const dispatch = useDispatch();
@@ -38,6 +38,10 @@ function SocialGoogleLogin() {
       toast.success("Đăng nhập thành công", { position: "bottom-right" });
     } catch (error) {
       console.log("đăng nhập lỗi", { error });
+      dispatch(isSuccess());
+      toast.warn(`${error.response.data.message}`, {
+        position: "bottom-right",
+      });
     }
   };
 
