@@ -1,5 +1,5 @@
 import userApi from "apis/userApi";
-import { checkActive } from "components/common";
+import { checkActive, checkComplete } from "components/common";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -37,7 +37,7 @@ function TeacherCourses() {
     const params = { page: 1, limit: 12, active: true };
     try {
       const response = await userApi.get_myClass(params);
-      // console.log(response);
+      console.log(response);
       const { numOfClass, result } = response;
       // console.log(result);
       setClasses(result);
@@ -58,7 +58,8 @@ function TeacherCourses() {
           >
             <div>Lớp {classInfo.name}</div>
             <div>Mã lớp {classInfo.code}</div>
-            <div>Trạng thái {checkActive(classInfo.active)}</div>
+            <div>Trạng thái{checkActive(classInfo.active)}</div>
+            <div>Hoàn thành {checkComplete(classInfo.complete)}</div>
           </div>
         );
       });

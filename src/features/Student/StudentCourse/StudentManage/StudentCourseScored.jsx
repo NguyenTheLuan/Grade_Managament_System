@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import "style/CourseDetail.scss";
 
 function StudentCourseScored() {
   const { id } = useLocation();
@@ -47,9 +48,9 @@ function StudentCourseScored() {
 
     return result.map((score, index) => {
       return (
-        <ul key={index}>
-          <li>{score.structName}</li>
-          <li>{renderScored(score.scores)}</li>
+        <ul key={index} className="scores">
+          <li className="scores_name">{score.structName}</li>
+          <li className="scores_value">{renderScored(score.scores)}</li>
         </ul>
       );
     });
@@ -67,7 +68,7 @@ function StudentCourseScored() {
       <tr key={index}>
         <td>{index + 1}</td>
         <td>{student.fullName}</td>
-        <td>{checkGrade(student, structs)}</td>
+        <td className="scoredGrade">{checkGrade(student, structs)}</td>
         <td></td>
 
         <td>{student.gpa}</td>

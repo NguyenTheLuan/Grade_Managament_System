@@ -1,4 +1,5 @@
 import userApi from "apis/userApi";
+import { checkActive, checkComplete } from "components/common";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -55,6 +56,7 @@ function StudentCourses() {
           >
             <div>Lớp {classInfo.className}</div>
             <div>Mã lớp {classInfo.classCode}</div>
+            <div>Trạng thái{checkActive(classInfo.active)}</div>
           </div>
         );
       });

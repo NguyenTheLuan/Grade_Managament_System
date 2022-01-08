@@ -1,7 +1,8 @@
 import userApi from "apis/userApi";
-import { checkInfo, checkJoin } from "components/common";
+import { checkActive, checkInfo, checkJoin } from "components/common";
 import ExportToExcel from "components/common/ExportExcel";
 import ModalUploadClass from "components/common/Modals/TeacherManage/GradeStruct/ModalUploadClass/ModalUploadClass";
+import ModalTeacherMarkClass from "components/common/Modals/TeacherManage/ModalTeacherMarkClass";
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -19,6 +20,16 @@ function TeacherDetailsClass() {
     getClassDetail();
     setShowUpload(isShow);
   };
+  //for mark final
+  const [showMark, setShowMark] = useState(false);
+
+  const handleMark = () => {
+    setShowMark(true);
+  };
+  const onShowMark = (isShow) => {
+    getClassDetail();
+    setShowMark(isShow);
+  };
 
   const [students, setStudents] = useState(null);
   // const [gradeStruct, setGradeStruct] = useState(null);
@@ -34,7 +45,7 @@ function TeacherDetailsClass() {
       const response = await userApi.get_myClassDetail(id);
       const { result } = response;
       const { students } = result;
-      console.log(response);
+      // console.log(response);
       setStudents(students);
       // setGradeStruct(gradeStruct);
       setResult(result);
@@ -61,7 +72,8 @@ function TeacherDetailsClass() {
           Mã lớp: <strong>{result?.code}</strong>
         </li>
         <li>
-          Lớp học: <strong>{result?.name}</strong>
+          Lớp học: <strong>{result?.name}</strong> _{" "}
+          {checkActive(result?.active)}
         </li>
         <li>
           Tên giảng viên: <strong>{result?.teacher}</strong>
@@ -78,17 +90,19 @@ function TeacherDetailsClass() {
       {/* <legend className="details_tilte">Thông tin lớp</legend> */}
       <div className="details_class">
         {renderInfoClass()}
-        <Button onClick={() => handleShow()}>
-          Cập nhật danh sách học viên
-        </Button>
-        {/* <Button variant="success">Xuất file excel</Button> */}
-        <ExportToExcel
-          dataSheet={students}
-          nameButton="học viên"
-          nameSheet="Danh sách học viên"
-          nameFile="Danh sách học viên"
-        />
-        <Button variant="secondary">Kết thúc khóa học</Button>
+        <ul>
+          <Button onClick={() => handleShow()}>Cập nhật danh sách</Button>
+          {/* <Button variant="success">Xuất file excel</Button> */}
+          <ExportToExcel
+            dataSheet={students}
+            nameButton="học viên"
+            nameSheet="Danh sách học viên"
+            nameFile="Danh sách học viên"
+          />
+          <Button variant="secondary" onClick={() => handleMark()}>
+            Kết thúc khóa học
+          </Button>
+        </ul>
       </div>
 
       {/* <legend className="details_tilte">Thông tin học viên</legend> */}
@@ -108,6 +122,7 @@ function TeacherDetailsClass() {
         onShow={onShowUpload}
         infoClass={result}
       />
+      <ModalTeacherMarkClass show={showMark} onShow={onShowMark} />
     </div>
   );
 }

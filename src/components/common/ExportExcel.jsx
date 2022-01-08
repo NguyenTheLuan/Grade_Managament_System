@@ -21,7 +21,7 @@ function ExportToExcel({ dataSheet, nameButton, nameSheet, nameFile }) {
   return (
     <>
       <Button variant="success" onClick={exportToExcel}>
-        Xuất file excel {nameButton}
+        Xuất file {nameButton}
       </Button>
     </>
   );

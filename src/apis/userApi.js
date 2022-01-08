@@ -108,6 +108,11 @@ const userApi = {
     const url = USER_API + TEACHER_API + `/assignment/grade`;
     return axiosClient.post(url, assignment_info);
   },
+  //mark class
+  post_TeacherMarkClass: (class_code) => {
+    const url = USER_API + TEACHER_API + `/final-course`;
+    return axiosClient.post(url, class_code);
+  },
 };
 
 export default userApi;
