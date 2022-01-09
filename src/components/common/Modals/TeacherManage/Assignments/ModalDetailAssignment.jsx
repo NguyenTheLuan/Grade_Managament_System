@@ -31,6 +31,9 @@ function ModalDetailAssignment({ show, onShow, assignment_info }) {
             Trạng thái <strong>{checkAssigment(detail?.status)}</strong>
           </div>
           <div>
+            Ghi chú <strong>{detail?.note}</strong>
+          </div>
+          <div>
             Ngày bắt đầu <strong>{renderDate(detail?.pending)}</strong>
           </div>
           <div>

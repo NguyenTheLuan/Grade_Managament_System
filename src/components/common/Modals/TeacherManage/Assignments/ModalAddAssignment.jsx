@@ -16,6 +16,7 @@ function ModalAddAssignment({ show, onShow }) {
   //Info to add new assignment
   const [structGrade, setStructGrade] = useState(null);
   const [name, setName] = useState(null);
+  const [note, setNote] = useState(null);
   const [pending, setPending] = useState(null);
   const [expired, setExpired] = useState(null);
   const [file, setFile] = useState(null);
@@ -67,6 +68,7 @@ function ModalAddAssignment({ show, onShow }) {
     formData.append("classCode", id);
     formData.append("name", name);
     formData.append("structCode", structGrade);
+    formData.append("note", note);
     formData.append("pending", pending);
     formData.append("expired", expired);
     try {
@@ -87,7 +89,7 @@ function ModalAddAssignment({ show, onShow }) {
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Label>Tên bài tập</Form.Label>
+            <Form.Label>Tên bài tập(*)</Form.Label>
             <Form.Control
               type="text"
               required
@@ -95,18 +97,25 @@ function ModalAddAssignment({ show, onShow }) {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Tên cột điểm</Form.Label>
+            <Form.Label>Tên cột điểm(*)</Form.Label>
             <Form.Select onChange={(e) => setStructGrade(e.target.value)}>
               <option>Chọn cột điểm</option>
               {renderSelectGrade}
             </Form.Select>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Bài tập</Form.Label>
+            <Form.Label>File bài tập</Form.Label>
             <Form.Control type="file" required onChange={handleImgPost} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Ngày bắt đầu</Form.Label>
+            <Form.Label>Ghi chú(*)</Form.Label>
+            <Form.Control
+              as="textarea"
+              onChange={(e) => setNote(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Ngày bắt đầu(*)</Form.Label>
             <Form.Control
               type="datetime-local"
               required
@@ -114,7 +123,7 @@ function ModalAddAssignment({ show, onShow }) {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Ngày kết thúc</Form.Label>
+            <Form.Label>Ngày kết thúc(*)</Form.Label>
             <Form.Control
               type="datetime-local"
               required
@@ -125,7 +134,7 @@ function ModalAddAssignment({ show, onShow }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary" type="submit" onClick={() => handleAdd()}>
-          Thêm mới
+          Thêm bài tập
         </Button>
         <Button variant="secondary" onClick={handleClose}>
           Đóng

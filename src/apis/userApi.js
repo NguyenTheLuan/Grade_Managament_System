@@ -113,6 +113,11 @@ const userApi = {
     const url = USER_API + TEACHER_API + `/final-course`;
     return axiosClient.post(url, class_code);
   },
+  //review assigmnent
+  get_AllReviews: (params) => {
+    const url = USER_API + `/reviews`;
+    return axiosClient.get(url, { params: params });
+  },
 };
 
 export default userApi;

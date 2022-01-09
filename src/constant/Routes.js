@@ -26,6 +26,7 @@ import TeacherCourses from "features/Teacher/TeacherCourse/TeacherCourses";
 import TeacherAssignment from "features/Teacher/TeacherCourse/TeacherManage/TeacherAssignment";
 import TeacherDetailsClass from "features/Teacher/TeacherCourse/TeacherManage/TeacherDetailsClass";
 import TeacherGradeStruct from "features/Teacher/TeacherCourse/TeacherManage/TeacherGradeStruct";
+import TeacherReview from "features/Teacher/TeacherCourse/TeacherManage/TeacherReview";
 import TeacherScored from "features/Teacher/TeacherCourse/TeacherManage/TeacherScored";
 
 //Main route
@@ -142,6 +143,11 @@ export const TEACHER_ROUTE = [
     // name: "Trang thay đổi mật khẩu",
     path: "courses",
     component: <TeacherCourses />,
+    index: false,
+  },
+  {
+    path: "review",
+    component: <TeacherReview />,
     index: false,
   },
   {

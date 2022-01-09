@@ -31,6 +31,7 @@ function TeacherAssignment() {
     try {
       const response = await userApi.get_TeacherAssignments(params);
       const { result } = response;
+      console.log(response);
       // console.log(result);
       setAssignments(result);
     } catch (error) {

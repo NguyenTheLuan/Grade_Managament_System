@@ -44,6 +44,15 @@ function TeacherDashBoard() {
               <NavLink to="course_create">Tạo lớp học mới</NavLink>
             </Accordion.Body> */}
           </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header>Hòm thư hỗ trợ</Accordion.Header>
+            <Accordion.Body>
+              <NavLink to="review">Danh sách yêu cầu</NavLink>
+            </Accordion.Body>
+            {/* <Accordion.Body>
+              <NavLink to="course_create">Tạo lớp học mới</NavLink>
+            </Accordion.Body> */}
+          </Accordion.Item>
         </Accordion>
       </div>
       <div className="contentPage">

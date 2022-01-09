@@ -18,6 +18,7 @@ function ModalEditAssignment({ show, onShow, assignment_info }) {
   const [structGrade, setStructGrade] = useState();
   const [status, setStatus] = useState();
   const [name, setName] = useState();
+  const [note, setNote] = useState();
   const [pending, setPending] = useState();
   const [expired, setExpired] = useState();
   const [file, setFile] = useState(null);
@@ -25,11 +26,12 @@ function ModalEditAssignment({ show, onShow, assignment_info }) {
   //to render info view
   useEffect(() => {
     if (!assignment_info) return;
-    const { code, name, pending, expired, structCode, status } =
+    const { code, name, pending, expired, structCode, status, note } =
       assignment_info;
     setStatus(status);
     setCode(code);
     setName(name);
+    setNote(note);
     setStructGrade(structCode);
     setPending(toDatetimeLocal(pending));
     setExpired(toDatetimeLocal(expired));
@@ -79,6 +81,7 @@ function ModalEditAssignment({ show, onShow, assignment_info }) {
       code: code,
       name: name,
       structGrade: structGrade,
+      note: note,
       pending: pending,
       expired: expired,
       file: file,
@@ -111,8 +114,16 @@ function ModalEditAssignment({ show, onShow, assignment_info }) {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Bài tập</Form.Label>
+            <Form.Label>File bài tập</Form.Label>
             <Form.Control type="file" required onChange={handleImgPost} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Ghi chú</Form.Label>
+            <Form.Control
+              value={note}
+              as="textarea"
+              onChange={(e) => setNote(e.target.value)}
+            />
           </Form.Group>
           <Form.Group>
             <Form.Label>Tên cột điểm</Form.Label>
