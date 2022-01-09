@@ -11,7 +11,7 @@ function StudentCourses() {
 
   const [classes, setClasses] = useState([]);
   const [active, setActive] = useState(true);
-  const [complete, setComplete] = useState(true);
+  const [complete, setComplete] = useState();
   const [name, setName] = useState("");
 
   //Call api to get classes
@@ -66,7 +66,7 @@ function StudentCourses() {
           >
             <div>Lớp {classInfo.className}</div>
             <div>Mã lớp {classInfo.classCode}</div>
-            <div>Trạng thái{checkActive(classInfo.active)}</div>
+            <div>Trạng thái: {checkActive(classInfo.active)}</div>
             <div>Thông tin: {checkComplete(classInfo.complete)}</div>
           </div>
         );

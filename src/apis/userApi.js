@@ -38,7 +38,7 @@ const userApi = {
   //get scored in courses detail
   get_MyScoredRecord: (info_update) => {
     const url = USER_API + STUDENT_API + "/grade";
-    return axiosClient.get(url, info_update);
+    return axiosClient.get(url, { params: info_update });
   },
   //get all asignments
   get_MyAssignments: (info_update) => {

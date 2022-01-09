@@ -3,11 +3,11 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "style/CourseDetail.scss";
 
 function StudentCourseScored() {
-  const { id } = useLocation();
+  const { id } = useParams();
 
   const [studentRecords, setStudentRecords] = useState([]);
   const [structs, setStructs] = useState([]);

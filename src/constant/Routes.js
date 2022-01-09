@@ -1,7 +1,9 @@
+import AdminAuth from "features/Admin/AdminAuth";
 import Accounts from "features/Admin/AdminManageAccounts/Accounts";
 import Students from "features/Admin/AdminManageAccounts/Students";
 import Teachers from "features/Admin/AdminManageAccounts/Teachers";
 import AdminManageClasses from "features/Admin/AdminManageClasses/AdminManageClasses";
+import AdminRedirect from "features/Admin/AdminRedirect";
 import AdminLogin from "features/Auth/BasicLogin/AdminLogin";
 import ChangePassword from "features/Auth/BasicLogin/ChangePassword";
 import ForgotPassword from "features/Auth/BasicLogin/ForgotPassword";
@@ -205,6 +207,12 @@ export const DETAIL_COURSE = {
 
 //Admin route
 export const ADMIN_ROUTE = [
+  {
+    // name: "Trang profile",
+    path: "",
+    component: <AdminRedirect />,
+    index: false,
+  },
   {
     // name: "Trang profile",
     path: "students",

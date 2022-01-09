@@ -19,7 +19,7 @@ function TeacherScored() {
     const params = { classCode: id };
     try {
       const response = await userApi.get_TeacherGrades(params);
-      // console.log(response);
+      console.log(response);
       const { result, structs } = response;
       setStudentRecords(result);
       setStructs(structs);

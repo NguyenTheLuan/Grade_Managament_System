@@ -102,9 +102,9 @@ function StudentProfile() {
       <div className="infoUser">{renderInfo()}</div>
       <div className="infoHandle">
         <Button onClick={() => handleShow()}>Cập nhật thông tin</Button>
-        <Button variant="danger" onClick={handleReport}>
+        {/* <Button variant="danger" onClick={handleReport}>
           Gửi phản ánh
-        </Button>
+        </Button> */}
       </div>
       <ModalUpdateInfo show={show} onShow={onShow} />
     </div>
