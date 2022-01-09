@@ -10,6 +10,8 @@ function StudentCourseScored() {
   const { id } = useParams();
 
   const [studentRecords, setStudentRecords] = useState([]);
+  const [error, setEror] = useState([]);
+
   const [structs, setStructs] = useState([]);
 
   useEffect(() => {
@@ -27,6 +29,7 @@ function StudentCourseScored() {
       setStructs(structs);
     } catch (error) {
       console.log("lỗi ròi", { error });
+      error.response.data.message && setEror(error.response.data.message);
     }
   };
 
@@ -90,6 +93,7 @@ function StudentCourseScored() {
             {/* <th>Đánh dấu</th> */}
           </tr>
         </thead>
+        {error && error}
         <tbody>{renderStudents}</tbody>
       </Table>
     </div>

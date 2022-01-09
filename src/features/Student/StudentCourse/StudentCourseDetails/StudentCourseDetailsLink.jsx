@@ -9,6 +9,7 @@ function StudentCourseDetailsLink() {
         <NavLink to="details">Thông tin lớp</NavLink>
         <NavLink to="assigments">Danh sách bài tập</NavLink>
         <NavLink to="scored">Điểm của tôi</NavLink>
+        <NavLink to="review">Hỗ trợ</NavLink>
       </div>
       <div className="contentDetails_content">
         <Outlet />

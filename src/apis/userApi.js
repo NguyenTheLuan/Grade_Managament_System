@@ -113,10 +113,23 @@ const userApi = {
     const url = USER_API + TEACHER_API + `/final-course`;
     return axiosClient.post(url, class_code);
   },
-  //review assigmnent
+
+  //review
   get_AllReviews: (params) => {
     const url = USER_API + `/reviews`;
     return axiosClient.get(url, { params: params });
+  },
+  post_CreateReview: (info_review) => {
+    const url = USER_API + `/review`;
+    return axiosClient.post(url, info_review);
+  },
+  post_ReplyReview: (info_review) => {
+    const url = USER_API + `/review-rep`;
+    return axiosClient.post(url, info_review);
+  },
+  post_CompleteReview: (info_review) => {
+    const url = USER_API + `/review-complete`;
+    return axiosClient.post(url, info_review);
   },
 };
 

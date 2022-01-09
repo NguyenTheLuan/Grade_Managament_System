@@ -52,6 +52,9 @@ function ModalUpdateInfo({ show, onShow }) {
       });
     } catch (error) {
       console.log("lỗi rồi", { error });
+      toast.warning(`${error.response.data.message}`, {
+        position: "bottom-right",
+      });
     }
   };
 

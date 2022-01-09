@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function TeacherReviews() {
-  const [complete, setComplete] = useState();
+  const [complete, setComplete] = useState(false);
 
   useEffect(() => {
     getAllReviews();

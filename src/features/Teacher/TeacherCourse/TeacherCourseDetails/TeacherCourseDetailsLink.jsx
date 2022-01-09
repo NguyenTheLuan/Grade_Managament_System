@@ -10,7 +10,7 @@ function TeacherCourseDetailsLink() {
         <NavLink to="grade_structures">Quản lý cấu trúc điểm</NavLink>
         <NavLink to="assignments">Quản lý bài tập</NavLink>
         <NavLink to="scored_records">Quản lý điểm</NavLink>
-        {/* <NavLink to="review">Hộp thoại</NavLink> */}
+        <NavLink to="review">Hỗ trợ</NavLink>
       </div>
       <div className="contentDetails_content">
         <Outlet />

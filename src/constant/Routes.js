@@ -101,11 +101,6 @@ export const STUDENT_ROUTE = [
     index: false,
   },
   {
-    path: "review",
-    component: <StudentReviews />,
-    index: false,
-  },
-  {
     // name: "Trang lớp học",
     path: "courses/:id/*",
     component: <StudentCourseDetailsRoutes />,
@@ -152,11 +147,6 @@ export const TEACHER_ROUTE = [
     index: false,
   },
   {
-    path: "review",
-    component: <TeacherReviews />,
-    index: false,
-  },
-  {
     // name: "Trang thay đổi mật khẩu",
     path: "courses/:id/*",
     component: <TeacherCourseDetailsRoutes />,
@@ -192,6 +182,11 @@ export const DETAIL_COURSE = {
       component: <TeacherScored />,
       index: false,
     },
+    {
+      path: "review",
+      component: <TeacherReviews />,
+      index: false,
+    },
   ],
   STUDENT: [
     {
@@ -213,6 +208,11 @@ export const DETAIL_COURSE = {
       path: "assigments",
       component: <StudentCourseAssignments />,
       index: true,
+    },
+    {
+      path: "review",
+      component: <StudentReviews />,
+      index: false,
     },
   ],
 };

@@ -1,17 +1,13 @@
 import userApi from "apis/userApi";
-import React from "react";
+import { checkAssigment, renderDate } from "components/common";
+import ModalDetailAssignment from "components/common/Modals/TeacherManage/Assignments/ModalDetailAssignment";
 import { saveAs } from "file-saver";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Button, Table } from "react-bootstrap";
 //icons
 import { BsInfoLg } from "react-icons/bs";
-import { TiUploadOutline } from "react-icons/ti";
-import { FiEdit } from "react-icons/fi";
 import { GrDownload } from "react-icons/gr";
-import { checkAssigment, renderDate } from "components/common";
-import { Button, Table } from "react-bootstrap";
-import ModalDetailAssignment from "components/common/Modals/TeacherManage/Assignments/ModalDetailAssignment";
+import { useParams } from "react-router-dom";
 function StudentCourseAssignments() {
   const { id } = useParams();
 
