@@ -3,7 +3,7 @@ import React from "react";
 import { saveAs } from "file-saver";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 //icons
 import { BsInfoLg } from "react-icons/bs";
 import { TiUploadOutline } from "react-icons/ti";
@@ -13,7 +13,7 @@ import { checkAssigment, renderDate } from "components/common";
 import { Button, Table } from "react-bootstrap";
 import ModalDetailAssignment from "components/common/Modals/TeacherManage/Assignments/ModalDetailAssignment";
 function StudentCourseAssignments() {
-  const { id } = useLocation();
+  const { id } = useParams();
 
   const [assignments, setAssignments] = useState([]);
   const [infoDetails, setInfoDetails] = useState();
@@ -73,6 +73,7 @@ function StudentCourseAssignments() {
         <td>{assignment.name}</td>
         <td>{renderDate(assignment.pending)}</td>
         <td>{renderDate(assignment.expired)}</td>
+        <td>{assignment.note}</td>
         <td>
           <Button
             onClick={() =>
@@ -101,6 +102,7 @@ function StudentCourseAssignments() {
             <th>Tên bài tập</th>
             <th>Ngày bắt đầu</th>
             <th>Ngày kết thúc</th>
+            <th>Ghi chú</th>
             <th>Tải bài tập</th>
             <th>Chi tiết</th>
           </tr>

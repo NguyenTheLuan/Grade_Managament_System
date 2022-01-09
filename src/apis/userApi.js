@@ -41,9 +41,9 @@ const userApi = {
     return axiosClient.get(url, { params: info_update });
   },
   //get all asignments
-  get_MyAssignments: (info_update) => {
+  get_MyAssignments: (params) => {
     const url = USER_API + STUDENT_API + "/course/assignments";
-    return axiosClient.get(url, info_update);
+    return axiosClient.get(url, { params: params });
   },
 
   //for teacher

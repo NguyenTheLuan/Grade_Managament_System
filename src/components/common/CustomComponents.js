@@ -81,7 +81,7 @@ export const checkComplete = (isComplete) => {
 };
 //CheckAssigment
 export const checkAssigment = (assignment) => {
-  return assignment === "available" ? "Chưa chấm điểm" : "Đã chấm điểm";
+  return assignment === "available" ? "Chưa chấm" : "Đã chấm";
 };
 
 //render Date
