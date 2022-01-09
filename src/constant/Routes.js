@@ -1,4 +1,3 @@
-import AdminAuth from "features/Admin/AdminAuth";
 import Accounts from "features/Admin/AdminManageAccounts/Accounts";
 import Students from "features/Admin/AdminManageAccounts/Students";
 import Teachers from "features/Admin/AdminManageAccounts/Teachers";
@@ -20,14 +19,16 @@ import StudentInfo from "features/Student/StudentPage/StudentInfo";
 import StudentMapCode from "features/Student/StudentProfile/StudentMapCode";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import StudentScoredRecord from "features/Student/StudentProfile/StudentScoredRecord";
+import StudentReviews from "features/Student/StudentReviews/StudentReviews";
 import TeacherCourseDetailsRoutes from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseDetailsRoutes";
 import TeacherCourseId from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseId";
 import TeacherCourses from "features/Teacher/TeacherCourse/TeacherCourses";
 import TeacherAssignment from "features/Teacher/TeacherCourse/TeacherManage/TeacherAssignment";
 import TeacherDetailsClass from "features/Teacher/TeacherCourse/TeacherManage/TeacherDetailsClass";
 import TeacherGradeStruct from "features/Teacher/TeacherCourse/TeacherManage/TeacherGradeStruct";
-import TeacherReview from "features/Teacher/TeacherCourse/TeacherManage/TeacherReview";
 import TeacherScored from "features/Teacher/TeacherCourse/TeacherManage/TeacherScored";
+import TeacherReviews from "features/Teacher/TeacherReviews/TeacherReviews";
+import TeacherReview from "features/Teacher/TeacherReviews/TeacherReviews";
 
 //Main route
 export const MAIN_ROUTE = [
@@ -100,6 +101,11 @@ export const STUDENT_ROUTE = [
     index: false,
   },
   {
+    path: "review",
+    component: <StudentReviews />,
+    index: false,
+  },
+  {
     // name: "Trang lớp học",
     path: "courses/:id/*",
     component: <StudentCourseDetailsRoutes />,
@@ -147,7 +153,7 @@ export const TEACHER_ROUTE = [
   },
   {
     path: "review",
-    component: <TeacherReview />,
+    component: <TeacherReviews />,
     index: false,
   },
   {

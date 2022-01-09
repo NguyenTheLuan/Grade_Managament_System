@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function TeacherReview() {
+function TeacherReviews() {
   const [complete, setComplete] = useState();
 
   useEffect(() => {
@@ -27,4 +27,4 @@ function TeacherReview() {
   return <div>day la trang reivew phan hoi hoc vien</div>;
 }
 
-export default TeacherReview;
+export default TeacherReviews;
