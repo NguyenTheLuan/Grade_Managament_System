@@ -1,6 +1,6 @@
 # Grade Management System
 
-Xem demo tại: [Giao diện demo](https://demo-grade-management-system.herokuapp.com) - [link API](https://gradems.herokuapp.com/apis-doc/#/)
+Xem demo tại: [Giao diện demo](https://manage-grade-system.herokuapp.com) - [link API](https://gradems.herokuapp.com/apis-doc/#/)
 
 ## Miêu tả hệ thống
 
@@ -20,8 +20,12 @@ Xem demo tại: [Giao diện demo](https://demo-grade-management-system.herokuap
 
 **1. Trang chính:**
 /home
+
+**2. Trang auth:**
 /login
-**2. Trang học viên:**
+/register
+/forgot_password
+**3. Trang học viên:**
 
 /student
 
@@ -33,9 +37,12 @@ Xem demo tại: [Giao diện demo](https://demo-grade-management-system.herokuap
 - **Xem lớp học đã tham gia**
   /student/courses
   /student/courses/invitation_enter
-  /student/courses/id
+  /student/courses/:id
+  /student/courses/:id/assignment
+  /student/courses/:id/details
+  /student/courses/:id/reviews
 
-**3. Trang giảng viên:**
+**4. Trang giảng viên:**
 
 /teacher
 
@@ -46,18 +53,19 @@ Xem demo tại: [Giao diện demo](https://demo-grade-management-system.herokuap
 - **Xem lớp học đang quản lý**
   /teacher/courses
   /teacher/courses/invatitation_create
-  /teacher/courses/id
+  /teacher/courses/:id
+  /teacher/courses/:id/assignment
+  /teacher/courses/:id/details
+  /teacher/courses/:id/reviews
 
-**4. Trang admin:**
+**5. Trang admin:**
 
 /admin
 
-- **Xem thông tin cá nhân**
-  /admin/my_info
-  /admin/my_info/update
-
 - **Quản lý tài khoản**
+  /admin/students
+  /admin/teachers
   /admin/accounts
 
-- **Quản lý lớp học**A
+- **Quản lý lớp học**
   /admin/courses
