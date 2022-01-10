@@ -30,42 +30,42 @@ Xem demo tại: [Giao diện demo](https://manage-grade-system.herokuapp.com) - 
 /student
 
 - **Xem thông tin cá nhân**
-  /student/my_info
-  /student/my_info/update
-  /student/scored_record
+  /student/my_inf <br/>
+  /student/my_info/update<br/>
+  /student/scored_record<br/>
 
 - **Xem lớp học đã tham gia**
-  /student/courses
-  /student/courses/invitation_enter
-  /student/courses/:id
-  /student/courses/:id/assignment
-  /student/courses/:id/details
-  /student/courses/:id/reviews
+  /student/courses<br/>
+  /student/courses/invitation_enter<br/>
+  /student/courses/:id<br/>
+  /student/courses/:id/assignment<br/>
+  /student/courses/:id/details<br/>
+  /student/courses/:id/reviews<br/>
 
 **4. Trang giảng viên:**
 
-/teacher
+/teacher<br/>
 
 - **Xem thông tin cá nhân**
-  /teacher/my_info
-  /teacher/my_info/update
+  /teacher/my_info<br/>
+  /teacher/my_info/update<br/>
 
 - **Xem lớp học đang quản lý**
-  /teacher/courses
-  /teacher/courses/invatitation_create
-  /teacher/courses/:id
-  /teacher/courses/:id/assignment
-  /teacher/courses/:id/details
-  /teacher/courses/:id/reviews
+  /teacher/courses<br/>
+  /teacher/courses/invatitation_create<br/>
+  /teacher/courses/:id<br/>
+  /teacher/courses/:id/assignment<br/>
+  /teacher/courses/:id/details<br/>
+  /teacher/courses/:id/reviews<br/>
 
 **5. Trang admin:**
 
-/admin
+/admin<br/>
 
 - **Quản lý tài khoản**
-  /admin/students
-  /admin/teachers
-  /admin/accounts
+  /admin/students<br/>
+  /admin/teachers<br/>
+  /admin/accounts<br/>
 
 - **Quản lý lớp học**
-  /admin/courses
+  /admin/courses<br/>
