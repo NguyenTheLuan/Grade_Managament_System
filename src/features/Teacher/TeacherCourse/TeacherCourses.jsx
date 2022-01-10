@@ -84,22 +84,6 @@ function TeacherCourses() {
     <div className="mainForm">
       <Form className="menuSearch">
         <Form.Group className="menuSearch_items">
-          <Form.Label className="menuSearch_items_label">Tên lớp</Form.Label>
-          <Form.Control
-            className="menuSearch_items_control"
-            placeholder="Nhập tên lớp"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <Form.Select
-            className="menuSearch_items_select"
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-          >
-            <option value="name_asc">Tăng dần</option>
-            <option value="name_desc">Giảm dần</option>
-          </Form.Select>
-        </Form.Group>
-        <Form.Group className="menuSearch_items">
           <Form.Label className="menuSearch_items_label">Trạng thái</Form.Label>
           <Form.Select
             className="menuSearch_items_select"
@@ -118,6 +102,22 @@ function TeacherCourses() {
             <option value="">Tất cả</option>
             <option value="false">Chưa hoàn thành</option>
             <option value="true">Hoàn thành</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="menuSearch_items">
+          <Form.Label className="menuSearch_items_label">Tên lớp</Form.Label>
+          <Form.Control
+            className="menuSearch_items_control"
+            placeholder="Nhập tên lớp"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Form.Select
+            className="menuSearch_items_select"
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+          >
+            <option value="name_asc">Tăng dần</option>
+            <option value="name_desc">Giảm dần</option>
           </Form.Select>
         </Form.Group>
         <Form.Group className="menuSearch_items">

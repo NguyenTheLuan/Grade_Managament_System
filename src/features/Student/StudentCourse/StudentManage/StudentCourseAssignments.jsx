@@ -23,7 +23,7 @@ function StudentCourseAssignments() {
     const params = { classCode: id };
     try {
       const response = await userApi.get_MyAssignments(params);
-      // console.log(response);
+      console.log(response);
       const { result } = response;
       // console.log(result);
       setAssignments(result);

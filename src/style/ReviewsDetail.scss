@@ -1,0 +1,54 @@
+.details {
+  gap: 30px;
+
+  //form search
+  &_form {
+    width: 70%;
+    &_items {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      &_label {
+        flex: 1;
+      }
+      &_select {
+        flex: 2;
+      }
+    }
+  }
+
+  //table
+  &_table {
+    tbody {
+      tr {
+        .reviews {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          gap: 5px;
+          .review {
+            width: 90%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 10px;
+
+            .name {
+              font-weight: 500;
+            }
+            .time {
+              font-size: 14px;
+              line-height: 25px;
+            }
+            .content {
+              word-break: break-all;
+            }
+          }
+        }
+      }
+    }
+  }
+}

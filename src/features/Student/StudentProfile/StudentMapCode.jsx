@@ -33,19 +33,25 @@ function StudentMapCode() {
     }
   };
   return (
-    <Form onSubmit={handleSubmit} className="mapId">
-      <Form.Group>
-        <Form.Control
-          name="name"
-          type="text"
-          placeholder="Nhập mã học viên"
-          required={true}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Button type="submit">Cập nhật mã học viên</Button>
-      </Form.Group>
-    </Form>
+    <div className="contentInfo">
+      <Form onSubmit={handleSubmit} className="mapId">
+        <legend>Cập nhật mã học viên</legend>
+        <Form.Group className="items">
+          <Form.Control
+            name="name"
+            type="text"
+            className="items_control"
+            placeholder="Nhập mã học viên"
+            required={true}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Button className="items_button" type="submit">
+            Cập nhật mã học viên
+          </Button>
+        </Form.Group>
+      </Form>
+    </div>
   );
 }
 

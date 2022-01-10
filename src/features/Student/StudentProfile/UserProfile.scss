@@ -4,6 +4,9 @@
 
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
   flex-wrap: wrap;
   gap: 10px;
 
@@ -59,7 +62,36 @@
 
 //For student map code
 .mapId {
+  width: 60%;
+  height: 60%;
+
   display: flex;
-  flex-direction: row;
-  gap: 10px;
+  flex-direction: column;
+  gap: 20px;
+
+  .items {
+    display: flex;
+    flex-direction: row;
+
+    &_label {
+      flex: 1;
+    }
+
+    &_control {
+      flex: 3;
+    }
+  }
+}
+
+//scored
+.tableInfo {
+  height: 90%;
+  width: 95%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .tableScored {
+    text-align: center;
+  }
 }

@@ -100,7 +100,7 @@ function TeacherDetailsClass() {
       {/* <legend className="details_tilte">Thông tin lớp</legend> */}
       <div className="details_class">
         {renderInfoClass()}
-        <ul>
+        <div className="handleBtn">
           <Button onClick={() => handleShow()}>Cập nhật danh sách</Button>
           {/* <Button variant="success">Xuất file excel</Button> */}
           <ExportToExcel
@@ -112,7 +112,7 @@ function TeacherDetailsClass() {
           <Button variant="secondary" onClick={() => handleMark()}>
             Kết thúc khóa học
           </Button>
-        </ul>
+        </div>
       </div>
 
       {/* <legend className="details_tilte">Thông tin học viên</legend> */}

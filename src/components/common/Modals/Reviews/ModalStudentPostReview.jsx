@@ -73,7 +73,7 @@ function ModalStudentPostReview({ show, onShow }) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Cập nhật thông tin cá nhân</Modal.Title>
+        <Modal.Title>Gửi yêu cầu mới</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>

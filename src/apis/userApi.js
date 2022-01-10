@@ -40,6 +40,10 @@ const userApi = {
     const url = USER_API + STUDENT_API + "/grade";
     return axiosClient.get(url, { params: info_update });
   },
+  get_MyScoreds: () => {
+    const url = USER_API + STUDENT_API + "/grades";
+    return axiosClient.get(url);
+  },
   //get all asignments
   get_MyAssignments: (params) => {
     const url = USER_API + STUDENT_API + "/course/assignments";

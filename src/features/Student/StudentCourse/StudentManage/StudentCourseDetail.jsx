@@ -1,8 +1,6 @@
 import userApi from "apis/userApi";
-import { checkActive, checkInfo } from "components/common";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { checkInfo } from "components/common";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 

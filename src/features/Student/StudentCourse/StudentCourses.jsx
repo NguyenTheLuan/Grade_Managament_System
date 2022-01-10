@@ -81,15 +81,6 @@ function StudentCourses() {
     <div className="mainForm">
       <Form className="menuSearch">
         <Form.Group className="menuSearch_items">
-          <Form.Label className="menuSearch_items_label">Tên lớp</Form.Label>
-          <Form.Control
-            className="menuSearch_items_control"
-            placeholder="Nhập tên lớp"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <Button onClick={handleShow}>Tham gia lớp mới?</Button>
-        </Form.Group>
-        <Form.Group className="menuSearch_items">
           <Form.Label className="menuSearch_items_label">Trạng thái</Form.Label>
           <Form.Select
             className="menuSearch_items_select"
@@ -109,6 +100,15 @@ function StudentCourses() {
             <option value="false">Chưa hoàn thành</option>
             <option value="true">Hoàn thành</option>
           </Form.Select>
+        </Form.Group>
+        <Form.Group className="menuSearch_items">
+          <Form.Label className="menuSearch_items_label">Tên lớp</Form.Label>
+          <Form.Control
+            className="menuSearch_items_control"
+            placeholder="Nhập tên lớp"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Button onClick={handleShow}>Tham gia lớp mới?</Button>
         </Form.Group>
       </Form>
       <div className="menuCourses">{renderCourses()}</div>
