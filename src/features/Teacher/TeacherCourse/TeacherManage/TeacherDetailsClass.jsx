@@ -1,5 +1,10 @@
 import userApi from "apis/userApi";
-import { checkActive, checkInfo, checkJoin } from "components/common";
+import {
+  checkActive,
+  checkComplete,
+  checkInfo,
+  checkJoin,
+} from "components/common";
 import ExportToExcel from "components/common/ExportExcel";
 import ModalUploadClass from "components/common/Modals/TeacherManage/GradeStruct/ModalUploadClass/ModalUploadClass";
 import ModalTeacherMarkClass from "components/common/Modals/TeacherManage/ModalTeacherMarkClass";
@@ -72,14 +77,19 @@ function TeacherDetailsClass() {
           Mã lớp: <strong>{result?.code}</strong>
         </li>
         <li>
-          Lớp học: <strong>{result?.name}</strong> _{" "}
-          {checkActive(result?.active)}
+          Lớp học: <strong>{result?.name}</strong>
         </li>
         <li>
           Tên giảng viên: <strong>{result?.teacher}</strong>
         </li>
         <li>
           Số điện thoại: <strong>{checkInfo(result?.phone)}</strong>
+        </li>
+        <li>
+          Trạng thái: <strong>{checkActive(result?.active)}</strong>
+        </li>
+        <li>
+          Hoàn thành: <strong>{checkComplete(result?.complete)}</strong>
         </li>
       </ul>
     );

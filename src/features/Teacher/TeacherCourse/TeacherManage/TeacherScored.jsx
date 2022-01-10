@@ -9,6 +9,7 @@ function TeacherScored() {
 
   const [studentRecords, setStudentRecords] = useState([]);
   const [structs, setStructs] = useState([]);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     getGrades();
@@ -19,18 +20,29 @@ function TeacherScored() {
     const params = { classCode: id };
     try {
       const response = await userApi.get_TeacherGrades(params);
-      console.log(response);
+      // console.log(response);
       const { result, structs } = response;
-      setStudentRecords(result);
+      checkResult(result);
       setStructs(structs);
     } catch (error) {
       console.log("lỗi rồi", { error });
     }
   };
 
+  //check result
+  const checkResult = (result) => {
+    if (result.length !== 0) {
+      setStudentRecords(result);
+    } else {
+      setMessage("Bạn chưa chấm điểm");
+    }
+  };
+
   //to show scored
   const checkGrade = (student, structs) => {
-    if (!student && !structs) return;
+    if (!student && !structs) {
+      return;
+    }
     // students.forEach((student) => {
     var result = [];
     structs.forEach((struct) => {
@@ -90,6 +102,7 @@ function TeacherScored() {
         </thead>
         <tbody>{renderStudents}</tbody>
       </Table>
+      {message && <span>{message}</span>}
     </div>
   );
 }

@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { Accordion } from "react-bootstrap";
-import { AiOutlineUser } from "react-icons/ai";
 import { NavLink, Outlet } from "react-router-dom";
+
+//icons
+import { AiOutlineUser } from "react-icons/ai";
+import { GiTeacher } from "react-icons/gi";
+import { MdManageAccounts } from "react-icons/md";
 
 function AdminDashBoard() {
   useEffect(() => {
@@ -22,11 +26,14 @@ function AdminDashBoard() {
           onSelect={(e) => localStorage.setItem("showItem", e)}
         >
           <Accordion.Item className="userDashBoardTitle">
-            <AiOutlineUser className="iconDashBoard" />
+            {/* <AiOutlineUser className="iconDashBoard" /> */}
             ADMIN HOME
           </Accordion.Item>
           <Accordion.Item eventKey="0">
-            <Accordion.Header>Quản lý tài khoản</Accordion.Header>
+            <Accordion.Header>
+              <MdManageAccounts className="icons" />
+              Quản lý tài khoản
+            </Accordion.Header>
             <Accordion.Body>
               <NavLink to="teachers">Tài khoản giáo viên</NavLink>
             </Accordion.Body>
@@ -38,7 +45,9 @@ function AdminDashBoard() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
-            <Accordion.Header>Quản lý lớp học</Accordion.Header>
+            <Accordion.Header>
+              <GiTeacher className="icons" /> Quản lý lớp học
+            </Accordion.Header>
             <Accordion.Body>
               <NavLink to="classes">Danh sách các lớp học</NavLink>
             </Accordion.Body>

@@ -1,9 +1,6 @@
 .dashBoard {
   width: 98%;
   height: 100%;
-  // height: 80vh;
-  // height: 95%;
-  //   border-radius: 10px;
 
   background: rgb(255, 255, 255);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
@@ -36,6 +33,10 @@
     //Icon dash-board
     .iconDashBoard {
       font-size: 30px;
+    }
+    .icons {
+      font-size: 30px;
+      padding-right: 5px;
     }
   }
 

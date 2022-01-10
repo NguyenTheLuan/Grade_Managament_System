@@ -28,7 +28,7 @@ function StudentCourseScored() {
       setStudentRecords(result);
       setStructs(structs);
     } catch (error) {
-      console.log("lỗi ròi", { error });
+      console.log("lỗi rồi", { error });
       error.response.data.message && setEror(error.response.data.message);
     }
   };
@@ -93,9 +93,9 @@ function StudentCourseScored() {
             {/* <th>Đánh dấu</th> */}
           </tr>
         </thead>
-        {error && error}
         <tbody>{renderStudents}</tbody>
       </Table>
+      {error && <span>{error}</span>}
     </div>
   );
 }
