@@ -18,23 +18,23 @@ Xem demo tại: [Giao diện demo](https://manage-grade-system.herokuapp.com) - 
 
 ### `2.Routes:`
 
-**1. Trang chính:**
-/home
+**1. Trang chính:**<br/>
+/home<br/>
 
-**2. Trang auth:**
-/login
-/register
-/forgot_password
-**3. Trang học viên:**
+**2. Trang auth:**<br/>
+/login<br/>
+/register<br/>
+/forgot_password<br/>
+**3. Trang học viên:**<br/>
 
-/student
+/student<br/>
 
-- **Xem thông tin cá nhân**
+- **Xem thông tin cá nhân**<br/>
   /student/my_inf <br/>
   /student/my_info/update<br/>
   /student/scored_record<br/>
 
-- **Xem lớp học đã tham gia**
+- **Xem lớp học đã tham gia**<br/>
   /student/courses<br/>
   /student/courses/invitation_enter<br/>
   /student/courses/:id<br/>
@@ -42,15 +42,15 @@ Xem demo tại: [Giao diện demo](https://manage-grade-system.herokuapp.com) - 
   /student/courses/:id/details<br/>
   /student/courses/:id/reviews<br/>
 
-**4. Trang giảng viên:**
+**4. Trang giảng viên:**<br/>
 
 /teacher<br/>
 
-- **Xem thông tin cá nhân**
+- **Xem thông tin cá nhân**<br/>
   /teacher/my_info<br/>
   /teacher/my_info/update<br/>
 
-- **Xem lớp học đang quản lý**
+- **Xem lớp học đang quản lý**<br/>
   /teacher/courses<br/>
   /teacher/courses/invatitation_create<br/>
   /teacher/courses/:id<br/>
@@ -58,14 +58,14 @@ Xem demo tại: [Giao diện demo](https://manage-grade-system.herokuapp.com) - 
   /teacher/courses/:id/details<br/>
   /teacher/courses/:id/reviews<br/>
 
-**5. Trang admin:**
+**5. Trang admin:**<br/>
 
 /admin<br/>
 
-- **Quản lý tài khoản**
+- **Quản lý tài khoản**<br/>
   /admin/students<br/>
   /admin/teachers<br/>
   /admin/accounts<br/>
 
-- **Quản lý lớp học**
+- **Quản lý lớp học**<br/>
   /admin/courses<br/>
