@@ -1,13 +1,15 @@
 import userApi from "apis/userApi";
-import { checkComplete, renderDate } from "components/common";
-import ModalTeacherReply from "components/common/Modals/Reviews/ModalTeacherReply";
+import { checkComplete } from "components/common";
+import ModalTeacherCompleteReview from "components/common/Modals/Reviews/ModalTeacherCompleteReview";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
-import { MdOutgoingMail, MdTaskAlt } from "react-icons/md";
+import { MdTaskAlt } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 //css
 import "style/ReviewsDetail.scss";
 
 function TeacherReviews() {
+  const navigate = useNavigate();
   //Để search
   const [complete, setComplete] = useState(false);
   const [sort, setSort] = useState("title_asc");
@@ -18,7 +20,7 @@ function TeacherReviews() {
   useEffect(() => {
     getAllReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [complete, sort]);
 
   const getAllReviews = async () => {
     const params = {
@@ -37,34 +39,44 @@ function TeacherReviews() {
     }
   };
 
-  const renderQuestion = (questions) => {
-    return questions.map((question, index) => {
-      return (
-        <div key={index} className="review">
-          <span className="name">{question.name}:</span>
-          <span className="contentReview">{question.content}</span>
-          <span className="time">
-            <i>{renderDate(question.createAt)}</i>
-          </span>
-        </div>
-      );
-    });
+  const goToDetail = (review) => {
+    navigate(`${review._id}`);
+  };
+
+  //modal finish
+  const [showComplete, setShowComplete] = useState();
+  const [infoReview, setInfoReview] = useState();
+
+  const handleCompleteReview = (review) => {
+    setInfoReview(review);
+    setShowComplete(true);
+  };
+  const onShowComplete = (isShow) => {
+    setShowComplete(isShow);
+    getAllReviews();
   };
 
   const renderReviews = review?.map((review, index) => {
     return (
       <tr key={index}>
         <td>{index + 1}</td>
-        <td>{review.title}</td>
         <td>{checkComplete(review.complete)}</td>
-        <td className="reviews">{renderQuestion(review.comments)}</td>
+        {/* is new message?? */}
+        {review.teacherReply ? (
+          <td className="detailReview" onClick={() => goToDetail(review)}>
+            {review.title}
+          </td>
+        ) : (
+          <td
+            className="detailReview"
+            style={{ color: "red" }}
+            onClick={() => goToDetail(review)}
+          >
+            {review.title}
+          </td>
+        )}
         <td>
-          <Button onClick={() => handleReply(review)}>
-            <MdOutgoingMail className="icons" />
-          </Button>
-        </td>
-        <td>
-          <Button>
+          <Button onClick={() => handleCompleteReview(review)}>
             <MdTaskAlt className="icons" />
           </Button>
         </td>
@@ -72,19 +84,6 @@ function TeacherReviews() {
     );
   });
 
-  //modal reply
-
-  const [showReply, setShowReply] = useState(false);
-  const [infoReview, setInfoReview] = useState();
-
-  const onShowReply = (isShow) => {
-    getAllReviews();
-    setShowReply(isShow);
-  };
-  const handleReply = (review) => {
-    setInfoReview(review);
-    setShowReply(true);
-  };
   return (
     <div className="details">
       <Form className="details_form">
@@ -114,18 +113,16 @@ function TeacherReviews() {
         <thead>
           <tr>
             <th>STT</th>
-            <th>Tiêu đề</th>
             <th>Trạng thái</th>
-            <th>Nội dung</th>
-            <th>Phản hồi</th>
-            <th>Kết thúc</th>
+            <th>Tiêu đề</th>
+            <th>Xác nhận hỗ trợ</th>
           </tr>
         </thead>
         <tbody>{renderReviews}</tbody>
       </Table>
-      <ModalTeacherReply
-        show={showReply}
-        onShow={onShowReply}
+      <ModalTeacherCompleteReview
+        show={showComplete}
+        onShow={onShowComplete}
         info={infoReview}
       />
     </div>

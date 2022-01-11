@@ -31,8 +31,7 @@ function ModalTeacherReply({ show, onShow, info }) {
       id: id,
     };
     try {
-      const response = await userApi.post_ReplyReview(params);
-      console.log(response);
+      await userApi.post_ReplyReview(params);
       toast.success("Trả lời phản hồi thành công", {
         position: "bottom-right",
       });
@@ -46,7 +45,7 @@ function ModalTeacherReply({ show, onShow, info }) {
 
   return (
     <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title>Trả lời yêu cầu</Modal.Title>
       </Modal.Header>
       <Modal.Body>

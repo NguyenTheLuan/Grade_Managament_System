@@ -40,7 +40,7 @@ function StudentReviews() {
     };
     try {
       const response = await userApi.get_AllReviews(params);
-      console.log(response);
+      // console.log(response);
       const { result } = response;
       setReview(result);
     } catch (error) {
@@ -56,12 +56,19 @@ function StudentReviews() {
     return (
       <tr key={index}>
         <td>{index + 1}</td>
+        {/* is new message?? */}
         {review.teacherReply ? (
           <td className="detailReview" onClick={() => goToDetail(review)}>
             {review.title}
           </td>
         ) : (
-          <td style={{ color: "red" }}>{review.title}</td>
+          <td
+            className="detailReview"
+            style={{ color: "red" }}
+            onClick={() => goToDetail(review)}
+          >
+            {review.title}
+          </td>
         )}
 
         <td>{checkComplete(review.complete)}</td>

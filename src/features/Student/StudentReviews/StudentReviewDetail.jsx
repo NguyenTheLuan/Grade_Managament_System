@@ -71,7 +71,11 @@ function StudentReviewDetail() {
         <div className="titleReview">Nội dung hỗ trợ</div>
         <div className="titleContent">{renderReviews}</div>
       </div>
-      <Button onClick={() => handleReply()}>Phản hồi tin nhắn</Button>
+      {!result.complete ? (
+        <Button onClick={() => handleReply()}>Phản hồi tin nhắn</Button>
+      ) : (
+        <Button disabled>Đã hoàn thành</Button>
+      )}
       <ModalTeacherReply show={showReply} onShow={onShowReply} info={result} />
     </div>
   );
