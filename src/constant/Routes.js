@@ -19,6 +19,7 @@ import StudentInfo from "features/Student/StudentPage/StudentInfo";
 import StudentMapCode from "features/Student/StudentProfile/StudentMapCode";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
 import StudentScoredRecord from "features/Student/StudentProfile/StudentScoredRecord";
+import StudentReviewDetail from "features/Student/StudentReviews/StudentReviewDetail";
 import StudentReviews from "features/Student/StudentReviews/StudentReviews";
 import TeacherCourseDetailsRoutes from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseDetailsRoutes";
 import TeacherCourseId from "features/Teacher/TeacherCourse/TeacherCourseDetails/TeacherCourseId";
@@ -28,7 +29,6 @@ import TeacherDetailsClass from "features/Teacher/TeacherCourse/TeacherManage/Te
 import TeacherGradeStruct from "features/Teacher/TeacherCourse/TeacherManage/TeacherGradeStruct";
 import TeacherScored from "features/Teacher/TeacherCourse/TeacherManage/TeacherScored";
 import TeacherReviews from "features/Teacher/TeacherReviews/TeacherReviews";
-import TeacherReview from "features/Teacher/TeacherReviews/TeacherReviews";
 
 //Main route
 export const MAIN_ROUTE = [
@@ -187,6 +187,11 @@ export const DETAIL_COURSE = {
       component: <TeacherReviews />,
       index: false,
     },
+    {
+      path: "review/:id",
+      component: <StudentReviewDetail />,
+      index: false,
+    },
   ],
   STUDENT: [
     {
@@ -212,6 +217,11 @@ export const DETAIL_COURSE = {
     {
       path: "review",
       component: <StudentReviews />,
+      index: false,
+    },
+    {
+      path: "review/:id",
+      component: <StudentReviewDetail />,
       index: false,
     },
   ],

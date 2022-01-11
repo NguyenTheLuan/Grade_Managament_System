@@ -1,13 +1,13 @@
 import userApi from "apis/userApi";
-import { checkComplete, renderDate } from "components/common";
+import { checkComplete } from "components/common";
 import ModalStudentPostReview from "components/common/Modals/Reviews/ModalStudentPostReview";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 //css
 import "style/ReviewsDetail.scss";
 function StudentReviews() {
+  const navigate = useNavigate();
   //Để search
   const [complete, setComplete] = useState(false);
   const [sort, setSort] = useState("title_asc");
@@ -48,23 +48,22 @@ function StudentReviews() {
     }
   };
 
-  const renderQuestion = (questions) => {
-    return questions.map((question, index) => {
-      return (
-        <span key={index}>
-          <strong>{index + 1}.</strong> {question.content} vào lúc
-          {renderDate(question.createAt)}
-        </span>
-      );
-    });
+  const goToDetail = (review) => {
+    navigate(`${review._id}`);
   };
 
   const renderReviews = review?.map((review, index) => {
     return (
       <tr key={index}>
         <td>{index + 1}</td>
-        <td>{review.title}</td>
-        <td className="reviews">{renderQuestion(review.comments)}</td>
+        {review.teacherReply ? (
+          <td className="detailReview" onClick={() => goToDetail(review)}>
+            {review.title}
+          </td>
+        ) : (
+          <td style={{ color: "red" }}>{review.title}</td>
+        )}
+
         <td>{checkComplete(review.complete)}</td>
       </tr>
     );
@@ -100,7 +99,6 @@ function StudentReviews() {
           <tr>
             <th>STT</th>
             <th>Tiêu đề</th>
-            <th>Nội dung</th>
             <th>Trạng thái</th>
           </tr>
         </thead>

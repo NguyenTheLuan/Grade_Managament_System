@@ -1,13 +1,11 @@
 import userApi from "apis/userApi";
 import { checkComplete, renderDate } from "components/common";
+import ModalTeacherReply from "components/common/Modals/Reviews/ModalTeacherReply";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
-//icons
-import { RiQuestionAnswerFill } from "react-icons/ri";
 import { MdOutgoingMail, MdTaskAlt } from "react-icons/md";
 //css
 import "style/ReviewsDetail.scss";
-import ModalTeacherReply from "components/common/Modals/Reviews/ModalTeacherReply";
 
 function TeacherReviews() {
   //Để search
