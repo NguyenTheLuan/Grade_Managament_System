@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
+//css
+import "style/FormInput.scss";
 
 function ModalUpdateTeacher({ show, onShow, teacherDetail }) {
   //info to updae
@@ -60,34 +62,42 @@ function ModalUpdateTeacher({ show, onShow, teacherDetail }) {
         <Modal.Title>Cập nhật thông tin</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Tên giảng viên</Form.Label>
+        <Form onSubmit={handleSubmit} className="formInput">
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Tên giảng viên
+            </Form.Label>
             <Form.Control
+              className="formInput_group_control"
               value={fullName}
               type="text"
               onChange={(e) => setFullName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Sinh nhật</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">Sinh nhật</Form.Label>
             <Form.Control
+              className="formInput_group_control"
               value={birthday}
               type="datetime-local"
               onChange={(e) => setBirthday(e.target.value)}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Số điện thoại</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Số điện thoại
+            </Form.Label>
             <Form.Control
+              className="formInput_group_control"
               value={phone}
               type="text"
               onChange={(e) => setPhone(e.target.value)}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Giới tính</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">Giới tính</Form.Label>
             <Form.Select
+              className="formInput_group_control"
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
@@ -95,7 +105,7 @@ function ModalUpdateTeacher({ show, onShow, teacherDetail }) {
               <option value="false">Nữ</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="formInput_group">
             <Button variant="success" type="submit">
               Cập nhật
             </Button>

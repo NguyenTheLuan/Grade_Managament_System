@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
+//css
+import "style/FormInput.scss";
 
 function ModalUpdateStudent({ show, onShow, studentDetail }) {
   //info to updae
@@ -65,26 +67,33 @@ function ModalUpdateStudent({ show, onShow, studentDetail }) {
         <Modal.Title>Cập nhật thông tin</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Mã học viên</Form.Label>
+        <Form onSubmit={handleSubmit} className="formInput">
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Mã học viên
+            </Form.Label>
             <Form.Control
+              className="formInput_group_control"
               value={studentId}
               type="text"
               onChange={(e) => setStudentId(e.target.value)}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Tên học viên</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Tên học viên
+            </Form.Label>
             <Form.Control
+              className="formInput_group_control"
               value={fullName}
               type="text"
               onChange={(e) => setFullName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Giới tính</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">Giới tính</Form.Label>
             <Form.Select
+              className="formInput_group_control"
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
@@ -92,28 +101,34 @@ function ModalUpdateStudent({ show, onShow, studentDetail }) {
               <option value="false">Nữ</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Sinh nhật</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">Sinh nhật</Form.Label>
             <Form.Control
+              className="formInput_group_control"
               value={birthday}
               type="datetime-local"
               onChange={(e) => setBirthday(e.target.value)}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Số điện thoại</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Số điện thoại
+            </Form.Label>
             <Form.Control
+              className="formInput_group_control"
               value={phone}
               type="text"
               onChange={(e) => setPhone(e.target.value)}
             />
           </Form.Group>
-          <Button variant="success" type="submit">
-            Cập nhật
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Đóng
-          </Button>
+          <Form.Group className="formInput_group">
+            <Button variant="success" type="submit">
+              Cập nhật
+            </Button>
+            <Button variant="secondary" onClick={handleClose}>
+              Đóng
+            </Button>
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>

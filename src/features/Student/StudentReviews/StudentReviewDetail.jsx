@@ -1,9 +1,7 @@
 import userApi from "apis/userApi";
-import { renderDate } from "components/common";
+import { renderDateCreateAt } from "components/common";
 import ModalTeacherReply from "components/common/Modals/Reviews/ModalTeacherReply";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
@@ -22,7 +20,7 @@ function StudentReviewDetail() {
   }, []);
 
   const getReviewById = async () => {
-    const params = { idL: id };
+    const params = { id: id };
     try {
       const response = await userApi.get_AllReviews(params);
       //   console.log(response);
@@ -49,8 +47,10 @@ function StudentReviewDetail() {
     return (
       <div className="review" key={index}>
         <div className="review_name">
-          <strong>{review.name}</strong>
-          <i style={{ fontSize: "14px" }}> lúc {renderDate(review.createAt)}</i>
+          <strong>{review.name} </strong>
+          <i style={{ fontSize: "14px" }}>
+            lúc {renderDateCreateAt(review.createAt)}
+          </i>
         </div>
         {/* <div className="review_time"></div> */}
         <div className="review_message">{review.content}</div>
@@ -71,7 +71,7 @@ function StudentReviewDetail() {
         <div className="titleReview">Nội dung hỗ trợ</div>
         <div className="titleContent">{renderReviews}</div>
       </div>
-      {!result.complete ? (
+      {!result?.complete ? (
         <Button onClick={() => handleReply()}>Phản hồi tin nhắn</Button>
       ) : (
         <Button disabled>Đã hoàn thành</Button>

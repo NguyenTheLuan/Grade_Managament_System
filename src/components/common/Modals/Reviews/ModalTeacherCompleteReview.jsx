@@ -1,7 +1,6 @@
 import userApi from "apis/userApi";
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 function ModalTeacherCompleteReview({ show, onShow, info }) {

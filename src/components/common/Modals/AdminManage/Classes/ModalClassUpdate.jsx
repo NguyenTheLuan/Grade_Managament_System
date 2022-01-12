@@ -2,6 +2,8 @@ import adminApi from "apis/adminApi";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
+//css
+import "style/FormInput.scss";
 
 function ModalClassUpdate({ show, onShow, info }) {
   const [code, setCode] = useState();
@@ -47,18 +49,22 @@ function ModalClassUpdate({ show, onShow, info }) {
         <Modal.Title>Thông tin chi tiết lớp học </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Tên lớp</Form.Label>
+        <Form onSubmit={handleSubmit} className="formInput">
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">Tên lớp</Form.Label>
             <Form.Control
+              className="formInput_group_control"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Trạng thái</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Trạng thái
+            </Form.Label>
             <Form.Select
+              className="formInput_group_control"
               value={active}
               onChange={(e) => setActive(e.target.value)}
             >
@@ -66,10 +72,12 @@ function ModalClassUpdate({ show, onShow, info }) {
               <option value="false">Khóa lớp</option>
             </Form.Select>
           </Form.Group>
-          <Button type="submit">Cập nhật thông tin</Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Đóng
-          </Button>
+          <Form.Group className="formInput_group">
+            <Button type="submit">Cập nhật thông tin</Button>
+            <Button variant="secondary" onClick={handleClose}>
+              Đóng
+            </Button>
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>

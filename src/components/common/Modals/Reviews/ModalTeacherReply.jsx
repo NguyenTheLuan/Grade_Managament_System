@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
+//css
+import "style/FormInput.scss";
 
 function ModalTeacherReply({ show, onShow, info }) {
   const [content, setContent] = useState();
@@ -49,21 +51,26 @@ function ModalTeacherReply({ show, onShow, info }) {
         <Modal.Title>Trả lời yêu cầu</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Nội dung(*)</Form.Label>
+        <Form onSubmit={handleSubmit} className="formInput">
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Nội dung(*)
+            </Form.Label>
             <Form.Control
+              className="formInput_group_control"
               required
               as="textarea"
               onChange={(e) => setContent(e.target.value)}
             />
           </Form.Group>
-          <Button variant="success" type="submit">
-            Trả lời phản hồi
-          </Button>
-          <Button variant="secondary" onClick={() => handleClose()}>
-            Hủy
-          </Button>
+          <Form.Group className="formInput_group">
+            <Button variant="success" type="submit">
+              Trả lời phản hồi
+            </Button>
+            <Button variant="secondary" onClick={() => handleClose()}>
+              Hủy
+            </Button>
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
