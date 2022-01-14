@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+//css
+import "style/FormInput.scss";
 
 function ModalStudentPostReview({ show, onShow }) {
   const { id } = useParams();
@@ -76,10 +78,13 @@ function ModalStudentPostReview({ show, onShow }) {
         <Modal.Title>Gửi yêu cầu mới</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Tên bài tập(*)</Form.Label>
+        <Form onSubmit={handleSubmit} className="formInput">
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Tên bài tập(*)
+            </Form.Label>
             <Form.Select
+              className="formInput_group_control"
               required
               onChange={(e) => setAssignmentCode(e.target.value)}
             >
@@ -87,28 +92,36 @@ function ModalStudentPostReview({ show, onShow }) {
               {renderAssignmentCode}
             </Form.Select>
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Tiêu đề(*)</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Tiêu đề(*)
+            </Form.Label>
             <Form.Control
+              className="formInput_group_control"
               required
               type="text"
               onChange={(e) => setTitle(e.target.value)}
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Nội dung(*)</Form.Label>
+          <Form.Group className="formInput_group">
+            <Form.Label className="formInput_group_label">
+              Nội dung(*)
+            </Form.Label>
             <Form.Control
+              className="formInput_group_control"
               required
-              type="text"
+              as="textarea"
               onChange={(e) => setContent(e.target.value)}
             />
           </Form.Group>
-          <Button variant="success" type="submit">
-            Gửi yêu cầu
-          </Button>
-          <Button variant="secondary" onClick={() => handleClose()}>
-            Đóng
-          </Button>
+          <Form.Group className="formInput_group">
+            <Button variant="success" type="submit">
+              Gửi yêu cầu
+            </Button>
+            <Button variant="secondary" onClick={() => handleClose()}>
+              Đóng
+            </Button>
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
