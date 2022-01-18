@@ -64,6 +64,7 @@ function ModalAddGradeStruct({ show, onShow }) {
               type="number"
               required
               name="percent"
+              min="0"
               onChange={(e) => setPercent(e.target.value)}
             />
           </Form.Group>
@@ -72,6 +73,7 @@ function ModalAddGradeStruct({ show, onShow }) {
             <Form.Control
               type="number"
               required
+              min="0"
               name="total"
               onChange={(e) => setTotal(e.target.value)}
             />

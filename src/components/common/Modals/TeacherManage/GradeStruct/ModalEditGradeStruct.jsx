@@ -56,7 +56,7 @@ function ModalEditGradeStruct({ show, onShow, gradeStruct }) {
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Label>Tên</Form.Label>
+            <Form.Label>Tên cột điểm</Form.Label>
             <Form.Control
               value={structName}
               type="text"
@@ -69,6 +69,7 @@ function ModalEditGradeStruct({ show, onShow, gradeStruct }) {
               value={percent}
               type="number"
               name="percent"
+              min="0"
               onChange={(e) => setPercent(e.target.value)}
             />
           </Form.Group>
@@ -76,6 +77,7 @@ function ModalEditGradeStruct({ show, onShow, gradeStruct }) {
             <Form.Label>Điểm tối đa</Form.Label>
             <Form.Control
               value={total}
+              min="0"
               type="number"
               name="total"
               onChange={(e) => setTotal(e.target.value)}

@@ -4,7 +4,7 @@ import axios from "axios";
 
 const axiosClient = axios.create({
   // baseURL: process.env.REACT_APP_API_URL,
-  baseURL: "https://gradems.herokuapp.com/api/",
+  baseURL: "https://classroom-1712404-backend.herokuapp.com/api/",
   headers: {
     "content-type": "application/json",
   },

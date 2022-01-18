@@ -97,7 +97,7 @@ function Register() {
             name="email"
             className="formGroup_control"
             type="email"
-            placeholder="Email"
+            placeholder="Địa chỉ email (*)"
             required={true}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -107,7 +107,7 @@ function Register() {
             name="verifyCode "
             className="formGroup_control"
             type="text"
-            placeholder="Nhập mã xác nhận email"
+            placeholder="Nhập mã xác nhận email (*)"
             onChange={(e) => setVerifyCode(e.target.value)}
             required={true}
           />
@@ -120,7 +120,7 @@ function Register() {
             name="password"
             className="formGroup_control"
             type="password"
-            placeholder="Mật khẩu"
+            placeholder="Nhập mật khẩu (*)"
             onChange={(e) => setPasswordConFirm(e.target.value)}
             required={true}
           />
@@ -130,7 +130,7 @@ function Register() {
             name="password"
             className="formGroup_control"
             type="password"
-            placeholder="Xác nhận mật khẩu"
+            placeholder="Xác nhận mật khẩu (*)"
             onChange={(e) => setPassword(e.target.value)}
             required={true}
           />
@@ -143,7 +143,7 @@ function Register() {
             name="fullName"
             className="formGroup_control"
             type="text"
-            placeholder="Họ và tên"
+            placeholder="Họ và tên (*)"
             onChange={(e) => setFullName(e.target.value)}
             required={true}
           />
