@@ -1,14 +1,13 @@
-// .Homepage {
-//   width: 100vw;
-//   height: 93.2vh;
+.homepage {
+  width: 100%;
+  height: 100%;
 
-//   background: rgb(48, 48, 48);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
+  background: url(https://www.dchomesystems.com/blog2/wp-content/uploads/2017/04/dave-tkachuck-background.jpg);
 
-//   color: white;
-//   font-size: 50px;
-//   font-weight: 600;
-// }
+  color: white;
+  font-size: 40px;
+}
