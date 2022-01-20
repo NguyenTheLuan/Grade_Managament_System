@@ -110,7 +110,7 @@ function TeacherDetailsClass() {
             nameFile="Danh sách học viên"
           />
           <Button variant="secondary" onClick={() => handleMark()}>
-            Kết thúc khóa học
+            Tổng kết điểm
           </Button>
         </div>
       </div>

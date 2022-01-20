@@ -97,7 +97,8 @@ function StudentProfile() {
   return (
     <div className="contentInfo">
       <div className="imgUser">
-        <img className="img" src={iconUser} alt="userIMG" />
+        {/* <img className="img" src={iconUser} alt="userIMG" /> */}
+        <div className="img"></div>
       </div>
       <div className="infoUser">{renderInfo()}</div>
       <div className="infoHandle">

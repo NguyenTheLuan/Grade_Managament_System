@@ -35,7 +35,8 @@ function ModalTeacherMarkClass({ show, onShow }) {
         <Modal.Title>Kết thúc khóa học</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        Bạn có chắc chắn kết thúc khóa học và tổng kết điểm hay không?
+        Bạn có chắc chắn <strong>kết thúc khóa học</strong> và{" "}
+        <strong>tổng kết điểm</strong> hay không?
       </Modal.Body>
       <Modal.Footer>
         <Button variant="danger" onClick={() => handleMark()}>
