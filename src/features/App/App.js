@@ -1,12 +1,13 @@
 import { renderRoute } from "components/common/CustomComponents";
 import Header from "components/MainPage/Header/Header";
-import { AUTH_ROUTE } from "constant";
+import { AUTH_ROUTE, STUDENT_ROUTE } from "constant";
 import AdminAuth from "features/Admin/AdminAuth";
 import AdminRoutes from "features/Admin/AdminPage/AdminRoutes";
 import Auth from "features/Auth/Auth";
 import HomePage from "features/HomePage/HomePage";
 import NotFound from "features/HomePage/NotFound/NotFound";
 import StudentAuth from "features/Student/StudentAuth";
+import StudentDashBoard from "features/Student/StudentPage/StudentDashBoard";
 import StudentRoutes from "features/Student/StudentPage/StudentRoutes";
 import TeacherAuth from "features/Teacher/TeacherAuth";
 import TeacherRoutes from "features/Teacher/TeacherPage/TeacherRoutes";
@@ -50,7 +51,6 @@ function App() {
 
             {/* student routes */}
             <Route element={<StudentAuth />}>
-              {/* {renderRoute(STUDENT_ROUTE)} */}
               <Route path="/student/*" element={<StudentRoutes />} />
             </Route>
 

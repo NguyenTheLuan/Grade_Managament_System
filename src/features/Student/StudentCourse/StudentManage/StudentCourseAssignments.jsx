@@ -8,6 +8,7 @@ import { Button, Table } from "react-bootstrap";
 import { BsInfoLg } from "react-icons/bs";
 import { GrDownload } from "react-icons/gr";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 function StudentCourseAssignments() {
   const { id } = useParams();
 
@@ -56,6 +57,9 @@ function StudentCourseAssignments() {
       window.location = linkHref;
     } else {
       console.log("chưa có file đuôi", fileName, linkHref);
+      toast.warning("Không có bài tập, hãy xem ghi chú", {
+        position: "bottom-right",
+      });
       return;
     }
   };

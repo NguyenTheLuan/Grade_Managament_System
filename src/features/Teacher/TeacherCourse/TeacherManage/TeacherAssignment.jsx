@@ -14,6 +14,7 @@ import { FiEdit } from "react-icons/fi";
 import { GrDownload } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 import ModalScoredAssignment from "components/common/Modals/TeacherManage/Assignments/ModalScoredAssignment";
+import { toast } from "react-toastify";
 
 function TeacherAssignment() {
   const { id } = useParams();
@@ -96,6 +97,9 @@ function TeacherAssignment() {
       window.location = linkHref;
     } else {
       console.log("chưa có file đuôi", fileName, linkHref);
+      toast.warning("Bạn không có thêm bài tập, hãy xem ghi chú", {
+        position: "bottom-right",
+      });
       return;
     }
   };
