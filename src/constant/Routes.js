@@ -15,6 +15,7 @@ import StudentCourses from "features/Student/StudentCourse/StudentCourses";
 import StudentCourseAssignments from "features/Student/StudentCourse/StudentManage/StudentCourseAssignments";
 import StudentCourseDetail from "features/Student/StudentCourse/StudentManage/StudentCourseDetail";
 import StudentCourseScored from "features/Student/StudentCourse/StudentManage/StudentCourseScored";
+import StudentGradeStruct from "features/Student/StudentCourse/StudentManage/StudentGradeStruct";
 import StudentInfo from "features/Student/StudentPage/StudentInfo";
 import StudentMapCode from "features/Student/StudentProfile/StudentMapCode";
 import StudentProfile from "features/Student/StudentProfile/StudentProfile";
@@ -213,6 +214,11 @@ export const DETAIL_COURSE = {
       path: "assigments",
       component: <StudentCourseAssignments />,
       index: true,
+    },
+    {
+      path: "grade_structures",
+      component: <StudentGradeStruct />,
+      index: false,
     },
     {
       path: "review",

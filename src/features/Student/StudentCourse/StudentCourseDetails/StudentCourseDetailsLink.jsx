@@ -16,6 +16,7 @@ function StudentCourseDetailsLink() {
         <MdOutlineArrowBack className="icon" onClick={() => handleBack()} />
         <NavLink to="details">Thông tin lớp</NavLink>
         <NavLink to="assigments">Danh sách bài tập</NavLink>
+        <NavLink to="grade_structures">Cấu trúc điểm</NavLink>
         <NavLink to="scored">Điểm của tôi</NavLink>
         <NavLink to="review">Hỗ trợ</NavLink>
       </div>
